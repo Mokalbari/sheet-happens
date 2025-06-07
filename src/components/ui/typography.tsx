@@ -1,5 +1,5 @@
+import type { SemanticHeading, SemanticParagraph } from "@/components/ui/types";
 import { cn } from "@/lib/utils";
-import type { SemanticHeading, SemanticParagraph } from "@/types/constants";
 import { cva, VariantProps } from "class-variance-authority";
 import { HTMLAttributes } from "react";
 

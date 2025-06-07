@@ -1,7 +1,7 @@
+import type { SemanticHeading, SemanticParagraph } from "@/components/ui/types";
 import { cn } from "@/lib/utils";
-import type { SemanticHeading, SemanticParagraph } from "@/types/constants";
 import { VariantProps } from "class-variance-authority";
-import { Heading, headingVariants, Text } from "../atoms/typography";
+import { Heading, headingVariants, Text } from "../ui/typography";
 
 interface Props {
   title: string;
