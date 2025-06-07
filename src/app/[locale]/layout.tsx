@@ -1,12 +1,12 @@
 import { routing } from "@/i18n/routing";
 import "@/styles/globals.css";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { notFound } from "next/navigation";
 
-const inter = Inter({
+const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-roboto",
 });
 
 export default async function LocaleLayout({
@@ -24,7 +24,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body
-        className={`bg-background text-foreground antialiased ${inter.variable}`}
+        className={`bg-background text-foreground antialiased ${roboto.variable}`}
       >
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
