@@ -1,12 +1,12 @@
-import { Heading, Text } from "@/components/atoms/typography";
-import { useTranslations } from "next-intl";
+import { SectionHeader } from "@/components/molecules/section-header";
+import { getTranslations } from "next-intl/server";
 
-export default function HomePage() {
-  const t = useTranslations("HomePage");
+export default async function HomePage() {
+  const t = await getTranslations("HomePage");
+
   return (
     <div>
-      <Heading>{t("title")}</Heading>
-      <Text variant="subheading">{t("description")}</Text>
+      <SectionHeader title={t("title")} subheading={t("description")} />
     </div>
   );
 }

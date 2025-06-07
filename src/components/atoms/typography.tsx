@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import type { SemanticHeading, SemanticParagraph } from "@/types/constants";
 import { cva, VariantProps } from "class-variance-authority";
 import { HTMLAttributes } from "react";
 
@@ -6,7 +7,7 @@ import { HTMLAttributes } from "react";
 // Heading
 // -------------------------------------------------------------
 
-const headingVariants = cva("scroll-m-20 font-bold", {
+export const headingVariants = cva("scroll-m-20 font-bold", {
   variants: {
     size: {
       default: "text-xl leading-7",
@@ -20,7 +21,7 @@ const headingVariants = cva("scroll-m-20 font-bold", {
 interface HeadingProps
   extends HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof headingVariants> {
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  as?: SemanticHeading;
 }
 
 export function Heading({
@@ -43,10 +44,10 @@ export function Heading({
 // Text
 // -------------------------------------------------------------
 
-const textVariants = cva("", {
+export const textVariants = cva("", {
   variants: {
     variant: {
-      subheading: "text-sm text-muted-foreground",
+      subheading: "text-sm text-muted-foreground leading-5 font-medium",
       default: "text-base",
     },
   },
@@ -58,7 +59,7 @@ const textVariants = cva("", {
 interface TextProps
   extends HTMLAttributes<HTMLParagraphElement | HTMLDivElement>,
     VariantProps<typeof textVariants> {
-  as?: "p" | "div";
+  as?: SemanticParagraph;
 }
 
 export function Text({
