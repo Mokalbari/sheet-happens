@@ -2,5 +2,8 @@
   "HomePage": {
     "title": "Bonjour tout le monde !",
     "description": "Ceci est une description"
+  },
+  "Atoms": {
+    "shield": "Bouclier"
   }
 }
