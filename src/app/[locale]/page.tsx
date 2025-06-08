@@ -12,7 +12,9 @@ export default async function HomePage() {
       <SectionHeader title={t("title")} subheading={t("description")} />
       <div className="max-w-4xl grid grid-cols-4">
         <MetricCard title="Level">12</MetricCard>
-        <MetricCard title="CA">16</MetricCard>
+        <MetricCard title="CA" showFooter>
+          16
+        </MetricCard>
         <MetricCard title="Hit points">0</MetricCard>
         <MetricCard title="Hit dice">4d8</MetricCard>
       </div>

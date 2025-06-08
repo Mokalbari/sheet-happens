@@ -1,4 +1,3 @@
-import { type GlowColor, type GlowRule } from "@/components/contants/colors";
 import {
   Card,
   CardAction,
@@ -10,7 +9,12 @@ import {
 import { Icon, type IconName } from "@/components/ui/icon";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
-import type { DD5ECommonMetrics } from "@/types";
+import {
+  GLOW_COLOR_MAP,
+  type Color,
+  type DD5ECommonMetrics,
+  type GlowRule,
+} from "@/types";
 import { getTranslations } from "next-intl/server";
 import type React from "react";
 import { ReactNode } from "react";
@@ -47,8 +51,11 @@ export async function MetricCard({
   const isDead = title === "Hit points" && Number(children) === 0;
 
   const glowRules: GlowRule[] = [
-    { condition: isShield, color: "blue" },
-    { condition: isDead, color: "pink" },
+    {
+      condition: isShield,
+      color: GLOW_COLOR_MAP.CA,
+    },
+    { condition: isDead, color: GLOW_COLOR_MAP["Hit points"] },
   ];
 
   const glowColor = glowRules.find((rule) => rule.condition)?.color ?? null;
@@ -91,7 +98,7 @@ export async function MetricCard({
 }
 
 // --- CUSTOM BORDER WRAPPER & STYLES ---
-const COLOR_CLASSES: Record<GlowColor, { gradient: string; glow: string }> = {
+const COLOR_CLASSES: Record<Color, { gradient: string; glow: string }> = {
   blue: {
     gradient: "from-blue-400 via-sky-400 to-indigo-500",
     glow: "shadow-[0_0_16px_4px_rgba(56,189,248,0.6)]",
@@ -115,7 +122,7 @@ function MetricWithCustomBorder({
   color,
 }: {
   children: React.ReactNode;
-  color: GlowColor;
+  color: Color;
 }) {
   const { gradient, glow } = COLOR_CLASSES[color];
 
