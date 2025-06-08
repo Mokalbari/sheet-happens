@@ -10,12 +10,12 @@ import {
 import { Icon, type IconName } from "@/components/ui/icon";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
+import type { DD5ECommonMetrics } from "@/types";
 import { getTranslations } from "next-intl/server";
 import type React from "react";
 
-type MetricType = "Level" | "Hit points" | "CA" | "Initiative";
 interface Props {
-  title: MetricType;
+  title: DD5ECommonMetrics;
   value: string | number;
   subValue?: string;
   showFooter?: boolean;
