@@ -1,13 +1,25 @@
 {
   "Atoms": {
-    "shield": "Bouclier"
+    "name": "Nom",
+    "class": "Classe",
+    "subClass": "Sous-classe",
+    "level": "Niveau",
+    "race": "Race",
+    "alignment": "Alignement",
+    "experience": "Expérience",
+    "background": "Historique",
+    "playerName": "Nom du joueur",
+    "shield": "Shield"
   },
   "HomePage": {
     "title": "Bonjour tout le monde !",
     "description": "Ceci est une description"
   },
   "SideNav": {
-    "copy-link": "🔗 Ce lien est unique à ton personnage. Partage-le à ton MJ pour qu'il puisse te suivre en direct."
+    "copy-link": "🔗 Ce lien est unique à ton personnage. Partage-le à ton MJ pour qu'il puisse te suivre en direct.",
+    "edit-infos": "Modifier les infos",
+    "character-info-1": "🖌️ - <strong>{alignment}</strong> <strong>{specie}</strong>, <strong>{background}</strong> de niveau <strong>{level}</strong>",
+    "character-info-2": "👤 - Joué par <strong>{playerName}</strong>"
   },
   "Toaster": {
     "success": {

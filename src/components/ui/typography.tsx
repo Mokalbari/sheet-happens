@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { SemanticHeading, SemanticParagraph } from "@/types";
+import type { SemanticHeading, SemanticList, SemanticParagraph } from "@/types";
 import { cva, VariantProps } from "class-variance-authority";
 import { HTMLAttributes } from "react";
 
@@ -50,6 +50,7 @@ export const textVariants = cva("text-pretty", {
       subheading: "text-sm text-muted-foreground leading-5 font-medium",
       copyable: "text-xs text-muted-foreground font-mono",
       extraSmall: "text-xs text-muted-foreground",
+      small: "text-sm text-muted-foreground",
       default: "text-base",
     },
   },
@@ -75,6 +76,55 @@ export function Text({
 
   return (
     <Component className={cn(textVariants({ variant }), className)} {...props}>
+      {children}
+    </Component>
+  );
+}
+
+// ------------------------------------------------------------
+// List
+// -------------------------------------------------------------
+
+export const listVariants = cva("list-inside", {
+  variants: {
+    variant: {
+      unordered: "list-disc",
+      ordered: "list-decimal",
+      none: "list-none",
+    },
+    spacing: {
+      default: "space-y-1",
+      compact: "space-y-0.5",
+      loose: "space-y-2",
+    },
+  },
+  defaultVariants: {
+    variant: "unordered",
+    spacing: "default",
+  },
+});
+
+interface ListProps
+  extends HTMLAttributes<HTMLUListElement | HTMLOListElement | HTMLMenuElement>,
+    VariantProps<typeof listVariants> {
+  as?: SemanticList;
+}
+
+export function List({
+  children,
+  className,
+  variant,
+  spacing,
+  as = "ul",
+  ...props
+}: ListProps) {
+  const Component = as;
+
+  return (
+    <Component
+      className={cn(listVariants({ variant, spacing }), className)}
+      {...props}
+    >
       {children}
     </Component>
   );
