@@ -10,6 +10,7 @@ import { Icon, type IconName } from "@/components/ui/icon";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 import {
+  COLOR_CLASSES,
   GLOW_COLOR_MAP,
   type Color,
   type DD5ECommonMetrics,
@@ -58,7 +59,7 @@ export async function MetricCard({
     { condition: isDead, color: GLOW_COLOR_MAP["Hit points"] },
   ];
 
-  const glowColor = glowRules.find((rule) => rule.condition)?.color ?? null;
+  const glowColor = glowRules.find((rule) => rule.condition)?.color;
 
   const card = (
     <Card className={cn("bg-background", glowColor && "border-none")}>
@@ -80,7 +81,7 @@ export async function MetricCard({
           <CardAction>
             <div className="flex items-center gap-2">
               <span className="text-sm">{t("shield")}</span>
-              <Switch color={glowColor ?? undefined} />
+              <Switch color={glowColor} />
             </div>
           </CardAction>
         </CardFooter>
@@ -98,25 +99,6 @@ export async function MetricCard({
 }
 
 // --- CUSTOM BORDER WRAPPER & STYLES ---
-const COLOR_CLASSES: Record<Color, { gradient: string; glow: string }> = {
-  blue: {
-    gradient: "from-blue-400 via-sky-400 to-indigo-500",
-    glow: "shadow-[0_0_16px_4px_rgba(56,189,248,0.6)]",
-  },
-  pink: {
-    gradient: "from-pink-400 via-fuchsia-500 to-rose-500",
-    glow: "shadow-[0_0_16px_4px_rgba(244,114,182,0.6)]",
-  },
-  green: {
-    gradient: "from-emerald-400 via-green-400 to-lime-400",
-    glow: "shadow-[0_0_16px_4px_rgba(52,211,153,0.6)]",
-  },
-  orange: {
-    gradient: "from-orange-400 via-amber-400 to-yellow-400",
-    glow: "shadow-[0_0_16px_4px_rgba(251,146,60,0.6)]",
-  },
-};
-
 function MetricWithCustomBorder({
   children,
   color,
