@@ -1,13 +1,9 @@
 import { routing } from "@/i18n/routing";
+import { roboto, robotoMono } from "@/styles/fonts";
 import "@/styles/globals.css";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { Roboto } from "next/font/google";
-import { notFound } from "next/navigation";
 
-const roboto = Roboto({
-  subsets: ["latin"],
-  variable: "--font-roboto",
-});
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { notFound } from "next/navigation";
 
 export default async function LocaleLayout({
   children,
@@ -24,9 +20,11 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body
-        className={`bg-background text-foreground antialiased ${roboto.variable}`}
+        className={`bg-background text-foreground antialiased ${roboto.variable} ${robotoMono.variable}`}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <div className="font-sans">
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        </div>
       </body>
     </html>
   );

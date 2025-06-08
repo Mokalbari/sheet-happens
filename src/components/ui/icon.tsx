@@ -1,12 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Info, Shield, type LucideIcon } from "lucide-react";
-
-const PERMITTED_ICONS = {
-  info: Info,
-  shield: Shield,
-} as const satisfies Record<string, LucideIcon>;
-
-export type IconName = keyof typeof PERMITTED_ICONS;
+import { IconName, PERMITTED_ICONS } from "@/types";
 
 interface Props {
   name: IconName;
