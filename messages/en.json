@@ -19,7 +19,8 @@
     "copy-link": "🔗 This is your unique character link. Share it to your DM so he can follow you live.",
     "edit-infos": "Edit infos",
     "character-info-1": "🖌️ - <strong>{alignment}</strong> <strong>{specie}</strong>, <strong>{background}</strong> of level <strong>{level}</strong>",
-    "character-info-2": "👤 - Played by <strong>{playerName}</strong>"
+    "character-info-2": "👤 - Played by <strong>{playerName}</strong>",
+    "your-spaces": "Your spaces"
   },
   "Toaster": {
     "success": {

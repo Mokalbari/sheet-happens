@@ -19,7 +19,8 @@
     "copy-link": "🔗 Ce lien est unique à ton personnage. Partage-le à ton MJ pour qu'il puisse te suivre en direct.",
     "edit-infos": "Modifier les infos",
     "character-info-1": "🖌️ - <strong>{alignment}</strong> <strong>{specie}</strong>, <strong>{background}</strong> de niveau <strong>{level}</strong>",
-    "character-info-2": "👤 - Joué par <strong>{playerName}</strong>"
+    "character-info-2": "👤 - Joué par <strong>{playerName}</strong>",
+    "your-spaces": "Tes espaces"
   },
   "Toaster": {
     "success": {

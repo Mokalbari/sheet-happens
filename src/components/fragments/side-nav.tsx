@@ -1,6 +1,7 @@
 import { Icon } from "@/components/ui/icon";
-import { Text } from "@/components/ui/typography";
+import { List, Text } from "@/components/ui/typography";
 import { Separator } from "@radix-ui/react-separator";
+import { Link } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Button } from "../ui/button";
 import { CopyableText } from "./copyable-text";
@@ -71,6 +72,21 @@ export async function SideNav() {
         </div>
 
         <Separator className="mt-4 border-zinc-700 border-[0.5px]" decorative />
+
+        <div>
+          <Text variant="small" className="text-white/80">
+            {t("your-spaces")}
+          </Text>
+
+          <List>
+            <li>
+              <Link href="/spaces/1">Space 1</Link>
+            </li>
+            <li>
+              <Link href="/spaces/2">Space 2</Link>
+            </li>
+          </List>
+        </div>
 
         <CopyableText text={slug} className="mt-1" />
         <Text variant="extraSmall" className="mt-2">
