@@ -1,9 +1,19 @@
 {
+  "Atoms": {
+    "shield": "Shield"
+  },
   "HomePage": {
     "title": "Hello world!",
     "description": "This is a description"
   },
-  "Atoms": {
-    "shield": "Shield"
+  "Toaster": {
+    "success": {
+      "generic-all-set": "All set.",
+      "generic-good-to-go": "You're good to go."
+    },
+    "error": {
+      "generic-something-went-wrong": "Something went wrong.",
+      "generic-oops-failed-to": "Oops! Failed to do that."
+    }
   }
 }

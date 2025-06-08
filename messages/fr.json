@@ -1,9 +1,19 @@
 {
+  "Atoms": {
+    "shield": "Bouclier"
+  },
   "HomePage": {
     "title": "Bonjour tout le monde !",
     "description": "Ceci est une description"
   },
-  "Atoms": {
-    "shield": "Bouclier"
+  "Toaster": {
+    "success": {
+      "generic-all-set": "Tout est prêt.",
+      "generic-good-to-go": "Vous êtes prêt."
+    },
+    "error": {
+      "generic-something-went-wrong": "Quelque chose s'est mal passé.",
+      "generic-oops-failed-to": "Oops! Une erreur est survenue."
+    }
   }
 }

@@ -1,10 +1,25 @@
+"use client";
+
 import { Icon } from "@/components/ui/icon";
+import { notify, Toaster } from "@/components/ui/toaster";
+import { Text } from "@/components/ui/typography";
+import { Button } from "../ui/button";
 
 export function CopyableText({ text }: { text: string }) {
+  const onClick = () => {
+    navigator.clipboard.writeText(text);
+    notify("success", "toaster.success.generic-all-set");
+  };
+
   return (
-    <div className="flex items-center gap-2 bg-black w-fit py-1.5 px-2 rounded-md cursor-pointer text-muted-foreground font-mono">
-      <span className="text-sm">{text}</span>
-      <Icon name="copy" size={12} />
-    </div>
+    <>
+      <Button onClick={onClick} variant="copyable">
+        <Text as="span" variant="copyable">
+          {text}
+        </Text>
+        <Icon name="copy" size={12} />
+      </Button>
+      <Toaster />
+    </>
   );
 }

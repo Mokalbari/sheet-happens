@@ -1,5 +1,5 @@
-import type { SemanticHeading, SemanticParagraph } from "@/components/ui/types";
 import { cn } from "@/lib/utils";
+import type { SemanticHeading, SemanticParagraph } from "@/types";
 import { cva, VariantProps } from "class-variance-authority";
 import { HTMLAttributes } from "react";
 
@@ -48,6 +48,7 @@ export const textVariants = cva("", {
   variants: {
     variant: {
       subheading: "text-sm text-muted-foreground leading-5 font-medium",
+      copyable: "text-xs text-muted-foreground font-mono",
       default: "text-base",
     },
   },
