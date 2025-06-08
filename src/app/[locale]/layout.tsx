@@ -2,6 +2,7 @@ import { routing } from "@/i18n/routing";
 import { roboto, robotoMono } from "@/styles/fonts";
 import "@/styles/globals.css";
 
+import { Toaster } from "@/components/ui/toaster";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 
@@ -25,6 +26,7 @@ export default async function LocaleLayout({
         <div className="font-sans">
           <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </div>
+        <Toaster />
       </body>
     </html>
   );
