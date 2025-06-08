@@ -8,7 +8,7 @@ interface Props {
   strokeWidth?: number;
 }
 
-export function Icon({ name, className, size = 20, strokeWidth = 1.5 }: Props) {
+export function Icon({ name, className, size = 16, strokeWidth = 1.5 }: Props) {
   const IconComponent = PERMITTED_ICONS[name];
 
   return (

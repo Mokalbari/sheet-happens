@@ -24,9 +24,11 @@ export default async function LocaleLayout({
         className={`bg-background text-foreground antialiased ${roboto.variable} ${robotoMono.variable}`}
       >
         <div className="font-sans">
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            {children}
+            <Toaster />
+          </NextIntlClientProvider>
         </div>
-        <Toaster />
       </body>
     </html>
   );

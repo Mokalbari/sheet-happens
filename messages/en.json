@@ -6,6 +6,9 @@
     "title": "Hello world!",
     "description": "This is a description"
   },
+  "SideNav": {
+    "copy-link": "🔗 This is your unique character link. Share it to your DM so he can follow you live."
+  },
   "Toaster": {
     "success": {
       "generic-all-set": "All set.",

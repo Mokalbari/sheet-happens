@@ -21,7 +21,7 @@ const buttonVariants = cva(
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
         copyable:
-          "flex items-center gap-2 bg-black w-fit py-1.5 px-2 rounded-md cursor-pointer text-muted-foreground font-mono",
+          "flex items-center gap-2 bg-zinc-900 w-fit py-1 px-1.5 rounded-sm cursor-pointer",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

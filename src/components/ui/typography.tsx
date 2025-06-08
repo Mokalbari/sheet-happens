@@ -7,7 +7,7 @@ import { HTMLAttributes } from "react";
 // Heading
 // -------------------------------------------------------------
 
-export const headingVariants = cva("scroll-m-20 font-bold", {
+export const headingVariants = cva("scroll-m-20 font-bold text-balance", {
   variants: {
     size: {
       default: "text-xl leading-7",
@@ -44,11 +44,12 @@ export function Heading({
 // Text
 // -------------------------------------------------------------
 
-export const textVariants = cva("", {
+export const textVariants = cva("text-pretty", {
   variants: {
     variant: {
       subheading: "text-sm text-muted-foreground leading-5 font-medium",
       copyable: "text-xs text-muted-foreground font-mono",
+      extraSmall: "text-xs text-muted-foreground",
       default: "text-base",
     },
   },

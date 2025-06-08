@@ -6,10 +6,13 @@
     "title": "Bonjour tout le monde !",
     "description": "Ceci est une description"
   },
+  "SideNav": {
+    "copy-link": "🔗 Ce lien est unique à ton personnage. Partage-le à ton MJ pour qu'il puisse te suivre en direct."
+  },
   "Toaster": {
     "success": {
       "generic-all-set": "Tout est prêt.",
-      "generic-good-to-go": "Vous êtes prêt."
+      "generic-good-to-go": "C'est tout bon."
     },
     "error": {
       "generic-something-went-wrong": "Quelque chose s'est mal passé.",

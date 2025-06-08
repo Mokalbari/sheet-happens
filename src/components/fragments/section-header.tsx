@@ -1,17 +1,27 @@
-import type { SemanticHeading, SemanticParagraph } from "@/components/ui/types";
 import { cn } from "@/lib/utils";
+import { SemanticHeading, SemanticParagraph } from "@/types";
 import { VariantProps } from "class-variance-authority";
 import { Heading, headingVariants, Text } from "../ui/typography";
 
-interface Props {
+interface BaseProps {
   title: string;
+  className?: string;
   sectionHeaderAs?: "header" | "div";
   titleAs?: SemanticHeading;
   titleSize?: VariantProps<typeof headingVariants>["size"];
-  subheadingAs?: SemanticParagraph;
-  subheading?: string;
-  className?: string;
 }
+
+type WithSubheading = BaseProps & {
+  subheading: string;
+  subheadingAs: SemanticParagraph;
+};
+
+type WithoutSubheading = BaseProps & {
+  subheading?: never;
+  subheadingAs?: never;
+};
+
+type Props = WithSubheading | WithoutSubheading;
 
 export function SectionHeader({
   className,
