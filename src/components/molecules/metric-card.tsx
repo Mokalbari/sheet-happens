@@ -13,21 +13,30 @@ import { cn } from "@/lib/utils";
 import type { DD5ECommonMetrics } from "@/types";
 import { getTranslations } from "next-intl/server";
 import type React from "react";
+import { ReactNode } from "react";
 
-interface Props {
+interface BaseProps {
   title: DD5ECommonMetrics;
-  value: string | number;
-  subValue?: string;
+  children: ReactNode;
   showFooter?: boolean;
-  showIcon?: boolean;
-  iconName?: IconName;
 }
+
+type BasePropsWithIcon = BaseProps & {
+  showIcon: true;
+  iconName: IconName;
+};
+
+type BasePropsWithoutIcon = BaseProps & {
+  showIcon?: false;
+  iconName?: never;
+};
+
+type Props = BasePropsWithIcon | BasePropsWithoutIcon;
 
 // --- METRIC CARD ---
 export async function MetricCard({
   title,
-  value,
-  subValue,
+  children,
   showFooter,
   showIcon,
   iconName,
@@ -35,7 +44,7 @@ export async function MetricCard({
   const t = await getTranslations("Atoms");
 
   const isShield = showIcon && iconName === "shield";
-  const isDead = title === "Hit points" && Number(value) === 0;
+  const isDead = title === "Hit points" && Number(children) === 0;
 
   const glowRules: GlowRule[] = [
     { condition: isShield, color: "blue" },
@@ -57,12 +66,7 @@ export async function MetricCard({
         </CardTitle>
       </CardHeader>
 
-      <CardContent className="text-5xl font-bold mt-6">
-        {value}
-        {subValue ? (
-          <span className="font-normal text-4xl ml-2">/{subValue}</span>
-        ) : null}
-      </CardContent>
+      <CardContent className="text-5xl font-bold mt-6"></CardContent>
 
       {showFooter ? (
         <CardFooter className="mt-4">

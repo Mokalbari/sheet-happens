@@ -10,16 +10,11 @@ export default async function HomePage() {
   return (
     <div>
       <SectionHeader title={t("title")} subheading={t("description")} />
-      <div className="grid grid-cols-3 gap-4 items-stretch">
-        <MetricCard title="Level" value="12" subValue="12" />
-        <MetricCard
-          title="CA"
-          value="16"
-          showIcon={hasShield}
-          iconName="shield"
-          showFooter
-        />
-        <MetricCard title="Hit points" value={0} subValue="12" />
+      <div className="max-w-4xl grid grid-cols-4">
+        <MetricCard title="Level">12</MetricCard>
+        <MetricCard title="CA">16</MetricCard>
+        <MetricCard title="Hit points">0</MetricCard>
+        <MetricCard title="Hit dice">4d8</MetricCard>
       </div>
     </div>
   );
