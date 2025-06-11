@@ -5,7 +5,9 @@ import { cn } from "@/lib/utils";
 import { IconName } from "@/types";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
+import Image from "next/image";
 import Link from "next/link";
+import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { CopyableText } from "./copyable-text";
 import { SectionHeader } from "./section-header";
@@ -38,58 +40,110 @@ export async function SideNav() {
   } = fakeData;
 
   return (
-    <aside className="max-w-80 bg-zinc-800 px-4 py-6 rounded-sm">
-      <div className="flex flex-col gap-2 items-center">
-        <SectionHeader
-          title={name}
-          subheading={[characterClass, subClass].filter(Boolean).join(", ")}
-          subheadingAs="div"
-          className="text-center"
-        />
+    <aside className="max-w-80 bg-zinc-800 rounded-sm">
+      <SideNavHeader />
 
-        <div className="self-stretch">
-          <Text variant="small">
-            {t.rich("character-info-1", {
-              alignment,
-              specie,
-              background,
-              level,
-              strong: (chunks) => (
-                <span className="text-white/80">{chunks}</span>
-              ),
-            })}
-          </Text>
-          <Text variant="small">
-            {t.rich("character-info-2", {
-              playerName,
-              strong: (chunks) => (
-                <span className="text-white/80">{chunks}</span>
-              ),
-            })}
-          </Text>
+      <div className="px-4 py-6">
+        <div className="flex flex-col gap-2 items-center">
+          <CharacterDetails
+            name={name}
+            characterClass={characterClass}
+            alignment={alignment}
+            specie={specie}
+            background={background}
+            level={level}
+            playerName={playerName}
+          />
 
           <Button variant="outline" className="mt-4 w-full">
             <Icon name="pencil" />
             {t("edit-infos")}
           </Button>
-        </div>
 
-        <Separator className="mt-4 border-neutral-700 border-[0.5px] border-solid" />
+          <Separator className="mt-4 border-neutral-700 border-[0.5px] border-solid" />
 
-        <div className="self-stretch mt-4">
-          <Text variant="small" className="text-white/80">
-            {t("your-spaces")}
+          <div className="self-stretch mt-4">
+            <Text variant="small" className="text-neutral-400">
+              {t("your-spaces")}
+            </Text>
+            <ListItems className="mt-2" />
+          </div>
+
+          <CopyableText text={slug} className="mt-4" />
+          <Text variant="extraSmall" className="mt-1">
+            {t("copy-link")}
           </Text>
-
-          <ListItems className="mt-2" />
         </div>
-
-        <CopyableText text={slug} className="mt-4" />
-        <Text variant="extraSmall" className="mt-1">
-          {t("copy-link")}
-        </Text>
       </div>
     </aside>
+  );
+}
+
+function SideNavHeader() {
+  return (
+    <div className="grid place-items-center">
+      <div className="relative h-32 w-full">
+        <Image src="/fakebg.png" alt="fakebg" fill className="object-cover" />
+      </div>
+
+      <div className="-mt-12 z-10">
+        <Avatar className="size-24">
+          <AvatarImage src="/avatar.webp" alt="avatar" />
+        </Avatar>
+      </div>
+    </div>
+  );
+}
+
+interface CharacterDetailsProps {
+  name: string;
+  characterClass: string;
+  subClass?: string;
+  alignment: string;
+  specie: string;
+  background: string;
+  level: number;
+  playerName: string;
+}
+
+async function CharacterDetails({
+  name,
+  characterClass,
+  subClass,
+  alignment,
+  specie,
+  background,
+  level,
+  playerName,
+}: CharacterDetailsProps) {
+  const t = await getTranslations("SideNav");
+
+  return (
+    <>
+      <SectionHeader
+        title={name}
+        subheading={[characterClass, subClass].filter(Boolean).join(", ")}
+        subheadingAs="div"
+        className="text-center"
+      />
+      <div className="self-stretch">
+        <Text variant="small">
+          {t.rich("character-info-1", {
+            alignment,
+            specie,
+            background,
+            level,
+            strong: (chunks) => <span className="text-white/80">{chunks}</span>,
+          })}
+        </Text>
+        <Text variant="small">
+          {t.rich("character-info-2", {
+            playerName,
+            strong: (chunks) => <span className="text-white/80">{chunks}</span>,
+          })}
+        </Text>
+      </div>
+    </>
   );
 }
 
