@@ -3,6 +3,7 @@ import { SideNavHeader } from "./side-nav-header";
 import { SideNavNavigation } from "./side-nav-navigation";
 import { SideNavProfile } from "./side-nav-profile";
 import { SideNavShare } from "./side-nav-share";
+import { Spacer } from "@/components/ui/spacer";
 
 const fakeData = {
   name: "John Doe",
@@ -36,7 +37,7 @@ export async function SideNav() {
 
         <SideNavNavigation />
 
-        <div className="flex-grow" />
+        <Spacer />
 
         <SideNavShare slug={slug} />
       </div>
