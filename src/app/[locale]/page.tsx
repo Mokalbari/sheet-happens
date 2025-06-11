@@ -1,4 +1,4 @@
-import { SideNav } from "@/components/fragments/side-nav";
+import { SideNav } from "@/components/fragments/side-nav/side-nav";
 import { getTranslations } from "next-intl/server";
 
 export default async function HomePage() {
