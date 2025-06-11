@@ -1,8 +1,8 @@
 import { Icon } from "@/components/ui/icon";
+import { Separator } from "@/components/ui/separator";
 import { List, Text } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import { IconName } from "@/types";
-import { Separator } from "@radix-ui/react-separator";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
 import Link from "next/link";
@@ -74,9 +74,9 @@ export async function SideNav() {
           </Button>
         </div>
 
-        <Separator className="mt-4 border-zinc-700 border-[0.5px]" decorative />
+        <Separator className="mt-4 border-neutral-700 border-[0.5px] border-solid" />
 
-        <div className="self-stretch">
+        <div className="self-stretch mt-4">
           <Text variant="small" className="text-white/80">
             {t("your-spaces")}
           </Text>
