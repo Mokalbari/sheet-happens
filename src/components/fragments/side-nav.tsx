@@ -1,8 +1,11 @@
 import { Icon } from "@/components/ui/icon";
 import { List, Text } from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
+import { IconName } from "@/types";
 import { Separator } from "@radix-ui/react-separator";
-import { Link } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { headers } from "next/headers";
+import Link from "next/link";
 import { Button } from "../ui/button";
 import { CopyableText } from "./copyable-text";
 import { SectionHeader } from "./section-header";
@@ -73,28 +76,67 @@ export async function SideNav() {
 
         <Separator className="mt-4 border-zinc-700 border-[0.5px]" decorative />
 
-        <div>
+        <div className="self-stretch">
           <Text variant="small" className="text-white/80">
             {t("your-spaces")}
           </Text>
 
-          <List>
-            <li>
-              <Link href="/spaces/1">Space 1</Link>
-            </li>
-            <li>
-              <Link href="/spaces/2">Space 2</Link>
-            </li>
-          </List>
+          <ListItems className="mt-2" />
         </div>
 
-        <CopyableText text={slug} className="mt-1" />
-        <Text variant="extraSmall" className="mt-2">
+        <CopyableText text={slug} className="mt-4" />
+        <Text variant="extraSmall" className="mt-1">
           {t("copy-link")}
         </Text>
       </div>
-
-      <Separator className="mt-4 border-zinc-700 border-[0.5px]" decorative />
     </aside>
+  );
+}
+
+async function ListItems({ className }: { className?: string }) {
+  const t = await getTranslations("SideNav");
+
+  const pathname = (await headers()).get("x-invoke-path") ?? "/";
+
+  type ListItem = {
+    key: string;
+    href: string;
+    icon: IconName;
+  };
+
+  const listItems: ListItem[] = [
+    { key: "main-sheet", href: "/", icon: "notebookPen" },
+    { key: "combat", href: "/combat", icon: "sword" },
+    { key: "inventory", href: "/inventory", icon: "fileUser" },
+    { key: "notes", href: "/notes", icon: "folderPen" },
+  ];
+
+  return (
+    <List
+      variant="none"
+      spacing="compact"
+      as="menu"
+      className={cn("flex flex-col gap-2 text-white/80", className)}
+    >
+      {listItems.map(({ key, href, icon }) => {
+        const isCurrent = href === pathname;
+
+        return (
+          <li
+            key={key}
+            aria-current={isCurrent ? "page" : undefined}
+            className={cn(
+              "flex items-center gap-2 hover:text-white",
+              isCurrent && "font-bold text-white bg-neutral-700 p-2 rounded-sm"
+            )}
+          >
+            <Link href={href} className="flex items-center gap-2 w-full">
+              <Icon name={icon} />
+              {t(key)}
+            </Link>
+          </li>
+        );
+      })}
+    </List>
   );
 }

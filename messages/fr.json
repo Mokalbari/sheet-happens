@@ -20,7 +20,11 @@
     "edit-infos": "Modifier les infos",
     "character-info-1": "🖌️ - <strong>{alignment}</strong> <strong>{specie}</strong>, <strong>{background}</strong> de niveau <strong>{level}</strong>",
     "character-info-2": "👤 - Joué par <strong>{playerName}</strong>",
-    "your-spaces": "Tes espaces"
+    "your-spaces": "Tes espaces",
+    "main-sheet": "Fiche principale",
+    "combat": "Combat",
+    "inventory": "Inventaire",
+    "notes": "Notes"
   },
   "Toaster": {
     "success": {
