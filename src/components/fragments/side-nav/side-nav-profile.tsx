@@ -35,10 +35,10 @@ export async function SideNavProfile({ profile }: Props) {
   const fullClass = [characterClass, subClass].filter(Boolean).join(" | ");
 
   return (
-    <div className="flex flex-col items-center gap-4 text-left">
+    <div className="flex flex-col items-center gap-4 text-center">
       <SectionHeader title={name} subheading={fullClass} subheadingAs="div" />
 
-      <div className="text-neutral-300">
+      <div className="text-neutral-300 text-left">
         <Text variant="small">
           {t.rich("character-info-1", {
             level,
