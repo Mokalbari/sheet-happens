@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Icon, type IconName } from "@/components/ui/icon";
+import { Icon } from "@/components/ui/icon";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 import {
@@ -15,6 +15,7 @@ import {
   type Color,
   type DD5ECommonMetrics,
   type GlowRule,
+  type IconName,
 } from "@/types";
 import { getTranslations } from "next-intl/server";
 import type React from "react";

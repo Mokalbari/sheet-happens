@@ -15,6 +15,28 @@
     "title": "Hello world!",
     "description": "This is a description"
   },
+  "MetricTable": {
+    "weaponsAndDamageCantrips": {
+      "name": "Weapons & Damage Cantrips",
+      "description": "Offensive gear and basic magical attacks with damage values.",
+      "columns": ["Name", "Attack Roll", "Damage", "Type"]
+    },
+    "classFeatures": {
+      "name": "Class Features",
+      "description": "Core abilities granted by the character’s class.",
+      "columns": ["Feature", "Acquisition level"]
+    },
+    "speciesTraits": {
+      "name": "Species Traits",
+      "description": "Innate traits based on the character’s species.",
+      "columns": ["Trait", "Acquisition level"]
+    },
+    "feats": {
+      "name": "Feats",
+      "description": "Optional upgrades earned through character progression.",
+      "columns": ["Feat", "Acquisition level"]
+    }
+  },
   "SideNav": {
     "copy-link": "🔗 This is your unique character link. Share it to your DM so he can follow you live.",
     "edit-infos": "Edit infos",

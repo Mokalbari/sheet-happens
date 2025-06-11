@@ -15,6 +15,28 @@
     "title": "Bonjour tout le monde !",
     "description": "Ceci est une description"
   },
+  "MetricTable": {
+    "weaponsAndDamageCantrips": {
+      "name": "Armes & Tours de Magie",
+      "description": "Armes offensives et sorts mineurs infligeant des dégâts.",
+      "columns": ["Nom", "Jet d’attaque", "Dégâts", "Type"]
+    },
+    "classFeatures": {
+      "name": "Aptitudes de Classe",
+      "description": "Capacités principales conférées par la classe du personnage.",
+      "columns": ["Aptitude", "Niveau d’acquisition"]
+    },
+    "speciesTraits": {
+      "name": "Traits d'Espèce",
+      "description": "Capacités innées liées à l’origine du personnage.",
+      "columns": ["Trait", "Niveau d’acquisition"]
+    },
+    "feats": {
+      "name": "Dons",
+      "description": "Améliorations facultatives obtenues en progressant.",
+      "columns": ["Don", "Niveau d’acquisition"]
+    }
+  },
   "SideNav": {
     "copy-link": "🔗 Ce lien est unique à ton personnage. Partage-le à ton MJ pour qu'il puisse te suivre en direct.",
     "edit-infos": "Modifier les infos",

@@ -33,7 +33,7 @@ export async function SideNavNavigation() {
           const isCurrent = pathname === href;
 
           return (
-            <li aria-current={isCurrent ? "page" : undefined}>
+            <li key={key} aria-current={isCurrent ? "page" : undefined}>
               <Link
                 href={href}
                 className={cn(
