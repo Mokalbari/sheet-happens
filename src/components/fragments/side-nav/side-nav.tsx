@@ -29,10 +29,10 @@ export async function SideNav() {
         avatarUrl={profileData.avatarUrl}
       />
 
-      <div className="flex flex-1 flex-col gap-6 p-6">
+      <div className="flex flex-1 flex-col gap-6 p-6 mt-4">
         <SideNavProfile profile={profileData} />
 
-        <Separator className="border-neutral-700" />
+        <Separator className="border-neutral-700 border-[0.5px] border-solid" />
 
         <SideNavNavigation />
 
