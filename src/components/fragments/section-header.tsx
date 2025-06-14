@@ -12,7 +12,7 @@ interface BaseProps {
 }
 
 type WithSubheading = BaseProps & {
-  subheading: string;
+  subheading: string | null;
   subheadingAs: SemanticParagraph;
 };
 

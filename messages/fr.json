@@ -35,6 +35,10 @@
       "name": "Dons",
       "description": "Améliorations facultatives obtenues en progressant.",
       "columns": ["Don", "Niveau d’acquisition"]
+    },
+    "overview": {
+      "name": "Aperçu",
+      "columns": ["Niveau", "Vitesse", "Taille", "Perception passive"]
     }
   },
   "SideNav": {

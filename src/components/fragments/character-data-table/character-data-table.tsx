@@ -1,21 +1,10 @@
 import { cn } from "@/lib/utils";
+import { CharacterTable } from "@/types";
 import { getTranslations } from "next-intl/server";
 import { SectionHeader } from "../section-header";
 import { MetricTable } from "./metric-table";
 
-type MetricTable =
-  | "weaponsAndDamageCantrips"
-  | "classFeatures"
-  | "speciesTraits"
-  | "feats";
-
-type MetricTableData = {
-  name: string;
-  description: string;
-  columns: string;
-};
-
-const CHARACTER_DATA_TABLE_MAP: Record<MetricTable, MetricTableData> = {
+const CHARACTER_DATA_TABLE_MAP = {
   weaponsAndDamageCantrips: {
     name: "MetricTable.weaponsAndDamageCantrips.name",
     description: "MetricTable.weaponsAndDamageCantrips.description",
@@ -36,7 +25,18 @@ const CHARACTER_DATA_TABLE_MAP: Record<MetricTable, MetricTableData> = {
     description: "MetricTable.feats.description",
     columns: "MetricTable.feats.columns",
   },
-} as const;
+  overview: {
+    name: "MetricTable.overview.name",
+    columns: "MetricTable.overview.columns",
+  },
+} as const satisfies Record<
+  CharacterTable,
+  {
+    name: `${"MetricTable"}.${CharacterTable}.name`;
+    description?: `${"MetricTable"}.${CharacterTable}.description`;
+    columns: `${"MetricTable"}.${CharacterTable}.columns`;
+  }
+>;
 
 const MOCK_DATA = [
   {
@@ -52,21 +52,25 @@ export async function CharacterDataTable({
   metric,
   className,
 }: {
-  metric: MetricTable;
+  metric: CharacterTable;
   className?: string;
 }) {
   const t = await getTranslations();
-  const { name, description, columns } = CHARACTER_DATA_TABLE_MAP[metric];
+  const { name, columns } = CHARACTER_DATA_TABLE_MAP[metric];
+  const description =
+    "description" in CHARACTER_DATA_TABLE_MAP[metric]
+      ? CHARACTER_DATA_TABLE_MAP[metric].description
+      : null;
 
   return (
     <div className={cn("flex flex-col gap-2", className)}>
       <SectionHeader
         title={t(name)}
-        subheading={t(description)}
+        subheading={description ? t(description as string) : null}
         subheadingAs="p"
       />
 
-      <MetricTable columns={columns} data={MOCK_DATA} />
+      <MetricTable columns={columns as string[]} data={MOCK_DATA} />
     </div>
   );
 }

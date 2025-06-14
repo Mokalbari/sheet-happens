@@ -35,6 +35,10 @@
       "name": "Feats",
       "description": "Optional upgrades earned through character progression.",
       "columns": ["Feat", "Acquisition level"]
+    },
+    "overview": {
+      "name": "Overview",
+      "columns": ["Level", "Speed", "Size", "Passive Perception"]
     }
   },
   "SideNav": {

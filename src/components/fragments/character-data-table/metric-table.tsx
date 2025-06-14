@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { getTranslations } from "next-intl/server";
 
 interface Props {
-  columns: string;
+  columns: string[];
   data: Record<string, string | number>[];
   className?: string;
 }
@@ -22,7 +22,7 @@ export async function MetricTable({ columns, data, className }: Props) {
     <Table className={cn(className)}>
       <TableHeader>
         <TableRow>
-          {(t.raw(columns) as string[]).map((col) => (
+          {columns.map((col) => (
             <TableHead
               className="text-sm font-semibold text-muted-foreground"
               key={col}
