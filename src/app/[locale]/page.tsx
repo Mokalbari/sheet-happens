@@ -8,7 +8,7 @@ export default async function HomePage() {
   return (
     <div className="flex gap-8">
       <SideNav />
-      <CharacterDataTable metric="weaponsAndDamageCantrips" />
+      <CharacterDataTable metric="overview" />
     </div>
   );
 }

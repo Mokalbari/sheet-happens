@@ -4,40 +4,6 @@ import { getTranslations } from "next-intl/server";
 import { SectionHeader } from "../section-header";
 import { MetricTable } from "./metric-table";
 
-const CHARACTER_DATA_TABLE_MAP = {
-  weaponsAndDamageCantrips: {
-    name: "MetricTable.weaponsAndDamageCantrips.name",
-    description: "MetricTable.weaponsAndDamageCantrips.description",
-    columns: "MetricTable.weaponsAndDamageCantrips.columns",
-  },
-  classFeatures: {
-    name: "MetricTable.classFeatures.name",
-    description: "MetricTable.classFeatures.description",
-    columns: "MetricTable.classFeatures.columns",
-  },
-  speciesTraits: {
-    name: "MetricTable.speciesTraits.name",
-    description: "MetricTable.speciesTraits.description",
-    columns: "MetricTable.speciesTraits.columns",
-  },
-  feats: {
-    name: "MetricTable.feats.name",
-    description: "MetricTable.feats.description",
-    columns: "MetricTable.feats.columns",
-  },
-  overview: {
-    name: "MetricTable.overview.name",
-    columns: "MetricTable.overview.columns",
-  },
-} as const satisfies Record<
-  CharacterTable,
-  {
-    name: `${"MetricTable"}.${CharacterTable}.name`;
-    description?: `${"MetricTable"}.${CharacterTable}.description`;
-    columns: `${"MetricTable"}.${CharacterTable}.columns`;
-  }
->;
-
 const MOCK_DATA = [
   {
     id: 1,
@@ -48,29 +14,48 @@ const MOCK_DATA = [
   },
 ];
 
-export async function CharacterDataTable({
-  metric,
-  className,
-}: {
+type CharacterTableSection = {
+  name: string;
+  description: string | null;
+  columns: string[];
+};
+
+interface Props {
   metric: CharacterTable;
   className?: string;
-}) {
-  const t = await getTranslations();
-  const { name, columns } = CHARACTER_DATA_TABLE_MAP[metric];
-  const description =
-    "description" in CHARACTER_DATA_TABLE_MAP[metric]
-      ? CHARACTER_DATA_TABLE_MAP[metric].description
-      : null;
+}
+
+export async function CharacterDataTable({ metric, className }: Props) {
+  const section = await getCharacterTableSection(metric);
+  const { name, description, columns } = section;
+
+  const data = MOCK_DATA;
 
   return (
     <div className={cn("flex flex-col gap-2", className)}>
       <SectionHeader
-        title={t(name)}
-        subheading={description ? t(description as string) : null}
+        title={name}
+        subheading={description ?? null}
         subheadingAs="p"
       />
 
-      <MetricTable columns={columns as string[]} data={MOCK_DATA} />
+      <MetricTable columns={columns} data={data} />
     </div>
   );
+}
+
+async function getCharacterTableSection(
+  key: CharacterTable
+): Promise<CharacterTableSection> {
+  const t = await getTranslations();
+
+  const sectionKey = `MetricTable.${key}`;
+
+  return {
+    name: t(`${sectionKey}.name`),
+    description: t.has(`${sectionKey}.description`)
+      ? t(`${sectionKey}.description`)
+      : null,
+    columns: t.raw(`${sectionKey}.columns`) as string[],
+  };
 }
