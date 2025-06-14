@@ -7,7 +7,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import { getTranslations } from "next-intl/server";
 
 interface Props {
   columns: string[];
@@ -16,12 +15,10 @@ interface Props {
 }
 
 export async function MetricTable({ columns, data, className }: Props) {
-  const t = await getTranslations();
-
   return (
     <Table className={cn(className)}>
       <TableHeader>
-        <TableRow>
+        <TableRow className="border-b-0 border-muted-foreground/50">
           {columns.map((col) => (
             <TableHead
               className="text-sm font-semibold text-muted-foreground"
@@ -34,6 +31,7 @@ export async function MetricTable({ columns, data, className }: Props) {
       </TableHeader>
       <TableBody>
         {data.map((row) => {
+          console.log("row", row);
           const { id, ...rest } = row;
 
           return (
