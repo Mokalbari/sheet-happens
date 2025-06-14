@@ -6,18 +6,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { cn } from "@/lib/utils";
 import { getTranslations } from "next-intl/server";
 
 interface Props {
   columns: string;
   data: Record<string, string | number>[];
+  className?: string;
 }
 
-export async function MetricTable({ columns, data }: Props) {
+export async function MetricTable({ columns, data, className }: Props) {
   const t = await getTranslations();
 
   return (
-    <Table>
+    <Table className={cn(className)}>
       <TableHeader>
         <TableRow>
           {(t.raw(columns) as string[]).map((col) => (
@@ -31,13 +33,17 @@ export async function MetricTable({ columns, data }: Props) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((row) => (
-          <TableRow key={row.id}>
-            {Object.values(row).map((value) => (
-              <TableCell key={value}>{value}</TableCell>
-            ))}
-          </TableRow>
-        ))}
+        {data.map((row) => {
+          const { id, ...rest } = row;
+
+          return (
+            <TableRow key={id}>
+              {Object.values(rest).map((value) => (
+                <TableCell key={value}>{value}</TableCell>
+              ))}
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );
