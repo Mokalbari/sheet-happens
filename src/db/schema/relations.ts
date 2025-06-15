@@ -4,16 +4,15 @@ import { classAbilities } from "./tables/class-abilities";
 import { classMasteries } from "./tables/class-masteries";
 import { classSkills } from "./tables/class-skills";
 import { classes } from "./tables/classes";
+import { heroes } from "./tables/heroes";
 import { skills } from "./tables/skills";
+import { species } from "./tables/species";
+import { speciesTraits } from "./tables/species-traits";
+import { spells } from "./tables/spells";
 import { systems } from "./tables/systems";
+import { users } from "./tables/users";
 import { weaponHasProperties } from "./tables/weapon-has-properties";
 import { weapons } from "./tables/weapons";
-
-export const systemsRelations = relations(systems, ({ many }) => ({
-  abilities: many(abilities),
-  skills: many(skills),
-  classes: many(classes),
-}));
 
 export const abilitiesRelations = relations(abilities, ({ one, many }) => ({
   skills: many(skills),
@@ -34,6 +33,54 @@ export const classesRelations = relations(classes, ({ one, many }) => ({
     fields: [classes.id],
     references: [classMasteries.classId],
   }),
+}));
+
+export const heroesRelations = relations(heroes, ({ one }) => ({
+  user: one(users, {
+    fields: [heroes.userId],
+    references: [users.id],
+  }),
+  system: one(systems, {
+    fields: [heroes.systemId],
+    references: [systems.id],
+  }),
+}));
+
+export const speciesRelations = relations(species, ({ one, many }) => ({
+  system: one(systems, {
+    fields: [species.systemId],
+    references: [systems.id],
+  }),
+  traits: many(speciesTraits),
+}));
+
+export const speciesTraitsRelations = relations(
+  speciesTraits,
+  ({ one, many }) => ({
+    system: one(systems, {
+      fields: [speciesTraits.systemId],
+      references: [systems.id],
+    }),
+    species: one(species, {
+      fields: [speciesTraits.speciesId],
+      references: [species.id],
+    }),
+  })
+);
+
+export const spellsRelations = relations(spells, ({ one }) => ({
+  system: one(systems, {
+    fields: [spells.systemId],
+    references: [systems.id],
+  }),
+}));
+
+export const systemsRelations = relations(systems, ({ many }) => ({
+  abilities: many(abilities),
+  skills: many(skills),
+  classes: many(classes),
+  heroes: many(heroes),
+  spells: many(spells),
 }));
 
 export const weaponsRelations = relations(weapons, ({ one, many }) => ({
