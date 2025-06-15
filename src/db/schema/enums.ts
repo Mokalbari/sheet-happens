@@ -1,4 +1,5 @@
 import { pgEnum } from "drizzle-orm/pg-core";
+import { I18N_LOCALES, I18N_TRANSLATION_ENTITIES } from "./i18n-constants";
 
 export const AREA_OF_EFFECT_ENUM = [
   "sphere",
@@ -20,7 +21,7 @@ export const HIT_DICE_ENUM = ["d4", "d6", "d8", "d10", "d12"] as const;
 export type HitDice = (typeof HIT_DICE_ENUM)[number];
 export const hitDiceEnum = pgEnum("hit_dice", HIT_DICE_ENUM);
 
-export const LOCALE_ENUM = ["en", "fr"] as const;
+export const LOCALE_ENUM = I18N_LOCALES;
 export type Locale = (typeof LOCALE_ENUM)[number];
 export const localeEnum = pgEnum("locale", LOCALE_ENUM);
 
@@ -89,16 +90,10 @@ export type SpeciesSize = (typeof SPECIES_SIZE_ENUM)[number];
 export const speciesSizeEnum = pgEnum("species_size", SPECIES_SIZE_ENUM);
 
 export const SYSTEM_ENUM = ["dd5e2024", "homebrew"] as const;
-export type System = (typeof SYSTEM_ENUM)[number];
+export type SystemEnum = (typeof SYSTEM_ENUM)[number];
 export const systemEnum = pgEnum("system", SYSTEM_ENUM);
 
-export const TRANSLATION_ENTITY_ENUM = [
-  "abilities",
-  "classes",
-  "skills",
-  "spells",
-  "weapons",
-] as const;
+export const TRANSLATION_ENTITY_ENUM = I18N_TRANSLATION_ENTITIES;
 export type TranslationEntity = (typeof TRANSLATION_ENTITY_ENUM)[number];
 export const translationEntityEnum = pgEnum(
   "translation_entity",
