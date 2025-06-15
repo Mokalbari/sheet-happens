@@ -1,6 +1,6 @@
 import { pgEnum } from "drizzle-orm/pg-core";
 
-export const SYSTEM_ENUM = ["dd5e2024"] as const;
+export const SYSTEM_ENUM = ["dd5e2024", "homebrew"] as const;
 export type System = (typeof SYSTEM_ENUM)[number];
 export const systemEnum = pgEnum("system", SYSTEM_ENUM);
 
@@ -25,3 +25,16 @@ export const classAbilityRoleEnum = pgEnum(
 export const HIT_DICE_ENUM = ["d4", "d6", "d8", "d10", "d12"] as const;
 export type HitDice = (typeof HIT_DICE_ENUM)[number];
 export const hitDiceEnum = pgEnum("hit_dice", HIT_DICE_ENUM);
+
+export const WEAPON_MASTERY_ENUM = [
+  "cleave",
+  "graze",
+  "nick",
+  "push",
+  "sap",
+  "slow",
+  "topple",
+  "vex",
+] as const;
+export type WeaponMastery = (typeof WEAPON_MASTERY_ENUM)[number];
+export const weaponMasteryEnum = pgEnum("weapon_mastery", WEAPON_MASTERY_ENUM);
