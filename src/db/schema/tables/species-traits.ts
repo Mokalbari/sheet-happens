@@ -1,6 +1,6 @@
 import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
-import { systems } from "./systems";
 import { species } from "./species";
+import { systems } from "./systems";
 
 export const speciesTraits = pgTable("species_traits", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),

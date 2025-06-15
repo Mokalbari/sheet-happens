@@ -1,19 +1,13 @@
 import { pgEnum } from "drizzle-orm/pg-core";
 
-export const SYSTEM_ENUM = ["dd5e2024", "homebrew"] as const;
-export type System = (typeof SYSTEM_ENUM)[number];
-export const systemEnum = pgEnum("system", SYSTEM_ENUM);
-
-export const LOCALE_ENUM = ["en", "fr"] as const;
-export type Locale = (typeof LOCALE_ENUM)[number];
-export const localeEnum = pgEnum("locale", LOCALE_ENUM);
-
-export const TRANSLATION_ENTITY_ENUM = ["abilities"] as const;
-export type TranslationEntity = (typeof TRANSLATION_ENTITY_ENUM)[number];
-export const translationEntityEnum = pgEnum(
-  "translation_entity",
-  TRANSLATION_ENTITY_ENUM
-);
+export const AREA_OF_EFFECT_ENUM = [
+  "sphere",
+  "cube",
+  "cylinder",
+  "line",
+] as const;
+export type AreaOfEffect = (typeof AREA_OF_EFFECT_ENUM)[number];
+export const areaOfEffectEnum = pgEnum("area_of_effect", AREA_OF_EFFECT_ENUM);
 
 export const CLASS_ABILITY_ROLE_ENUM = ["main", "save"] as const;
 export type ClassAbilityRole = (typeof CLASS_ABILITY_ROLE_ENUM)[number];
@@ -26,18 +20,9 @@ export const HIT_DICE_ENUM = ["d4", "d6", "d8", "d10", "d12"] as const;
 export type HitDice = (typeof HIT_DICE_ENUM)[number];
 export const hitDiceEnum = pgEnum("hit_dice", HIT_DICE_ENUM);
 
-export const WEAPON_MASTERY_ENUM = [
-  "cleave",
-  "graze",
-  "nick",
-  "push",
-  "sap",
-  "slow",
-  "topple",
-  "vex",
-] as const;
-export type WeaponMastery = (typeof WEAPON_MASTERY_ENUM)[number];
-export const weaponMasteryEnum = pgEnum("weapon_mastery", WEAPON_MASTERY_ENUM);
+export const LOCALE_ENUM = ["en", "fr"] as const;
+export type Locale = (typeof LOCALE_ENUM)[number];
+export const localeEnum = pgEnum("locale", LOCALE_ENUM);
 
 export const SPELL_SCHOOL_ENUM = [
   "abjuration",
@@ -78,15 +63,6 @@ export const SPELL_RANGE_ENUM = ["touch", "self", "range", "infinite"] as const;
 export type SpellRange = (typeof SPELL_RANGE_ENUM)[number];
 export const spellRangeEnum = pgEnum("spell_range", SPELL_RANGE_ENUM);
 
-export const AREA_OF_EFFECT_ENUM = [
-  "sphere",
-  "cube",
-  "cylinder",
-  "line",
-] as const;
-export type AreaOfEffect = (typeof AREA_OF_EFFECT_ENUM)[number];
-export const areaOfEffectEnum = pgEnum("area_of_effect", AREA_OF_EFFECT_ENUM);
-
 export const SPELL_SAVING_THROW_ENUM = [
   "strength",
   "dexterity",
@@ -100,3 +76,44 @@ export const spellSavingThrowEnum = pgEnum(
   "spell_saving_throw",
   SPELL_SAVING_THROW_ENUM
 );
+
+export const SPECIES_SIZE_ENUM = [
+  "tiny",
+  "small",
+  "medium",
+  "large",
+  "huge",
+  "gargantuan",
+] as const;
+export type SpeciesSize = (typeof SPECIES_SIZE_ENUM)[number];
+export const speciesSizeEnum = pgEnum("species_size", SPECIES_SIZE_ENUM);
+
+export const SYSTEM_ENUM = ["dd5e2024", "homebrew"] as const;
+export type System = (typeof SYSTEM_ENUM)[number];
+export const systemEnum = pgEnum("system", SYSTEM_ENUM);
+
+export const TRANSLATION_ENTITY_ENUM = [
+  "abilities",
+  "classes",
+  "skills",
+  "spells",
+  "weapons",
+] as const;
+export type TranslationEntity = (typeof TRANSLATION_ENTITY_ENUM)[number];
+export const translationEntityEnum = pgEnum(
+  "translation_entity",
+  TRANSLATION_ENTITY_ENUM
+);
+
+export const WEAPON_MASTERY_ENUM = [
+  "cleave",
+  "graze",
+  "nick",
+  "push",
+  "sap",
+  "slow",
+  "topple",
+  "vex",
+] as const;
+export type WeaponMastery = (typeof WEAPON_MASTERY_ENUM)[number];
+export const weaponMasteryEnum = pgEnum("weapon_mastery", WEAPON_MASTERY_ENUM);
