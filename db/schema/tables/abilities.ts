@@ -8,7 +8,7 @@ export const abilities = pgTable("abilities", {
     .notNull()
     .references(() => systems.id),
   defaultName: text("default_name").notNull(),
-  defaultDescription: text("default_description").notNull(),
+  defaultDescription: text("default_description"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

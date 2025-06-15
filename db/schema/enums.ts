@@ -14,3 +14,14 @@ export const translationEntityEnum = pgEnum(
   "translation_entity",
   TRANSLATION_ENTITY_ENUM
 );
+
+export const CLASS_ABILITY_ROLE_ENUM = ["main", "save"] as const;
+export type ClassAbilityRole = (typeof CLASS_ABILITY_ROLE_ENUM)[number];
+export const classAbilityRoleEnum = pgEnum(
+  "class_ability_role",
+  CLASS_ABILITY_ROLE_ENUM
+);
+
+export const HIT_DICE_ENUM = ["d4", "d6", "d8", "d10", "d12"] as const;
+export type HitDice = (typeof HIT_DICE_ENUM)[number];
+export const hitDiceEnum = pgEnum("hit_dice", HIT_DICE_ENUM);
