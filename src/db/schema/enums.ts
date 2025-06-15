@@ -38,3 +38,65 @@ export const WEAPON_MASTERY_ENUM = [
 ] as const;
 export type WeaponMastery = (typeof WEAPON_MASTERY_ENUM)[number];
 export const weaponMasteryEnum = pgEnum("weapon_mastery", WEAPON_MASTERY_ENUM);
+
+export const SPELL_SCHOOL_ENUM = [
+  "abjuration",
+  "conjuration",
+  "divination",
+  "enchantment",
+  "evocation",
+  "illusion",
+  "necromancy",
+  "transmutation",
+] as const;
+export type SpellSchool = (typeof SPELL_SCHOOL_ENUM)[number];
+export const spellSchoolEnum = pgEnum("spell_school", SPELL_SCHOOL_ENUM);
+
+export const SPELL_CASTING_TIME_ENUM = [
+  "bonus_action",
+  "action",
+  "reaction",
+  "minute",
+  "hour",
+  "day",
+] as const;
+export type SpellCastingTime = (typeof SPELL_CASTING_TIME_ENUM)[number];
+export const spellCastingTimeEnum = pgEnum(
+  "spell_casting_time",
+  SPELL_CASTING_TIME_ENUM
+);
+
+export const SPELL_DURATION_ENUM = [
+  "instant",
+  "long",
+  "until_dispelled",
+] as const;
+export type SpellDuration = (typeof SPELL_DURATION_ENUM)[number];
+export const spellDurationEnum = pgEnum("spell_duration", SPELL_DURATION_ENUM);
+
+export const SPELL_RANGE_ENUM = ["touch", "self", "range", "infinite"] as const;
+export type SpellRange = (typeof SPELL_RANGE_ENUM)[number];
+export const spellRangeEnum = pgEnum("spell_range", SPELL_RANGE_ENUM);
+
+export const AREA_OF_EFFECT_ENUM = [
+  "sphere",
+  "cube",
+  "cylinder",
+  "line",
+] as const;
+export type AreaOfEffect = (typeof AREA_OF_EFFECT_ENUM)[number];
+export const areaOfEffectEnum = pgEnum("area_of_effect", AREA_OF_EFFECT_ENUM);
+
+export const SPELL_SAVING_THROW_ENUM = [
+  "strength",
+  "dexterity",
+  "constitution",
+  "wisdom",
+  "intelligence",
+  "charisma",
+] as const;
+export type SpellSavingThrow = (typeof SPELL_SAVING_THROW_ENUM)[number];
+export const spellSavingThrowEnum = pgEnum(
+  "spell_saving_throw",
+  SPELL_SAVING_THROW_ENUM
+);

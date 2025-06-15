@@ -12,13 +12,22 @@ import { weapons } from "./tables/weapons";
 export const systemsRelations = relations(systems, ({ many }) => ({
   abilities: many(abilities),
   skills: many(skills),
+  classes: many(classes),
 }));
 
-export const abilitiesRelations = relations(abilities, ({ many }) => ({
+export const abilitiesRelations = relations(abilities, ({ one, many }) => ({
   skills: many(skills),
+  system: one(systems, {
+    fields: [abilities.systemId],
+    references: [systems.id],
+  }),
 }));
 
 export const classesRelations = relations(classes, ({ one, many }) => ({
+  system: one(systems, {
+    fields: [classes.systemId],
+    references: [systems.id],
+  }),
   abilities: many(classAbilities),
   skills: many(classSkills),
   mastery: one(classMasteries, {
@@ -27,6 +36,10 @@ export const classesRelations = relations(classes, ({ one, many }) => ({
   }),
 }));
 
-export const weaponsRelations = relations(weapons, ({ many }) => ({
+export const weaponsRelations = relations(weapons, ({ one, many }) => ({
+  system: one(systems, {
+    fields: [weapons.systemId],
+    references: [systems.id],
+  }),
   properties: many(weaponHasProperties),
 }));
