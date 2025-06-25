@@ -1,6 +1,7 @@
 import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { systems } from "./systems";
 import { users } from "./users";
+import { backgrounds } from "./backgrounds";
 
 export const heroes = pgTable("heroes", {
   // ids and general properties
@@ -13,7 +14,9 @@ export const heroes = pgTable("heroes", {
     .references(() => systems.id),
 
   name: text("name").notNull(),
-  background: text("background").notNull(),
+  backgroundId: integer("background_id")
+    .notNull()
+    .references(() => backgrounds.id),
 
   // timestamps
   createdAt: timestamp("created_at").notNull().defaultNow(),
