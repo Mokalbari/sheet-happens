@@ -1,1 +1,16 @@
+export { abilities } from "./tables/abilities";
+export { classAbilities } from "./tables/class-abilities";
+export { classMasteries } from "./tables/class-masteries";
+export { classSkills } from "./tables/class-skills";
+export { classes } from "./tables/classes";
+export { heroes } from "./tables/heroes";
+export { skills } from "./tables/skills";
+export { species } from "./tables/species";
+export { speciesTraits } from "./tables/species-traits";
+export { spells } from "./tables/spells";
 export { systems } from "./tables/systems";
+export { translations } from "./tables/translations";
+export { users } from "./tables/users";
+export { weaponHasProperties } from "./tables/weapon-has-properties";
+export { weaponProperties } from "./tables/weapon-properties";
+export { weapons } from "./tables/weapons";
