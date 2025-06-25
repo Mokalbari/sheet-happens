@@ -14,6 +14,7 @@ import { featGrantsSkills } from "./tables/feat-grants-skills";
 import { featGrantsSpells } from "./tables/feat-grants-spells";
 import { featGrantsTools } from "./tables/feat-grants-tools";
 import { feats } from "./tables/feats";
+import { heroAbilityScores } from "./tables/hero-ability-scores";
 import { heroEquipment } from "./tables/hero-equipment";
 import { heroHasFeats } from "./tables/hero-has-feats";
 import { heroHasSpells } from "./tables/hero-has-spells";
@@ -47,6 +48,7 @@ export const abilitiesRelations = relations(abilities, ({ one, many }) => ({
   classAbilities: many(classAbilities),
   tools: many(tools),
   feats: many(featGrantsAbilities),
+  heroAbilityScores: many(heroAbilityScores),
 }));
 
 export const armorsRelations = relations(armors, ({ one }) => ({
@@ -250,6 +252,7 @@ export const heroesRelations = relations(heroes, ({ one, many }) => ({
   feats: many(heroHasFeats),
   spells: many(heroHasSpells),
   stats: many(heroStats),
+  abilityScores: many(heroAbilityScores),
   equipment: many(heroEquipment),
   spellSlots: many(heroSpellSlots),
   hitDice: many(heroHitDice),
@@ -481,6 +484,20 @@ export const heroSpellPreparationsRelations = relations(
     spell: one(spells, {
       fields: [heroSpellPreparations.spellId],
       references: [spells.id],
+    }),
+  })
+);
+
+export const heroAbilityScoresRelations = relations(
+  heroAbilityScores,
+  ({ one }) => ({
+    hero: one(heroes, {
+      fields: [heroAbilityScores.heroId],
+      references: [heroes.id],
+    }),
+    ability: one(abilities, {
+      fields: [heroAbilityScores.abilityId],
+      references: [abilities.id],
     }),
   })
 );
