@@ -10,6 +10,10 @@ export const AREA_OF_EFFECT_ENUM = [
 export type AreaOfEffect = (typeof AREA_OF_EFFECT_ENUM)[number];
 export const areaOfEffectEnum = pgEnum("area_of_effect", AREA_OF_EFFECT_ENUM);
 
+export const ARMOR_TYPE_ENUM = ["light", "medium", "heavy", "shield"] as const;
+export type ArmorType = (typeof ARMOR_TYPE_ENUM)[number];
+export const armorTypeEnum = pgEnum("armor_type", ARMOR_TYPE_ENUM);
+
 export const CLASS_ABILITY_ROLE_ENUM = ["main", "save"] as const;
 export type ClassAbilityRole = (typeof CLASS_ABILITY_ROLE_ENUM)[number];
 export const classAbilityRoleEnum = pgEnum(
