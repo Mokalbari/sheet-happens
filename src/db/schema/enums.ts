@@ -133,3 +133,7 @@ export const WEAPON_MASTERY_ENUM = [
 ] as const;
 export type WeaponMastery = (typeof WEAPON_MASTERY_ENUM)[number];
 export const weaponMasteryEnum = pgEnum("weapon_mastery", WEAPON_MASTERY_ENUM);
+
+export const WEAPON_TYPE_ENUM = ["simple", "martial", "exotic"] as const;
+export type WeaponType = (typeof WEAPON_TYPE_ENUM)[number];
+export const weaponTypeEnum = pgEnum("weapon_type", WEAPON_TYPE_ENUM);
