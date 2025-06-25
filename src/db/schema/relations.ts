@@ -17,6 +17,8 @@ import { feats } from "./tables/feats";
 import { heroEquipment } from "./tables/hero-equipment";
 import { heroHasFeats } from "./tables/hero-has-feats";
 import { heroHasSpells } from "./tables/hero-has-spells";
+import { heroHitDice } from "./tables/hero-hit-dice";
+import { heroSpellPreparations } from "./tables/hero-spell-preparations";
 import { heroSpellSlots } from "./tables/hero-spell-slots";
 import { heroStats } from "./tables/hero-stats";
 import { heroes } from "./tables/heroes";
@@ -250,6 +252,8 @@ export const heroesRelations = relations(heroes, ({ one, many }) => ({
   stats: many(heroStats),
   equipment: many(heroEquipment),
   spellSlots: many(heroSpellSlots),
+  hitDice: many(heroHitDice),
+  spellPreparations: many(heroSpellPreparations),
 }));
 
 export const heroHasFeatsRelations = relations(heroHasFeats, ({ one }) => ({
@@ -459,3 +463,24 @@ export const heroSpellSlotsRelations = relations(heroSpellSlots, ({ one }) => ({
     references: [heroes.id],
   }),
 }));
+
+export const heroHitDiceRelations = relations(heroHitDice, ({ one }) => ({
+  hero: one(heroes, {
+    fields: [heroHitDice.heroId],
+    references: [heroes.id],
+  }),
+}));
+
+export const heroSpellPreparationsRelations = relations(
+  heroSpellPreparations,
+  ({ one }) => ({
+    hero: one(heroes, {
+      fields: [heroSpellPreparations.heroId],
+      references: [heroes.id],
+    }),
+    spell: one(spells, {
+      fields: [heroSpellPreparations.spellId],
+      references: [spells.id],
+    }),
+  })
+);

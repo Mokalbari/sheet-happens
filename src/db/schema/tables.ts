@@ -16,6 +16,8 @@ export { feats } from "./tables/feats";
 export { heroEquipment } from "./tables/hero-equipment";
 export { heroHasFeats } from "./tables/hero-has-feats";
 export { heroHasSpells } from "./tables/hero-has-spells";
+export { heroHitDice } from "./tables/hero-hit-dice";
+export { heroSpellPreparations } from "./tables/hero-spell-preparations";
 export { heroSpellSlots } from "./tables/hero-spell-slots";
 export { heroStats } from "./tables/hero-stats";
 export { heroes } from "./tables/heroes";
