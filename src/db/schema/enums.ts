@@ -14,6 +14,20 @@ export const ARMOR_TYPE_ENUM = ["light", "medium", "heavy", "shield"] as const;
 export type ArmorType = (typeof ARMOR_TYPE_ENUM)[number];
 export const armorTypeEnum = pgEnum("armor_type", ARMOR_TYPE_ENUM);
 
+export const HEROE_INFORMATION_ENUM = [
+  "appearance",
+  "backstory",
+  "personalityTraits",
+  "ideals",
+  "bonds",
+  "flaws",
+] as const;
+export type HeroInformation = (typeof HEROE_INFORMATION_ENUM)[number];
+export const heroInformationEnum = pgEnum(
+  "hero_information",
+  HEROE_INFORMATION_ENUM
+);
+
 export const DND5E_CLASS_ENUM = [
   "barbarian",
   "bard",

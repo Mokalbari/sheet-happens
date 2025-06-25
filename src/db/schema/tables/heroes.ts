@@ -1,10 +1,11 @@
-import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import { integer, jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { backgrounds } from "./backgrounds";
 import { classes } from "./classes";
 import { species } from "./species";
 import { subclasses } from "./subclasses";
 import { systems } from "./systems";
 import { users } from "./users";
+import { HeroInformation } from "../enums";
 
 export const heroes = pgTable("heroes", {
   // ids and general properties
@@ -27,6 +28,8 @@ export const heroes = pgTable("heroes", {
   speciesId: integer("species_id")
     .notNull()
     .references(() => species.id),
+
+  extraInfo: jsonb("extra_info").$type<Record<HeroInformation, string>>(),
 
   // timestamps
   createdAt: timestamp("created_at").notNull().defaultNow(),
