@@ -1,9 +1,14 @@
 import { relations } from "drizzle-orm";
 import { abilities } from "./tables/abilities";
+import { armors } from "./tables/armors";
+import { backgroundAbilities } from "./tables/background-abilities";
+import { backgroundSkills } from "./tables/background-skills";
+import { backgrounds } from "./tables/backgrounds";
 import { classAbilities } from "./tables/class-abilities";
 import { classMasteries } from "./tables/class-masteries";
 import { classSkills } from "./tables/class-skills";
 import { classes } from "./tables/classes";
+import { feats } from "./tables/feats";
 import { heroes } from "./tables/heroes";
 import { lootables } from "./tables/lootables";
 import { skills } from "./tables/skills";
@@ -13,8 +18,10 @@ import { spells } from "./tables/spells";
 import { systems } from "./tables/systems";
 import { tools } from "./tables/tools";
 import { toolsCraftLootables } from "./tables/tools-craft-lootables";
+import { translations } from "./tables/translations";
 import { users } from "./tables/users";
 import { weaponHasProperties } from "./tables/weapon-has-properties";
+import { weaponProperties } from "./tables/weapon-properties";
 import { weapons } from "./tables/weapons";
 
 export const abilitiesRelations = relations(abilities, ({ one, many }) => ({
@@ -22,6 +29,82 @@ export const abilitiesRelations = relations(abilities, ({ one, many }) => ({
   system: one(systems, {
     fields: [abilities.systemId],
     references: [systems.id],
+  }),
+  backgroundAbilities: many(backgroundAbilities),
+  classAbilities: many(classAbilities),
+  tools: many(tools),
+}));
+
+export const armorsRelations = relations(armors, ({ one }) => ({
+  system: one(systems, {
+    fields: [armors.systemId],
+    references: [systems.id],
+  }),
+}));
+
+export const backgroundAbilitiesRelations = relations(
+  backgroundAbilities,
+  ({ one }) => ({
+    background: one(backgrounds, {
+      fields: [backgroundAbilities.backgroundId],
+      references: [backgrounds.id],
+    }),
+    ability: one(abilities, {
+      fields: [backgroundAbilities.abilityId],
+      references: [abilities.id],
+    }),
+  })
+);
+
+export const backgroundSkillsRelations = relations(
+  backgroundSkills,
+  ({ one }) => ({
+    background: one(backgrounds, {
+      fields: [backgroundSkills.backgroundId],
+      references: [backgrounds.id],
+    }),
+    skill: one(skills, {
+      fields: [backgroundSkills.skillId],
+      references: [skills.id],
+    }),
+  })
+);
+
+export const backgroundRelations = relations(backgrounds, ({ one, many }) => ({
+  system: one(systems, {
+    fields: [backgrounds.systemId],
+    references: [systems.id],
+  }),
+  abilities: many(backgroundAbilities),
+  skills: many(backgroundSkills),
+}));
+
+export const classAbilitiesRelations = relations(classAbilities, ({ one }) => ({
+  class: one(classes, {
+    fields: [classAbilities.classId],
+    references: [classes.id],
+  }),
+  ability: one(abilities, {
+    fields: [classAbilities.abilityId],
+    references: [abilities.id],
+  }),
+}));
+
+export const classMasteriesRelations = relations(classMasteries, ({ one }) => ({
+  class: one(classes, {
+    fields: [classMasteries.classId],
+    references: [classes.id],
+  }),
+}));
+
+export const classSkillsRelations = relations(classSkills, ({ one }) => ({
+  class: one(classes, {
+    fields: [classSkills.classId],
+    references: [classes.id],
+  }),
+  skill: one(skills, {
+    fields: [classSkills.skillId],
+    references: [skills.id],
   }),
 }));
 
@@ -35,6 +118,13 @@ export const classesRelations = relations(classes, ({ one, many }) => ({
   mastery: one(classMasteries, {
     fields: [classes.id],
     references: [classMasteries.classId],
+  }),
+}));
+
+export const featsRelations = relations(feats, ({ one }) => ({
+  system: one(systems, {
+    fields: [feats.systemId],
+    references: [systems.id],
   }),
 }));
 
@@ -65,6 +155,15 @@ export const speciesRelations = relations(species, ({ one, many }) => ({
   traits: many(speciesTraits),
 }));
 
+export const skillsRelations = relations(skills, ({ one, many }) => ({
+  system: one(systems, {
+    fields: [skills.systemId],
+    references: [systems.id],
+  }),
+  backgroundSkills: many(backgroundSkills),
+  classSkills: many(classSkills),
+}));
+
 export const speciesTraitsRelations = relations(
   speciesTraits,
   ({ one, many }) => ({
@@ -87,13 +186,18 @@ export const spellsRelations = relations(spells, ({ one }) => ({
 }));
 
 export const systemsRelations = relations(systems, ({ many }) => ({
+  armors: many(armors),
   abilities: many(abilities),
+  backgrounds: many(backgrounds),
   skills: many(skills),
   classes: many(classes),
   heroes: many(heroes),
   spells: many(spells),
   tools: many(tools),
   lootables: many(lootables),
+  species: many(species),
+  feats: many(feats),
+  weaponProperties: many(weaponProperties),
 }));
 
 export const toolsRelations = relations(tools, ({ one, many }) => ({
@@ -107,6 +211,54 @@ export const toolsRelations = relations(tools, ({ one, many }) => ({
   }),
   lootables: many(toolsCraftLootables),
 }));
+
+export const toolsCraftLootablesRelations = relations(
+  toolsCraftLootables,
+  ({ one }) => ({
+    tool: one(tools, {
+      fields: [toolsCraftLootables.toolId],
+      references: [tools.id],
+    }),
+    lootable: one(lootables, {
+      fields: [toolsCraftLootables.lootableId],
+      references: [lootables.id],
+    }),
+  })
+);
+
+export const translationsRelations = relations(translations, ({ one }) => ({
+  // Translations are polymorphic - they reference different entity types
+  // No direct foreign key relationships, but entityId + entity type determine the target
+}));
+
+export const usersRelations = relations(users, ({ many }) => ({
+  heroes: many(heroes),
+}));
+
+export const weaponHasPropertiesRelations = relations(
+  weaponHasProperties,
+  ({ one }) => ({
+    weapon: one(weapons, {
+      fields: [weaponHasProperties.weaponId],
+      references: [weapons.id],
+    }),
+    weaponProperty: one(weaponProperties, {
+      fields: [weaponHasProperties.weaponPropertyId],
+      references: [weaponProperties.id],
+    }),
+  })
+);
+
+export const weaponPropertiesRelations = relations(
+  weaponProperties,
+  ({ one, many }) => ({
+    system: one(systems, {
+      fields: [weaponProperties.systemId],
+      references: [systems.id],
+    }),
+    weapons: many(weaponHasProperties),
+  })
+);
 
 export const weaponsRelations = relations(weapons, ({ one, many }) => ({
   system: one(systems, {
