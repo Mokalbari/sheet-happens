@@ -151,3 +151,29 @@ export const weaponMasteryEnum = pgEnum("weapon_mastery", WEAPON_MASTERY_ENUM);
 export const WEAPON_TYPE_ENUM = ["simple", "martial", "exotic"] as const;
 export type WeaponType = (typeof WEAPON_TYPE_ENUM)[number];
 export const weaponTypeEnum = pgEnum("weapon_type", WEAPON_TYPE_ENUM);
+
+export const SPELL_GRANT_TYPE_ENUM = [
+  "specific_spell", // Grants a specific spell (e.g., Minor Illusion)
+  "spell_choice", // Choose from a list of spells
+  "class_spell_choice", // Choose from a class spell list
+  "school_spell_choice", // Choose from a school of magic
+  "level_spell_choice", // Choose from spells of a specific level
+] as const;
+export type SpellGrantType = (typeof SPELL_GRANT_TYPE_ENUM)[number];
+export const spellGrantTypeEnum = pgEnum(
+  "spell_grant_type",
+  SPELL_GRANT_TYPE_ENUM
+);
+
+export const ABILITY_SCORE_GRANT_TYPE_ENUM = [
+  "specific_ability", // Grants +1 to a specific ability (e.g., +1 STR)
+  "ability_choice", // Choose +1 to any ability from a list
+  "any_ability", // Choose +1 to any ability
+  "multiple_abilities", // Grants multiple bonuses (e.g., +2 to one, +1 to another)
+] as const;
+export type AbilityScoreGrantType =
+  (typeof ABILITY_SCORE_GRANT_TYPE_ENUM)[number];
+export const abilityScoreGrantTypeEnum = pgEnum(
+  "ability_score_grant_type",
+  ABILITY_SCORE_GRANT_TYPE_ENUM
+);

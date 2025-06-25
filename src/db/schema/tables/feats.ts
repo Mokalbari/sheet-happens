@@ -14,10 +14,10 @@ export const feats = pgTable("feats", {
   systemId: integer("system_id"),
 
   minLevel: integer("min_level").notNull().default(1),
-  grantsAbilityScore: boolean("grants_ability_score"),
-  grantsSkill: boolean("grants_skill"),
-  grantsTool: boolean("grants_tool"),
-  grantsSpell: boolean("grants_spell"),
+  isGrantingAbilityScore: boolean("is_granting_ability_score"),
+  isGrantingSkill: boolean("is_granting_skill"),
+  isGrantingTool: boolean("is_granting_tool"),
+  isGrantingSpell: boolean("is_granting_spell"),
   isRepeatable: boolean("is_repeatable").notNull().default(false),
 
   // timestamps
