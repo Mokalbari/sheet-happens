@@ -13,6 +13,7 @@ export const heroes = pgTable("heroes", {
     .references(() => systems.id),
 
   name: text("name").notNull(),
+  background: text("background").notNull(),
 
   // timestamps
   createdAt: timestamp("created_at").notNull().defaultNow(),
