@@ -14,8 +14,11 @@ import { featGrantsSkills } from "./tables/feat-grants-skills";
 import { featGrantsSpells } from "./tables/feat-grants-spells";
 import { featGrantsTools } from "./tables/feat-grants-tools";
 import { feats } from "./tables/feats";
+import { heroEquipment } from "./tables/hero-equipment";
 import { heroHasFeats } from "./tables/hero-has-feats";
 import { heroHasSpells } from "./tables/hero-has-spells";
+import { heroSpellSlots } from "./tables/hero-spell-slots";
+import { heroStats } from "./tables/hero-stats";
 import { heroes } from "./tables/heroes";
 import { lootables } from "./tables/lootables";
 import { skills } from "./tables/skills";
@@ -244,6 +247,9 @@ export const heroesRelations = relations(heroes, ({ one, many }) => ({
   }),
   feats: many(heroHasFeats),
   spells: many(heroHasSpells),
+  stats: many(heroStats),
+  equipment: many(heroEquipment),
+  spellSlots: many(heroSpellSlots),
 }));
 
 export const heroHasFeatsRelations = relations(heroHasFeats, ({ one }) => ({
@@ -414,5 +420,42 @@ export const heroHasSpellsRelations = relations(heroHasSpells, ({ one }) => ({
   spell: one(spells, {
     fields: [heroHasSpells.spellId],
     references: [spells.id],
+  }),
+}));
+
+export const heroStatsRelations = relations(heroStats, ({ one }) => ({
+  hero: one(heroes, {
+    fields: [heroStats.heroId],
+    references: [heroes.id],
+  }),
+}));
+
+export const heroEquipmentRelations = relations(heroEquipment, ({ one }) => ({
+  hero: one(heroes, {
+    fields: [heroEquipment.heroId],
+    references: [heroes.id],
+  }),
+  armor: one(armors, {
+    fields: [heroEquipment.armorId],
+    references: [armors.id],
+  }),
+  weapon: one(weapons, {
+    fields: [heroEquipment.weaponId],
+    references: [weapons.id],
+  }),
+  tool: one(tools, {
+    fields: [heroEquipment.toolId],
+    references: [tools.id],
+  }),
+  lootable: one(lootables, {
+    fields: [heroEquipment.lootableId],
+    references: [lootables.id],
+  }),
+}));
+
+export const heroSpellSlotsRelations = relations(heroSpellSlots, ({ one }) => ({
+  hero: one(heroes, {
+    fields: [heroSpellSlots.heroId],
+    references: [heroes.id],
   }),
 }));
