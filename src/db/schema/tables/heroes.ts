@@ -1,9 +1,10 @@
 import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { backgrounds } from "./backgrounds";
 import { classes } from "./classes";
+import { species } from "./species";
+import { subclasses } from "./subclasses";
 import { systems } from "./systems";
 import { users } from "./users";
-import { species } from "./species";
 
 export const heroes = pgTable("heroes", {
   // ids and general properties
@@ -19,6 +20,7 @@ export const heroes = pgTable("heroes", {
   classId: integer("class_id")
     .notNull()
     .references(() => classes.id),
+  subclassId: integer("subclass_id").references(() => subclasses.id),
   backgroundId: integer("background_id")
     .notNull()
     .references(() => backgrounds.id),

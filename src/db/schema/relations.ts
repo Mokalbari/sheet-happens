@@ -15,6 +15,7 @@ import { featGrantsSpells } from "./tables/feat-grants-spells";
 import { featGrantsTools } from "./tables/feat-grants-tools";
 import { feats } from "./tables/feats";
 import { heroHasFeats } from "./tables/hero-has-feats";
+import { heroHasSpells } from "./tables/hero-has-spells";
 import { heroes } from "./tables/heroes";
 import { lootables } from "./tables/lootables";
 import { skills } from "./tables/skills";
@@ -229,15 +230,20 @@ export const heroesRelations = relations(heroes, ({ one, many }) => ({
     fields: [heroes.backgroundId],
     references: [backgrounds.id],
   }),
-  feats: many(heroHasFeats),
   class: one(classes, {
     fields: [heroes.classId],
     references: [classes.id],
+  }),
+  subclass: one(subclasses, {
+    fields: [heroes.subclassId],
+    references: [subclasses.id],
   }),
   species: one(species, {
     fields: [heroes.speciesId],
     references: [species.id],
   }),
+  feats: many(heroHasFeats),
+  spells: many(heroHasSpells),
 }));
 
 export const heroHasFeatsRelations = relations(heroHasFeats, ({ one }) => ({
@@ -298,6 +304,7 @@ export const spellsRelations = relations(spells, ({ one, many }) => ({
     references: [systems.id],
   }),
   feats: many(featGrantsSpells),
+  heroes: many(heroHasSpells),
 }));
 
 export const systemsRelations = relations(systems, ({ many }) => ({
@@ -396,4 +403,16 @@ export const subclassesRelations = relations(subclasses, ({ one, many }) => ({
     references: [systems.id],
   }),
   features: many(classFeatures),
+  heroes: many(heroes),
+}));
+
+export const heroHasSpellsRelations = relations(heroHasSpells, ({ one }) => ({
+  hero: one(heroes, {
+    fields: [heroHasSpells.heroId],
+    references: [heroes.id],
+  }),
+  spell: one(spells, {
+    fields: [heroHasSpells.spellId],
+    references: [spells.id],
+  }),
 }));

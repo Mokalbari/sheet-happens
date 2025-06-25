@@ -14,6 +14,7 @@ export { featGrantsSpells } from "./tables/feat-grants-spells";
 export { featGrantsTools } from "./tables/feat-grants-tools";
 export { feats } from "./tables/feats";
 export { heroHasFeats } from "./tables/hero-has-feats";
+export { heroHasSpells } from "./tables/hero-has-spells";
 export { heroes } from "./tables/heroes";
 export { lootables } from "./tables/lootables";
 export { skills } from "./tables/skills";
