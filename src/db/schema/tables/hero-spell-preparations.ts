@@ -13,7 +13,6 @@ export const heroSpellPreparations = pgTable("hero_spell_preparations", {
     .notNull()
     .references(() => spells.id),
 
-  // preparation details
   isPrepared: boolean("is_prepared").notNull().default(false),
 
   createdAt: timestamp("created_at").notNull().defaultNow(),
