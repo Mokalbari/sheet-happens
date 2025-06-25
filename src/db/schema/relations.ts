@@ -122,6 +122,7 @@ export const classesRelations = relations(classes, ({ one, many }) => ({
   }),
   abilities: many(classAbilities),
   skills: many(classSkills),
+  heroes: many(heroes),
   mastery: one(classMasteries, {
     fields: [classes.id],
     references: [classMasteries.classId],
@@ -210,6 +211,14 @@ export const heroesRelations = relations(heroes, ({ one, many }) => ({
     references: [backgrounds.id],
   }),
   feats: many(heroHasFeats),
+  class: one(classes, {
+    fields: [heroes.classId],
+    references: [classes.id],
+  }),
+  species: one(species, {
+    fields: [heroes.speciesId],
+    references: [species.id],
+  }),
 }));
 
 export const heroHasFeatsRelations = relations(heroHasFeats, ({ one }) => ({
@@ -237,6 +246,7 @@ export const speciesRelations = relations(species, ({ one, many }) => ({
     references: [systems.id],
   }),
   traits: many(speciesTraits),
+  heroes: many(heroes),
 }));
 
 export const skillsRelations = relations(skills, ({ one, many }) => ({

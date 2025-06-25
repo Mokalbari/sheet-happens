@@ -1,5 +1,5 @@
-import { integer, jsonb, pgTable, timestamp } from "drizzle-orm/pg-core";
-import { ArmorType, classAbilityRoleEnum, WeaponType } from "../enums";
+import { integer, pgTable, timestamp } from "drizzle-orm/pg-core";
+import { classAbilityRoleEnum } from "../enums";
 import { abilities } from "./abilities";
 import { classes } from "./classes";
 
@@ -12,8 +12,6 @@ export const classAbilities = pgTable("class_abilities", {
     .notNull()
     .references(() => abilities.id),
   role: classAbilityRoleEnum().notNull(),
-  armorType: jsonb("armor_type").$type<ArmorType[]>(),
-  weaponType: jsonb("weapon_type").$type<WeaponType[]>(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
