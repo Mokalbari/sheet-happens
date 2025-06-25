@@ -10,6 +10,7 @@ export const heroHasFeats = pgTable("hero_has_feats", {
   featId: integer("feat_id")
     .notNull()
     .references(() => feats.id),
+  acquisitionLevel: integer("acquisition_level").notNull().default(1),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
