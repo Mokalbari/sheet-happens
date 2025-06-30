@@ -218,7 +218,7 @@ export const featGrantsSpellsRelations = relations(
       references: [feats.id],
     }),
     spell: one(spells, {
-      fields: [featGrantsSpells.spellId],
+      fields: [featGrantsSpells.specificSpellId],
       references: [spells.id],
     }),
   })
