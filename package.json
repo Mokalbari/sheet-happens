@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "tsx drizzle/seed/tables/$npm_config_table.ts"
+    "seed": "tsx drizzle/seed/runner.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
