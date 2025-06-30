@@ -19,6 +19,7 @@ export const heroEquipment = pgTable("hero_equipment", {
     .references(() => heroes.id),
 
   // item references (polymorphic - can reference different item types)
+  // Only one of these should be set (enforced by application logic)
   armorId: integer("armor_id").references(() => armors.id),
   weaponId: integer("weapon_id").references(() => weapons.id),
   toolId: integer("tool_id").references(() => tools.id),

@@ -1,5 +1,6 @@
-import { integer, pgTable, text } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { abilities } from "./abilities";
+import { systems } from "./systems";
 
 export const tools = pgTable("tools", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -8,8 +9,13 @@ export const tools = pgTable("tools", {
   defaultDescription: text("default_description"),
 
   abilityId: integer("ability_id").references(() => abilities.id),
-  weigth: integer("weigth"),
+  weight: integer("weight"),
   value: integer("value"),
 
-  systemId: integer("system_id"),
+  systemId: integer("system_id")
+    .notNull()
+    .references(() => systems.id),
+
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

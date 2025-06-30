@@ -177,3 +177,17 @@ export const abilityScoreGrantTypeEnum = pgEnum(
   "ability_score_grant_type",
   ABILITY_SCORE_GRANT_TYPE_ENUM
 );
+
+export const ALIGNMENT_ENUM = [
+  "lawful_good",
+  "neutral_good",
+  "chaotic_good",
+  "lawful_neutral",
+  "true_neutral",
+  "chaotic_neutral",
+  "lawful_evil",
+  "neutral_evil",
+  "chaotic_evil",
+] as const;
+export type Alignment = (typeof ALIGNMENT_ENUM)[number];
+export const alignmentEnum = pgEnum("alignment", ALIGNMENT_ENUM);

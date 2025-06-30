@@ -12,3 +12,7 @@ export const translations = pgTable("translations", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
+
+// IMPORTANT: Add these indexes for performance:
+// CREATE INDEX idx_translations_lookup ON translations(entity, entityId, locale);
+// CREATE INDEX idx_translations_field ON translations(entity, entityId, field, locale);
