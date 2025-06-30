@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { tryCatch } from "@/lib/utils";
 import { NodePgDatabase } from "drizzle-orm/node-postgres";
 import { z } from "zod";

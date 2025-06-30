@@ -18,12 +18,18 @@ export const armors = pgTable("armors", {
     .references(() => systems.id),
 
   armorType: armorTypeEnum("armor_type").notNull(),
+  // base AC (ex: 11 for leather armor)
   baseArmorClass: integer("armor_class"),
+
+  // fixed bonus on AC (ex: +2 shield)
   armorTypeBonus: integer("armor_type_bonus"),
   hasDexterityBonus: boolean("has_dexterity_bonus").notNull().default(false),
+  // max dex bonus (ex: +2 hide armor) given by the armor
   maxDexterityBonus: integer("max_dexterity_bonus"),
   hasStealthDisadvantage: boolean("has_stealth_disadvantage").notNull(),
+  // weight in lb
   weight: integer("weight"),
+  // value in copper pieces (1 gp = 100 cp, 1 sp = 10 cp)
   value: integer("value"),
 
   createdAt: timestamp("created_at").notNull().defaultNow(),
