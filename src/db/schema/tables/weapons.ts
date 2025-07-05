@@ -1,4 +1,11 @@
-import { integer, jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import {
+  decimal,
+  integer,
+  jsonb,
+  pgTable,
+  text,
+  timestamp,
+} from "drizzle-orm/pg-core";
 import {
   hitDiceEnum,
   weaponDamageTypeEnum,
@@ -25,7 +32,7 @@ export const weapons = pgTable("weapons", {
     .notNull()
     .references(() => systems.id),
   // weight in lb
-  weight: integer("weight"),
+  weight: decimal("weight", { precision: 10, scale: 2 }).$type<number>(),
   // value in copper pieces (1 gp = 100 cp, 1 sp = 10 cp)
   value: integer("value"),
 
