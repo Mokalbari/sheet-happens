@@ -1,0 +1,2 @@
+CREATE TYPE "public"."weapon_property" AS ENUM('ammunition', 'finesse', 'heavy', 'light', 'loading', 'reach', 'special', 'range', 'thrown', 'two-handed', 'versatile');--> statement-breakpoint
+ALTER TABLE "weapons" ADD COLUMN "weapon_properties" jsonb;

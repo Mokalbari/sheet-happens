@@ -191,3 +191,33 @@ export const ALIGNMENT_ENUM = [
 ] as const;
 export type Alignment = (typeof ALIGNMENT_ENUM)[number];
 export const alignmentEnum = pgEnum("alignment", ALIGNMENT_ENUM);
+
+export const WEAPON_PROPERTY_ENUM = [
+  "ammunition",
+  "finesse",
+  "heavy",
+  "light",
+  "loading",
+  "reach",
+  "special",
+  "range",
+  "thrown",
+  "two-handed",
+  "versatile",
+] as const;
+export type WeaponProperty = (typeof WEAPON_PROPERTY_ENUM)[number];
+export const weaponPropertyEnum = pgEnum(
+  "weapon_property",
+  WEAPON_PROPERTY_ENUM
+);
+
+export const WEAPON_DAMAGE_TYPE_ENUM = [
+  "bludgeoning",
+  "piercing",
+  "slashing",
+] as const;
+export type WeaponDamageType = (typeof WEAPON_DAMAGE_TYPE_ENUM)[number];
+export const weaponDamageTypeEnum = pgEnum(
+  "weapon_damage_type",
+  WEAPON_DAMAGE_TYPE_ENUM
+);

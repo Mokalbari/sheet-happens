@@ -33,6 +33,4 @@ export { tools } from "./tables/tools";
 export { toolsCraftLootables } from "./tables/tools-craft-lootables";
 export { translations } from "./tables/translations";
 export { users } from "./tables/users";
-export { weaponHasProperties } from "./tables/weapon-has-properties";
-export { weaponProperties } from "./tables/weapon-properties";
 export { weapons } from "./tables/weapons";

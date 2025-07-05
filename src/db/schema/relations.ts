@@ -34,8 +34,6 @@ import { tools } from "./tables/tools";
 import { toolsCraftLootables } from "./tables/tools-craft-lootables";
 import { translations } from "./tables/translations";
 import { users } from "./tables/users";
-import { weaponHasProperties } from "./tables/weapon-has-properties";
-import { weaponProperties } from "./tables/weapon-properties";
 import { weapons } from "./tables/weapons";
 
 export const abilitiesRelations = relations(abilities, ({ one, many }) => ({
@@ -332,7 +330,6 @@ export const systemsRelations = relations(systems, ({ many }) => ({
   lootables: many(lootables),
   species: many(species),
   feats: many(feats),
-  weaponProperties: many(weaponProperties),
   classFeatures: many(classFeatures),
   subclasses: many(subclasses),
 }));
@@ -373,37 +370,11 @@ export const usersRelations = relations(users, ({ many }) => ({
   heroes: many(heroes),
 }));
 
-export const weaponHasPropertiesRelations = relations(
-  weaponHasProperties,
-  ({ one }) => ({
-    weapon: one(weapons, {
-      fields: [weaponHasProperties.weaponId],
-      references: [weapons.id],
-    }),
-    weaponProperty: one(weaponProperties, {
-      fields: [weaponHasProperties.weaponPropertyId],
-      references: [weaponProperties.id],
-    }),
-  })
-);
-
-export const weaponPropertiesRelations = relations(
-  weaponProperties,
-  ({ one, many }) => ({
-    system: one(systems, {
-      fields: [weaponProperties.systemId],
-      references: [systems.id],
-    }),
-    weapons: many(weaponHasProperties),
-  })
-);
-
 export const weaponsRelations = relations(weapons, ({ one, many }) => ({
   system: one(systems, {
     fields: [weapons.systemId],
     references: [systems.id],
   }),
-  properties: many(weaponHasProperties),
 }));
 
 export const subclassesRelations = relations(subclasses, ({ one, many }) => ({
