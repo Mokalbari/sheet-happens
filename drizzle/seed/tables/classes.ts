@@ -1,17 +1,13 @@
 import {
-  abilities,
   ARMOR_TYPE_ENUM,
   classAbilities,
   classes,
   classSkills,
   HIT_DICE_ENUM,
-  skills,
-  translations,
   WEAPON_TYPE_ENUM,
 } from "@/db/schema";
 import z from "zod";
 import { SYSTEM_ID_DD5E } from "../constants";
-import { createMainFunction, seed } from "../utils";
 
 const classesSchema = z.object({
   slug: z.string().min(1).max(100),
@@ -328,115 +324,3 @@ const classAbilityImprovements: Record<
     { ability: "intelligence", role: "save" },
   ],
 };
-
-async function seedClasses(db: any) {
-  // First, insert the classes
-  const classesResult = await seed(db, {
-    tableName: "classes",
-    table: classes,
-    data: classesSeedData,
-    schema: classesSchema,
-    translations: {
-      entity: "classes",
-      table: translations,
-      translations: translationsSeedData,
-      field: "name",
-    },
-  });
-
-  // Get the inserted classes to get their IDs
-  const insertedClasses = classesResult.data;
-  const classSlugToId: Record<string, number> = {};
-  insertedClasses.forEach((cls: any) => {
-    classSlugToId[cls.slug] = cls.id;
-  });
-
-  // Get abilities to link them
-  const abilitiesData = await db.select().from(abilities);
-  const abilitySlugToId: Record<string, number> = {};
-  abilitiesData.forEach((ability: any) => {
-    abilitySlugToId[ability.slug] = ability.id;
-  });
-
-  // Get skills to link them
-  const skillsData = await db.select().from(skills);
-  const skillSlugToId: Record<string, number> = {};
-  skillsData.forEach((skill: any) => {
-    skillSlugToId[skill.slug] = skill.id;
-  });
-
-  // Create class-ability relationships
-  const classAbilitiesData: ClassAbilityInsertSchema[] = [];
-  for (const [classSlug, improvements] of Object.entries(
-    classAbilityImprovements
-  )) {
-    const classId = classSlugToId[classSlug];
-    if (!classId) continue;
-
-    for (const improvement of improvements) {
-      const abilityId = abilitySlugToId[improvement.ability];
-      if (!abilityId) continue;
-
-      classAbilitiesData.push({
-        classId,
-        abilityId,
-        role: improvement.role,
-      });
-    }
-  }
-
-  // Insert class-ability relationships
-  if (classAbilitiesData.length > 0) {
-    console.log(
-      `📝 Inserting ${classAbilitiesData.length} class-ability relationships...`
-    );
-    const insertedClassAbilities = await db
-      .insert(classAbilities)
-      .values(classAbilitiesData)
-      .returning();
-    console.log(
-      "✅ Class-ability relationships inserted successfully:",
-      insertedClassAbilities
-    );
-  }
-
-  // Create class-skill relationships
-  const classSkillsData: ClassSkillInsertSchema[] = [];
-  for (const [classSlug, skillSlugs] of Object.entries(
-    classSkillProficiencies
-  )) {
-    const classId = classSlugToId[classSlug];
-    if (!classId) continue;
-
-    for (const skillSlug of skillSlugs) {
-      const skillId = skillSlugToId[skillSlug];
-      if (!skillId) continue;
-
-      classSkillsData.push({
-        classId,
-        skillId,
-      });
-    }
-  }
-
-  // Insert class-skill relationships
-  if (classSkillsData.length > 0) {
-    console.log(
-      `📝 Inserting ${classSkillsData.length} class-skill relationships...`
-    );
-    const insertedClassSkills = await db
-      .insert(classSkills)
-      .values(classSkillsData)
-      .returning();
-    console.log(
-      "✅ Class-skill relationships inserted successfully:",
-      insertedClassSkills
-    );
-  }
-
-  return classesResult;
-}
-
-const main = createMainFunction(seedClasses);
-
-main();
