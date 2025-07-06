@@ -19,3 +19,28 @@ export const I18N_TRANSLATION_ENTITIES = [
   "weapons",
   "weaponProperties",
 ] as const;
+
+export type I18N_ENTITY = (typeof I18N_TRANSLATION_ENTITIES)[number];
+
+// For translation management: which fields are required for each entity
+export const I18N_ENTITY_FIELDS: Record<string, string[]> = {
+  abilities: ["name"],
+  armors: ["name"],
+  backgrounds: ["name"],
+  classFeatures: ["name"],
+  classes: ["name"],
+  feats: ["name"],
+  lootables: ["name"],
+  skills: ["name"],
+  species: ["name"],
+  speciesTraits: ["name"],
+  spells: ["name"],
+  subclasses: ["name"],
+  tools: ["name", "utility", "craft"],
+  weapons: ["name"],
+  weaponProperties: ["name"],
+};
+
+export function getTranslationFieldsForEntity(entity: I18N_ENTITY): string[] {
+  return I18N_ENTITY_FIELDS[entity] ?? ["name"];
+}

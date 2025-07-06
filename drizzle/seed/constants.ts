@@ -1,2 +1,11 @@
 export const SYSTEM_ID_DD5E = 1;
 export const SYSTEM_ID_HOMEBREW = 2;
+
+export const ABILITIES_IDS = {
+  STRENGTH: 1,
+  DEXTERITY: 2,
+  CONSTITUTION: 3,
+  INTELLIGENCE: 4,
+  WISDOM: 5,
+  CHARISMA: 6,
+};
