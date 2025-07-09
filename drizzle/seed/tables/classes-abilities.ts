@@ -1,3 +1,9 @@
+import { abilities, classAbilities, classes } from "@/db/schema";
+import { config } from "dotenv";
+import { drizzle } from "drizzle-orm/node-postgres";
+
+config();
+
 // Class ability mapping
 const classAbilityImprovements: Record<
   string,
@@ -68,3 +74,48 @@ const classAbilityImprovements: Record<
     { ability: "intelligence", role: "save" },
   ],
 };
+
+async function seedClassesAbilities() {
+  const db = drizzle(process.env.DATABASE_URL!);
+
+  const dd5eClasses = await db
+    .select({ slug: classes.slug, id: classes.id })
+    .from(classes);
+
+  if (!dd5eClasses) {
+    console.error("no classes found");
+    return;
+  }
+
+  const dd5eAbilities = await db
+    .select({ slug: abilities.slug, id: abilities.id })
+    .from(abilities);
+
+  if (!dd5eAbilities) {
+    console.error("no abilities found");
+    return;
+  }
+
+  for (const { slug, id } of dd5eClasses) {
+    console.log("seeding ", slug, id);
+    const matchingEntry = classAbilityImprovements[slug];
+
+    for (const { ability, role } of matchingEntry) {
+      console.log("seeding ", ability, role);
+      const abilityId = dd5eAbilities.find((a) => a.slug === ability)?.id;
+
+      if (!abilityId) {
+        console.log("no ability id found for ", ability);
+        continue;
+      }
+
+      await db.insert(classAbilities).values({
+        classId: id,
+        abilityId,
+        role,
+      });
+    }
+  }
+}
+
+seedClassesAbilities();
