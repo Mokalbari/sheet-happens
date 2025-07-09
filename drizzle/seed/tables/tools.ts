@@ -1,5 +1,7 @@
+import { tools, translations } from "@/db/schema";
 import z from "zod";
 import { ABILITIES_IDS, SYSTEM_ID_DD5E } from "../constants";
+import { createMainFunction } from "../utils";
 
 const toolsSchema = z.object({
   slug: z.string(),
@@ -405,7 +407,7 @@ const toolsData: ToolInsertSchema[] = [
 ];
 
 // Tool translations for all tools, musical instruments, and gaming sets
-export const toolTranslations = {
+const toolsTranslations = {
   "alchemists-supplies": {
     en: {
       name: "Alchemist's Supplies",
@@ -888,3 +890,99 @@ export const toolTranslations = {
     },
   },
 };
+
+async function seedTools(db: any) {
+  console.log("🌱 Starting tools seeding...");
+
+  return await db.transaction(async (tx: any) => {
+    // Validate tools data
+    const validatedData: ToolInsertSchema[] = [];
+    for (let i = 0; i < toolsData.length; i++) {
+      const item = toolsData[i];
+      const result = toolsSchema.safeParse(item);
+      if (!result.success) {
+        throw new Error(
+          `Invalid tools data at index ${i}: ${result.error.message}`
+        );
+      }
+      validatedData.push(result.data);
+    }
+
+    console.log(`📝 Inserting ${validatedData.length} tools...`);
+
+    const insertedTools = await tx
+      .insert(tools)
+      .values(validatedData)
+      .returning();
+
+    console.log(`✅ Tools inserted successfully:`, insertedTools);
+
+    // Handle translations for multiple fields (name, utility, craft)
+    const translationData: any[] = [];
+
+    for (const tool of insertedTools) {
+      const toolKey = tool.slug as keyof typeof toolsTranslations;
+      const toolTranslations = toolsTranslations[toolKey];
+
+      if (toolTranslations) {
+        // Handle name translations
+        for (const [locale, translations] of Object.entries(toolTranslations)) {
+          if (translations.name) {
+            translationData.push({
+              entity: "tools",
+              entityId: tool.id,
+              field: "name",
+              locale: locale as "en" | "fr",
+              value: translations.name,
+            });
+          }
+
+          // Handle utility translations
+          if (translations.utility) {
+            translationData.push({
+              entity: "tools",
+              entityId: tool.id,
+              field: "utility",
+              locale: locale as "en" | "fr",
+              value: translations.utility,
+            });
+          }
+
+          // Handle craft translations (optional)
+          if (translations.craft) {
+            translationData.push({
+              entity: "tools",
+              entityId: tool.id,
+              field: "craft",
+              locale: locale as "en" | "fr",
+              value: translations.craft,
+            });
+          }
+        }
+      }
+    }
+
+    if (translationData.length > 0) {
+      console.log(
+        `📝 Inserting ${translationData.length} tool translations...`
+      );
+      const insertedTranslations = await tx
+        .insert(translations)
+        .values(translationData)
+        .returning();
+      console.log(
+        "✅ Tool translations inserted successfully:",
+        insertedTranslations
+      );
+    }
+
+    return {
+      data: insertedTools,
+      translations: translationData,
+    };
+  });
+}
+
+const main = createMainFunction(seedTools);
+
+main();
