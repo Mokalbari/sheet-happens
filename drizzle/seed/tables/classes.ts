@@ -4,10 +4,12 @@ import {
   classes,
   classSkills,
   HIT_DICE_ENUM,
+  translations,
   WEAPON_TYPE_ENUM,
 } from "@/db/schema";
 import z from "zod";
 import { SYSTEM_ID_DD5E } from "../constants";
+import { createMainFunction, seed } from "../utils";
 
 const classesSchema = z.object({
   slug: z.string().min(1).max(100),
@@ -136,191 +138,21 @@ const translationsSeedData = {
   wizard: { en: "Wizard", fr: "Magicien" },
 };
 
-// Class skill proficiencies mapping
-const classSkillProficiencies: Record<string, string[]> = {
-  barbarian: [
-    "animal-handling",
-    "athletics",
-    "intimidation",
-    "nature",
-    "perception",
-    "survival",
-  ],
-  bard: [
-    "acrobatics",
-    "animal-handling",
-    "arcana",
-    "athletics",
-    "deception",
-    "history",
-    "insight",
-    "intimidation",
-    "investigation",
-    "medicine",
-    "nature",
-    "perception",
-    "performance",
-    "persuasion",
-    "religion",
-    "sleight-of-hand",
-    "stealth",
-    "survival",
-  ],
-  cleric: ["history", "insight", "medicine", "persuasion", "religion"],
-  druid: [
-    "arcana",
-    "animal-handling",
-    "insight",
-    "medicine",
-    "nature",
-    "perception",
-    "religion",
-    "survival",
-  ],
-  fighter: [
-    "acrobatics",
-    "animal-handling",
-    "athletics",
-    "history",
-    "insight",
-    "intimidation",
-    "persuasion",
-    "perception",
-    "survival",
-  ],
-  monk: [
-    "acrobatics",
-    "athletics",
-    "history",
-    "insight",
-    "religion",
-    "stealth",
-  ],
-  paladin: [
-    "athletics",
-    "insight",
-    "intimidation",
-    "medicine",
-    "persuasion",
-    "religion",
-  ],
-  ranger: [
-    "animal-handling",
-    "athletics",
-    "insight",
-    "investigation",
-    "nature",
-    "perception",
-    "stealth",
-    "survival",
-  ],
-  rogue: [
-    "acrobatics",
-    "athletics",
-    "deception",
-    "insight",
-    "intimidation",
-    "investigation",
-    "perception",
-    "persuasion",
-    "sleight-of-hand",
-    "stealth",
-  ],
-  sorcerer: [
-    "arcana",
-    "deception",
-    "insight",
-    "intimidation",
-    "persuasion",
-    "religion",
-  ],
-  warlock: [
-    "arcana",
-    "deception",
-    "history",
-    "intimidation",
-    "investigation",
-    "nature",
-    "religion",
-  ],
-  wizard: [
-    "arcana",
-    "history",
-    "insight",
-    "investigation",
-    "medicine",
-    "nature",
-    "religion",
-  ],
-};
+async function seedClasses(db: any) {
+  return await seed(db, {
+    tableName: "classes",
+    table: classes,
+    data: classesSeedData,
+    schema: classesSchema,
+    translations: {
+      entity: "classes",
+      table: translations,
+      translations: translationsSeedData,
+      field: "name",
+    },
+  });
+}
 
-// Class ability mapping
-const classAbilityImprovements: Record<
-  string,
-  Array<{ ability: string; role: "main" | "save" }>
-> = {
-  barbarian: [
-    { ability: "strength", role: "main" },
-    { ability: "constitution", role: "save" },
-    { ability: "strength", role: "save" },
-  ],
-  bard: [
-    { ability: "charisma", role: "main" },
-    { ability: "dexterity", role: "save" },
-    { ability: "charisma", role: "save" },
-  ],
-  cleric: [
-    { ability: "wisdom", role: "main" },
-    { ability: "charisma", role: "save" },
-    { ability: "wisdom", role: "save" },
-  ],
-  druid: [
-    { ability: "wisdom", role: "main" },
-    { ability: "intelligence", role: "save" },
-    { ability: "wisdom", role: "save" },
-  ],
-  fighter: [
-    { ability: "strength", role: "main" },
-    { ability: "dexterity", role: "main" },
-    { ability: "constitution", role: "save" },
-    { ability: "strength", role: "save" },
-  ],
-  monk: [
-    { ability: "dexterity", role: "main" },
-    { ability: "wisdom", role: "main" },
-    { ability: "strength", role: "save" },
-    { ability: "dexterity", role: "save" },
-  ],
-  paladin: [
-    { ability: "strength", role: "main" },
-    { ability: "charisma", role: "main" },
-    { ability: "wisdom", role: "save" },
-    { ability: "charisma", role: "save" },
-  ],
-  ranger: [
-    { ability: "dexterity", role: "main" },
-    { ability: "wisdom", role: "main" },
-    { ability: "strength", role: "save" },
-    { ability: "dexterity", role: "save" },
-  ],
-  rogue: [
-    { ability: "dexterity", role: "main" },
-    { ability: "dexterity", role: "save" },
-    { ability: "intelligence", role: "save" },
-  ],
-  sorcerer: [
-    { ability: "charisma", role: "main" },
-    { ability: "constitution", role: "save" },
-    { ability: "charisma", role: "save" },
-  ],
-  warlock: [
-    { ability: "charisma", role: "main" },
-    { ability: "wisdom", role: "save" },
-    { ability: "charisma", role: "save" },
-  ],
-  wizard: [
-    { ability: "intelligence", role: "main" },
-    { ability: "wisdom", role: "save" },
-    { ability: "intelligence", role: "save" },
-  ],
-};
+const main = createMainFunction(seedClasses);
+
+main();
