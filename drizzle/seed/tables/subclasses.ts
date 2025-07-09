@@ -1,4 +1,18 @@
-export const subclassesData = {
+import { classes, subclasses, translations } from "@/db/schema";
+import { config } from "dotenv";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { SYSTEM_ID_DD5E } from "../constants";
+
+config();
+
+type SubclassEntry = {
+  subclasses: string[];
+  translations: string[];
+};
+
+type SubclassesData = Record<string, SubclassEntry>;
+
+export const subclassesData: SubclassesData = {
   barbarian: {
     subclasses: [
       "Path of the Berserker",
@@ -138,3 +152,81 @@ export const subclassesData = {
     translations: ["Abjurateur", "Devin", "Évocateur", "Illusionniste"],
   },
 };
+
+async function seedSubclasses() {
+  const db = drizzle(process.env.DATABASE_URL!);
+
+  const dd5eClasses = await db
+    .select({ slug: classes.slug, id: classes.id })
+    .from(classes);
+
+  if (!dd5eClasses) {
+    console.error("no classes found");
+    return;
+  }
+
+  for (const { slug, id } of dd5eClasses) {
+    const matchingSubclasses = subclassesData[slug];
+
+    if (!matchingSubclasses) {
+      console.error("No matching subclasses found for slug ", slug);
+      continue;
+    }
+
+    const { subclasses: dd5eSubclasses, translations: dd5eTranslations } =
+      matchingSubclasses;
+
+    await db.transaction(async (tx) => {
+      for (const [index, subclass] of dd5eSubclasses.entries()) {
+        const slugFromSubclassDefaultName = makeSlug(subclass);
+
+        if (!slugFromSubclassDefaultName) {
+          console.warn("no slug created for that subclass", subclass);
+          continue;
+        }
+
+        const [inserted] = await tx
+          .insert(subclasses)
+          .values({
+            classId: id,
+            systemId: SYSTEM_ID_DD5E,
+            slug: slugFromSubclassDefaultName,
+            defaultName: subclass,
+          })
+          .returning({ id: subclasses.id });
+
+        if (!inserted.id) {
+          console.error("failed to insert a new sublass");
+          continue;
+        }
+
+        await tx.insert(translations).values([
+          {
+            entity: "subclasses",
+            entityId: inserted.id,
+            field: "name",
+            locale: "en",
+            value: subclass,
+          },
+          {
+            entity: "subclasses",
+            entityId: inserted.id,
+            field: "name",
+            locale: "fr",
+            value: dd5eTranslations[index],
+          },
+        ]);
+      }
+    });
+  }
+}
+
+function makeSlug(name: string) {
+  if (!name) {
+    return;
+  }
+
+  return name.toLowerCase().split(" ").join("-");
+}
+
+seedSubclasses();
