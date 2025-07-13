@@ -1,7 +1,30 @@
 import dedent from "ts-dedent";
 import { SYSTEM_ID_DD5E } from "../constants";
 
-export const speciesSeed = [
+type Species =
+  | "aasimar"
+  | "dragonborn"
+  | "dwarf"
+  | "elf"
+  | "gnome"
+  | "goliath"
+  | "halfling"
+  | "human"
+  | "orc"
+  | "tiefling";
+
+interface SpeciesSeed {
+  slug: Species;
+  defaultName: string;
+  defaultDescription: string;
+  hasDarkvision: boolean;
+  speed: number;
+  size: "small" | "medium" | "large";
+  systemId: number;
+  variant?: Species;
+}
+
+export const speciesSeed: SpeciesSeed[] = [
   {
     slug: "aasimar",
     defaultName: "Aasimar",
@@ -28,7 +51,6 @@ export const speciesSeed = [
     systemId: SYSTEM_ID_DD5E,
   },
   {
-    id: 3,
     slug: "dwarf",
     defaultName: "Dwarf",
     defaultDescription: dedent(`
@@ -95,7 +117,6 @@ export const speciesSeed = [
     speed: 30,
     size: "small",
     systemId: SYSTEM_ID_DD5E,
-    variant: null,
   },
   {
     slug: "human",
@@ -135,7 +156,19 @@ export const speciesSeed = [
   },
 ];
 
-export const speciesTraitsSeed = [
+// Create types for all possible slugs
+type SpeciesTraitSlug = keyof typeof speciesTraitsTranslations;
+type SubspeciesSlug = keyof typeof subspeciesTranslations;
+
+interface SpeciesTraitSeed {
+  speciesId: number;
+  slug: SpeciesTraitSlug;
+  defaultName: string;
+  defaultDescription: string;
+  systemId: number;
+}
+
+export const speciesTraitsSeed: SpeciesTraitSeed[] = [
   {
     speciesId: 1,
     slug: "celestial-resistance",
@@ -451,7 +484,15 @@ export const speciesTraitsSeed = [
   },
 ];
 
-export const subspeciesSeed = [
+interface SubspeciesSeed {
+  slug: SubspeciesSlug;
+  speciesId: number;
+  defaultName: string;
+  defaultDescription: string;
+  systemId: number;
+}
+
+export const subspeciesSeed: SubspeciesSeed[] = [
   // === DRAGONBORN ANCESTRIES ===
   {
     slug: "black-dragonborn",
@@ -649,7 +690,10 @@ export const subspeciesSeed = [
 ];
 
 // Translations
-export const speciesTranslations = {
+export const speciesTranslations: Record<
+  Species,
+  { name: string; description: string }
+> = {
   aasimar: {
     name: "Aasimar",
     description: dedent(`
@@ -726,7 +770,7 @@ export const speciesTranslations = {
       Ils peuvent choisir d’embrasser ou de rejeter cet héritage. Les trois principales lignées sont l’Abyssale, la Chthonienne et l’Infernale, chacune liée à une forme de pouvoir des Plans Inférieurs.
       `),
   },
-};
+} as const;
 
 export const speciesTraitsTranslations = {
   "celestial-resistance": {
@@ -1067,3 +1111,42 @@ export const subspeciesTranslations = {
       "L’héritage infernal lie les tieffelins aux Neuf Enfers, à Géhenne et aux champs de bataille d’Achéron. Cornes, épines, queue, yeux dorés et une légère odeur de soufre ou de fumée sont fréquents chez ceux qui descendent des diables.",
   },
 };
+
+const speciesTranslationsMerged = Object.fromEntries(
+  speciesSeed.map(({ slug, defaultName, defaultDescription }) => [
+    slug,
+    {
+      en: {
+        name: defaultName,
+        description: defaultDescription,
+      },
+      fr: speciesTranslations[slug],
+    },
+  ])
+);
+
+const speciesTraitsTranslationsMerged = Object.fromEntries(
+  speciesTraitsSeed.map(({ slug, defaultName, defaultDescription }) => [
+    slug,
+    {
+      en: {
+        name: defaultName,
+        description: defaultDescription,
+      },
+      fr: speciesTraitsTranslations[slug],
+    },
+  ])
+);
+
+const subspeciesTranslationsMerged = Object.fromEntries(
+  subspeciesSeed.map(({ slug, defaultName, defaultDescription }) => [
+    slug,
+    {
+      en: {
+        name: defaultName,
+        description: defaultDescription,
+      },
+      fr: subspeciesTranslations[slug],
+    },
+  ])
+);
