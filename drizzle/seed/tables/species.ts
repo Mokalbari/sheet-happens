@@ -685,3 +685,409 @@ export const speciesTranslations = {
     },
   },
 };
+
+export const speciesTraitsTranslations = {
+  "celestial-resistance": {
+    fr: {
+      name: "Résistance céleste",
+      description: `Vous avez la Résistance aux dégâts nécrotiques et radiants.`,
+    },
+  },
+  darkvision: {
+    fr: {
+      name: "Vision dans le noir",
+      description: `Vous avez la vision dans le noir sur une portée de 18 mètres.`,
+    },
+  },
+  "healing-hands": {
+    fr: {
+      name: "Mains guérisseuses",
+      description: `En tant qu’action magique, vous touchez une créature et lancez un nombre de d4 égal à votre bonus de maîtrise. La créature regagne un nombre de points de vie égal au total obtenu. Une fois ce trait utilisé, vous devez terminer un repos long pour l’utiliser de nouveau.`,
+    },
+  },
+  "light-bearer": {
+    fr: {
+      name: "Porte-lumière",
+      description: `Vous connaissez le tour de magie *Lumière*. Le Charisme est la caractéristique d'incantation associée.`,
+    },
+  },
+  "celestial-revelation": {
+    fr: {
+      name: "Révélation céleste",
+      description: `À partir du niveau 3, vous pouvez vous transformer en utilisant une action bonus et en choisissant une des options suivantes (à choisir à chaque transformation). La transformation dure 1 minute ou jusqu’à ce que vous y mettiez fin (aucune action requise). Une fois transformé, vous ne pouvez pas réutiliser ce trait avant un repos long. Une fois par tour durant la transformation, vous pouvez infliger des dégâts supplémentaires à une cible touchée par une attaque ou un sort. Ces dégâts supplémentaires sont égaux à votre bonus de maîtrise et sont de type nécrotique (Ombre nécrotique) ou radiant (Ailes célestes, Radiance intérieure).`,
+    },
+  },
+  "heavenly-wings": {
+    fr: {
+      name: "Ailes célestes",
+      description: `Deux ailes spectrales apparaissent temporairement dans votre dos. Tant que la transformation dure, vous bénéficiez d'une vitesse de vol égale à votre vitesse de déplacement.`,
+    },
+  },
+  "inner-radiance": {
+    fr: {
+      name: "Radiance intérieure",
+      description: `Une lumière intense émane temporairement de vos yeux et de votre bouche. Vous émettez une lumière vive dans un rayon de 3 mètres et une lumière faible sur 3 mètres supplémentaires. À la fin de chacun de vos tours, chaque créature dans un rayon de 3 mètres subit un nombre de dégâts radiants égal à votre bonus de maîtrise.`,
+    },
+  },
+  "necrotic-shroud": {
+    fr: {
+      name: "Ombre nécrotique",
+      description: `Vos yeux deviennent brièvement des puits de ténèbres, et des ailes atrophiées apparaissent temporairement dans votre dos. Les créatures (sauf vos alliés) dans un rayon de 3 mètres doivent réussir un jet de sauvegarde de Charisme (DD = 8 + votre modificateur de Charisme + votre bonus de maîtrise), ou être Effrayées jusqu’à la fin de votre prochain tour.`,
+    },
+  },
+  "draconic-ancestry": {
+    fr: {
+      name: "Ascendance draconique",
+      description: `Votre lignée est issue d’un ancêtre draconique. Choisissez un type de dragon dans la table des ancêtres draconiques. Ce choix détermine votre Souffle et votre Résistance aux dégâts, ainsi que certains aspects de votre apparence. Ancêtres draconiques : Noir / Cuivre → Acide, Bleu / Bronze → Foudre, Laiton / Or / Rouge → Feu, Vert → Poison, Argent / Blanc → Froid.`,
+    },
+  },
+  "breath-weapon": {
+    fr: {
+      name: "Souffle",
+      description: `Lorsque vous effectuez une action d’attaque, vous pouvez remplacer une de vos attaques par une exhalation d’énergie magique : un cône de 4,50 m ou une ligne de 9 m de long pour 1,50 m de large (à choisir à chaque fois). Chaque créature dans la zone doit effectuer un jet de sauvegarde de Dextérité (DD = 8 + votre modificateur de Constitution + bonus de maîtrise). En cas d’échec, la créature subit 1d10 dégâts (type selon votre ascendance). En cas de réussite, elle subit la moitié. Les dégâts augmentent à 2d10 au niveau 5, 3d10 au niveau 11, 4d10 au niveau 17. Vous pouvez utiliser ce souffle un nombre de fois égal à votre bonus de maîtrise, et regagnez toutes les utilisations après un repos long.`,
+    },
+  },
+  "damage-resistance": {
+    fr: {
+      name: "Résistance aux dégâts",
+      description: `Vous avez la Résistance au type de dégâts associé à votre ascendance draconique.`,
+    },
+  },
+  "draconic-flight": {
+    fr: {
+      name: "Vol draconique",
+      description: `Au niveau 5, vous pouvez canaliser la magie draconique pour voler temporairement. En action bonus, vous faites apparaître des ailes spectrales pour 10 minutes ou jusqu’à ce que vous les fassiez disparaître (aucune action) ou que vous deveniez incapable d’agir. Durant ce temps, vous obtenez une vitesse de vol égale à votre vitesse de déplacement. Les ailes reflètent l’énergie de votre souffle. Ce trait est utilisable une fois par repos long.`,
+    },
+  },
+  "dwarven-resilience": {
+    fr: {
+      name: "Résilience naine",
+      description: `Vous avez la Résistance aux dégâts de Poison et un Avantage aux jets de sauvegarde pour éviter ou mettre fin à l’état Empoisonné.`,
+    },
+  },
+  "dwarven-toughness": {
+    fr: {
+      name: "Robustesse naine",
+      description: `Votre maximum de points de vie augmente de 1, et augmente encore de 1 à chaque fois que vous gagnez un niveau.`,
+    },
+  },
+  stonecunning: {
+    fr: {
+      name: "Connaissance de la pierre",
+      description: `En action bonus, vous obtenez la Tremorsense dans un rayon de 18 mètres pendant 10 minutes. Vous devez être en contact avec de la pierre naturelle ou travaillée. Vous pouvez utiliser ce trait un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos long.`,
+    },
+  },
+  "elven-lineage": {
+    fr: {
+      name: "Lignée elfique",
+      description: `Vous appartenez à une lignée magique vous conférant des aptitudes surnaturelles. Choisissez une lignée parmi celles proposées. Vous gagnez un sort de niveau 1 associé. Aux niveaux 3 et 5, vous obtenez des sorts supplémentaires. Vous les avez toujours préparés, pouvez les lancer une fois sans emplacement, et récupérez cette utilisation après un repos long. Vous pouvez aussi les lancer avec vos emplacements de sorts. Choisissez Intelligence, Sagesse ou Charisme comme caractéristique d’incantation.`,
+    },
+  },
+  "fey-ancestry": {
+    fr: {
+      name: "Ascendance féerique",
+      description: `Vous avez l’Avantage aux jets de sauvegarde contre l’état Charmé.`,
+    },
+  },
+  "keen-senses": {
+    fr: {
+      name: "Sens aiguisés",
+      description: `Vous maîtrisez l’une des compétences suivantes : Intuition, Perception ou Survie.`,
+    },
+  },
+  trance: {
+    fr: {
+      name: "Transe",
+      description: `Vous n’avez pas besoin de dormir et la magie ne peut pas vous endormir. Un repos long ne vous prend que 4 heures si vous méditez sans perdre conscience.`,
+    },
+  },
+  "gnomish-cunning": {
+    fr: {
+      name: "Ruse gnomique",
+      description: `Vous avez l’Avantage aux jets de sauvegarde d’Intelligence, de Sagesse et de Charisme.`,
+    },
+  },
+  "gnomish-lineage": {
+    fr: {
+      name: "Lignée gnomique",
+      description: `Vous appartenez à une lignée magique vous conférant des capacités surnaturelles. Choisissez entre Gnome des forêts ou Gnome des rochers.`,
+    },
+  },
+  "giant-ancestry": {
+    fr: {
+      name: "Ascendance géante",
+      description: `Vous descendez des géants. Choisissez une bénédiction surnaturelle parmi les suivantes : Nuage, Feu, Givre, Colline, Pierre ou Tempête. Vous pouvez l’utiliser un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos long.`,
+    },
+  },
+  "large-form": {
+    fr: {
+      name: "Forme gigantesque",
+      description: `À partir du niveau 5, vous pouvez augmenter votre taille à « Grande » en action bonus si l’espace le permet. La transformation dure 10 minutes ou jusqu’à ce que vous y mettiez fin (aucune action). Pendant ce temps, vous avez l’Avantage aux tests de Force et votre vitesse augmente de 3 mètres. Ce trait est utilisable une fois par repos long.`,
+    },
+  },
+  "powerful-build": {
+    fr: {
+      name: "Puissante carrure",
+      description: `Vous avez l’Avantage aux jets de sauvegarde pour mettre fin à l’état Agrippé. De plus, vous êtes considéré comme une taille de plus pour calculer votre capacité de port.`,
+    },
+  },
+  brave: {
+    fr: {
+      name: "Courageux",
+      description: `Vous avez l’Avantage aux jets de sauvegarde contre l’état Effrayé.`,
+    },
+  },
+  "halfling-nimbleness": {
+    fr: {
+      name: "Agilité halfeline",
+      description: `Vous pouvez vous déplacer à travers l’espace de toute créature d’une taille supérieure à la vôtre, sans pouvoir vous arrêter dans cet espace.`,
+    },
+  },
+  luck: {
+    fr: {
+      name: "Chance",
+      description: `Lorsque vous obtenez un 1 sur un d20 lors d’un test, vous pouvez relancer le dé et devez utiliser le nouveau résultat.`,
+    },
+  },
+  "naturally-stealthy": {
+    fr: {
+      name: "Discrétion naturelle",
+      description: `Vous pouvez vous cacher même si vous êtes seulement dissimulé par une créature d’au moins une taille supérieure à la vôtre.`,
+    },
+  },
+  resourceful: {
+    fr: {
+      name: "Débrouillard",
+      description: `Vous gagnez de l’Inspiration héroïque à chaque fois que vous terminez un repos long.`,
+    },
+  },
+  skillful: {
+    fr: {
+      name: "Compétent",
+      description: `Vous gagnez la maîtrise dans une compétence de votre choix.`,
+    },
+  },
+  versatile: {
+    fr: {
+      name: "Polyvalent",
+      description: `Vous gagnez un don d’origine de votre choix (voir chapitre 5). Le don « Compétent » est recommandé.`,
+    },
+  },
+  "adrenaline-rush": {
+    fr: {
+      name: "Poussée d’adrénaline",
+      description: `Vous pouvez utiliser l’action Se précipiter comme une action bonus. Lorsque vous le faites, vous gagnez un nombre de points de vie temporaires égal à votre bonus de maîtrise. Vous pouvez utiliser ce trait un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos court ou long.`,
+    },
+  },
+  "relentless-endurance": {
+    fr: {
+      name: "Endurance inébranlable",
+      description: `Lorsque vous tombez à 0 point de vie sans mourir sur le coup, vous pouvez rester à 1 point de vie à la place. Vous ne pouvez utiliser ce trait qu’une fois par repos long.`,
+    },
+  },
+  "fiendish-legacy": {
+    fr: {
+      name: "Héritage fiélon",
+      description: `Vous êtes le réceptacle d’un héritage vous conférant des pouvoirs surnaturels. Choisissez une lignée parmi la table des héritages fiélons. Vous obtenez un sort de niveau 1. Aux niveaux 3 et 5, vous apprenez de nouveaux sorts. Vous pouvez lancer chacun d’eux une fois sans emplacement de sort, puis à nouveau après un repos long. Vous pouvez aussi les lancer avec vos emplacements de sort. Choisissez Intelligence, Sagesse ou Charisme comme caractéristique d’incantation.`,
+    },
+  },
+  "otherworldly-presence": {
+    fr: {
+      name: "Présence d’un autre monde",
+      description: `Vous connaissez le tour de magie *Thaumaturgie*. Lorsque vous le lancez avec ce trait, il utilise la même caractéristique d’incantation que votre héritage fiélon.`,
+    },
+  },
+};
+
+export const subspeciesTranslations = {
+  "black-dragonborn": {
+    fr: {
+      name: "Drakéide noir",
+      description:
+        "Descendant des dragons noirs. Souffle & Résistance : Acide.",
+    },
+  },
+  "blue-dragonborn": {
+    fr: {
+      name: "Drakéide bleu",
+      description:
+        "Descendant des dragons bleus. Souffle & Résistance : Foudre.",
+    },
+  },
+  "brass-dragonborn": {
+    fr: {
+      name: "Drakéide de laiton",
+      description:
+        "Descendant des dragons de laiton. Souffle & Résistance : Feu.",
+    },
+  },
+  "bronze-dragonborn": {
+    fr: {
+      name: "Drakéide de bronze",
+      description:
+        "Descendant des dragons de bronze. Souffle & Résistance : Foudre.",
+    },
+  },
+  "copper-dragonborn": {
+    fr: {
+      name: "Drakéide de cuivre",
+      description:
+        "Descendant des dragons de cuivre. Souffle & Résistance : Acide.",
+    },
+  },
+  "gold-dragonborn": {
+    fr: {
+      name: "Drakéide d’or",
+      description: "Descendant des dragons d’or. Souffle & Résistance : Feu.",
+    },
+  },
+  "green-dragonborn": {
+    fr: {
+      name: "Drakéide vert",
+      description:
+        "Descendant des dragons verts. Souffle & Résistance : Poison.",
+    },
+  },
+  "red-dragonborn": {
+    fr: {
+      name: "Drakéide rouge",
+      description: "Descendant des dragons rouges. Souffle & Résistance : Feu.",
+    },
+  },
+  "silver-dragonborn": {
+    fr: {
+      name: "Drakéide d’argent",
+      description:
+        "Descendant des dragons d’argent. Souffle & Résistance : Froid.",
+    },
+  },
+  "white-dragonborn": {
+    fr: {
+      name: "Drakéide blanc",
+      description:
+        "Descendant des dragons blancs. Souffle & Résistance : Froid.",
+    },
+  },
+
+  // ELF VARIANTS
+  drow: {
+    fr: {
+      name: "Elfe noir",
+      description:
+        "Les drows vivent généralement dans l’Outreterre et ont été transformés par elle. Certains drows évitent ce lieu tout en portant sa magie. Dans le monde d’Eberron, par exemple, ils vivent dans des jungles et ruines cyclopéennes du continent de Xen’drik.",
+    },
+  },
+  "high-elf": {
+    fr: {
+      name: "Haut elfe",
+      description:
+        "Les hauts elfes sont imprégnés de la magie entre le Feywild et le Plan Matériel. Ils portent divers noms selon les mondes : elfes du soleil ou de la lune dans les Royaumes Oubliés, Silvanesti et Qualinesti dans Dragonlance, Aereni dans Eberron.",
+    },
+  },
+  "wood-elf": {
+    fr: {
+      name: "Elfe des bois",
+      description:
+        "Les elfes des bois portent la magie des forêts primordiales. On les appelle aussi elfes sauvages, verts ou forestiers. Les Grugach sont des elfes des bois solitaires de Greyhawk, les Kagonesti et Tairnadal sont respectivement de Dragonlance et Eberron.",
+    },
+  },
+
+  // GNOME VARIANTS
+  "forest-gnome": {
+    fr: {
+      name: "Gnome des forêts",
+      description:
+        "Vous connaissez le tour de magie *Illusion mineure*. Vous avez aussi toujours le sort *Parler avec les animaux* préparé. Vous pouvez le lancer sans emplacement un nombre de fois égal à votre bonus de maîtrise, et regagnez tous les usages après un repos long. Vous pouvez aussi le lancer avec vos emplacements de sorts.",
+    },
+  },
+  "rock-gnome": {
+    fr: {
+      name: "Gnome des rochers",
+      description:
+        "Vous connaissez les tours de magie *Réparation* et *Prestidigitation*. En plus, vous pouvez passer 10 minutes à lancer *Prestidigitation* pour créer un petit appareil mécanique (CA 5, 1 PV), tel qu’un jouet, un allume-feu ou une boîte à musique. Il produit un effet lorsqu’il est activé par une action bonus. Vous choisissez l’effet à la création. Vous pouvez en avoir 3 au maximum, chacun durant 8 heures ou jusqu’à démantèlement.",
+    },
+  },
+
+  // GOLIATH (GIANT ANCESTRIES)
+  "cloud-giant-goliath": {
+    fr: {
+      name: "Ascendance de géant des nuages",
+      description:
+        "*Bond des nuages* : En action bonus, vous vous téléportez magiquement jusqu’à 9 mètres dans un espace inoccupé que vous voyez.",
+    },
+  },
+  "fire-giant-goliath": {
+    fr: {
+      name: "Ascendance de géant du feu",
+      description:
+        "*Brûlure du feu* : Quand vous touchez une cible avec une attaque, vous pouvez lui infliger 1d10 dégâts de feu supplémentaires.",
+    },
+  },
+  "frost-giant-goliath": {
+    fr: {
+      name: "Ascendance de géant du givre",
+      description:
+        "*Frisson du givre* : Quand vous touchez une cible avec une attaque, vous pouvez lui infliger 1d6 dégâts de froid et réduire sa vitesse de 3 mètres jusqu’à votre prochain tour.",
+    },
+  },
+  "hill-giant-goliath": {
+    fr: {
+      name: "Ascendance de géant des collines",
+      description:
+        "*Chute des collines* : Quand vous touchez une créature de taille Grande ou moins avec une attaque, vous pouvez la faire tomber à terre (état : à terre).",
+    },
+  },
+  "stone-giant-goliath": {
+    fr: {
+      name: "Ascendance de géant de pierre",
+      description:
+        "*Endurance de pierre* : Quand vous subissez des dégâts, vous pouvez utiliser une réaction pour lancer 1d12, ajouter votre modificateur de Constitution, et réduire les dégâts de ce total.",
+    },
+  },
+  "storm-giant-goliath": {
+    fr: {
+      name: "Ascendance de géant des tempêtes",
+      description:
+        "*Tonnerre de la tempête* : Quand une créature dans un rayon de 18 mètres vous inflige des dégâts, vous pouvez utiliser une réaction pour lui infliger 1d8 dégâts de tonnerre.",
+    },
+  },
+
+  // HALFLING VARIANTS
+  "strongheart-halfling": {
+    fr: {
+      name: "Halfelin cœur-vaillant",
+      description:
+        "Les halfelins qui vivent sous terre sont parfois appelés cœurs-vaillants ou robustes.",
+    },
+  },
+  "lightfoot-halfling": {
+    fr: {
+      name: "Halfelin pied-léger",
+      description:
+        "Les halfelins nomades ou vivant parmi les humains sont parfois appelés pieds-légers ou grands compagnons.",
+    },
+  },
+
+  // TIEFLING LEGACIES
+  "abyssal-tiefling": {
+    fr: {
+      name: "Tieffelin abyssal",
+      description:
+        "L’entropie de l’Abysse, le chaos du Pandémonium et le désespoir de Carcéri appellent les tieffelins à l’héritage abyssal. Cornes, fourrure, défenses et odeurs étranges sont fréquents chez eux, qui portent souvent le sang des démons.",
+    },
+  },
+  "chthonic-tiefling": {
+    fr: {
+      name: "Tieffelin chtonien",
+      description:
+        "Les tieffelins à l’héritage chtonien ressentent l’appel de Carcéri, la cupidité de Géhenne et la morosité des Enfers gris. Certains ont une allure cadavérique, d’autres la beauté étrange d’une succube, ou des traits rappelant une sorcière nocturne ou un yugoloth.",
+    },
+  },
+  "infernal-tiefling": {
+    fr: {
+      name: "Tieffelin infernal",
+      description:
+        "L’héritage infernal lie les tieffelins aux Neuf Enfers, à Géhenne et aux champs de bataille d’Achéron. Cornes, épines, queue, yeux dorés et une légère odeur de soufre ou de fumée sont fréquents chez ceux qui descendent des diables.",
+    },
+  },
+};
