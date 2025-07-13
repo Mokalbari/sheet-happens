@@ -168,7 +168,11 @@ export const speciesTraitsSeed = [
     speciesId: 1,
     slug: "celestial-revelation",
     defaultName: "Celestial Revelation",
-    defaultDescription: `When you reach character level 3, you can transform as a Bonus Action using one of the options below (choose the option each time you transform). The transformation lasts for 1 minute or until you end it (no action required). Once you transform, you can’t do so again until you finish a Long Rest. Once on each of your turns before the transformation ends, you can deal extra damage to one target when you deal damage to it with an attack or a spell. The extra damage equals your Proficiency Bonus, and the extra damage’s type is either Necrotic for Necrotic Shroud or Radiant for Heavenly Wings and Inner Radiance. Here are the transformation options:`,
+    defaultDescription: dedent(`
+      When you reach character level 3, you can transform as a Bonus Action using one of the options below (choose the option each time you transform). The transformation lasts for 1 minute or until you end it (no action required).
+      Once you transform, you can’t do so again until you finish a Long Rest. Once on each of your turns before the transformation ends, you can deal extra damage to one target when you deal damage to it with an attack or a spell.
+      The extra damage equals your Proficiency Bonus, and the extra damage’s type is either Necrotic for Necrotic Shroud or Radiant for Heavenly Wings and Inner Radiance. Here are the transformation options:
+      `),
     systemId: SYSTEM_ID_DD5E,
   },
   {
@@ -196,14 +200,20 @@ export const speciesTraitsSeed = [
     speciesId: 2,
     slug: "draconic-ancestry",
     defaultName: "Draconic Ancestry",
-    defaultDescription: `Your lineage stems from a dragon progenitor. Choose the kind of dragon from the Draconic Ancestors table. Your choice affects your Breath Weapon and Damage Resistance traits as well as your appearance. Draconic Ancestors: Black / Copper → Acid Blue / Bronze → Lightning Brass / Gold / Red → Fire Green → Poison Silver / White → Cold`,
+    defaultDescription: `Your lineage stems from a dragon progenitor. Choose the kind of dragon from the Draconic Ancestors table. Your choice affects your Breath Weapon and Damage Resistance traits as well as your appearance.
+      `,
     systemId: SYSTEM_ID_DD5E,
   },
   {
     speciesId: 2,
     slug: "breath-weapon",
     defaultName: "Breath Weapon",
-    defaultDescription: `When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 + your Constitution modifier and Proficiency Bonus). On a failed save, a creature takes 1d10 damage of the type determined by your Draconic Ancestry trait. On a successful save, a creature takes half as much damage. This damage increases by 1d10 when you reach character levels 5 (2d10), 11 (3d10), and 17 (4d10). You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.`,
+    defaultDescription: dedent(`
+      When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 + your Constitution modifier and Proficiency Bonus).
+      On a failed save, a creature takes 1d10 damage of the type determined by your Draconic Ancestry trait.
+      On a successful save, a creature takes half as much damage. This damage increases by 1d10 when you reach character levels 5 (2d10), 11 (3d10), and 17 (4d10).
+      You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.
+      `),
     systemId: SYSTEM_ID_DD5E,
   },
   {
@@ -224,7 +234,11 @@ export const speciesTraitsSeed = [
     speciesId: 2,
     slug: "draconic-flight",
     defaultName: "Draconic Flight",
-    defaultDescription: `When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the Incapacitated condition. During that time, you have a Fly Speed equal to your Speed. Your wings appear to be made of the same energy as your Breath Weapon. Once you use this trait, you can’t use it again until you finish a Long Rest.`,
+    defaultDescription: dedent(`
+      When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the Incapacitated condition.
+      During that time, you have a Fly Speed equal to your Speed. Your wings appear to be made of the same energy as your Breath Weapon.
+      Once you use this trait, you can’t use it again until you finish a Long Rest.
+      `),
     systemId: SYSTEM_ID_DD5E,
   },
   {
@@ -266,7 +280,11 @@ export const speciesTraitsSeed = [
     speciesId: 4,
     slug: "elven-lineage",
     defaultName: "Elven Lineage",
-    defaultDescription: `You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the lineage).`,
+    defaultDescription: dedent(`
+      You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table.
+      You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level.
+      Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the lineage).
+      `),
     systemId: SYSTEM_ID_DD5E,
   },
   {
@@ -322,7 +340,11 @@ export const speciesTraitsSeed = [
     speciesId: 6,
     slug: "large-form",
     defaultName: "Large Form",
-    defaultDescription: `Starting at character level 5, you can change your size to Large as a Bonus Action if you're in a big enough space. This transformation lasts for 10 minutes or until you end it (no action required). During that time, you have Advantage on Strength checks, and your Speed increases by 10 feet. Once you use this trait, you can’t use it again until you finish a Long Rest.`,
+    defaultDescription: dedent(`
+      Starting at character level 5, you can change your size to Large as a Bonus Action if you're in a big enough space. This transformation lasts for 10 minutes or until you end it (no action required).
+      During that time, you have Advantage on Strength checks, and your Speed increases by 10 feet.
+      Once you use this trait, you can’t use it again until you finish a Long Rest.
+      `),
     systemId: SYSTEM_ID_DD5E,
   },
   {
@@ -413,7 +435,11 @@ export const speciesTraitsSeed = [
     speciesId: 10,
     slug: "fiendish-legacy",
     defaultName: "Fiendish Legacy",
-    defaultDescription: `You are the recipient of a legacy that grants you supernatural abilities. Choose a legacy from the Fiendish Legacies table. You gain the level 1 benefit of the chosen legacy. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells (choose when you select your legacy).`,
+    defaultDescription: dedent(`
+      You are the recipient of a legacy that grants you supernatural abilities. Choose a legacy from the Fiendish Legacies table. You gain the level 1 benefit of the chosen legacy. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table.
+      You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level.
+      Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells (choose when you select your legacy).
+      `),
     systemId: SYSTEM_ID_DD5E,
   },
   {
@@ -626,43 +652,79 @@ export const subspeciesSeed = [
 export const speciesTranslations = {
   aasimar: {
     name: "Aasimar",
-    description: `Les Aasimars (prononcé A-si-mar) sont des mortels porteurs d'une étincelle des Plans Supérieurs dans leur âme. Qu'ils descendent d’un être angélique ou qu’ils aient été imprégnés d’un pouvoir céleste, ils peuvent attiser cette étincelle pour apporter lumière, guérison et fureur divine. Un Aasimar peut naître dans n’importe quelle population mortelle. Il ressemble à ses parents, mais vit jusqu’à 160 ans et présente des traits célestes tels que des taches de rousseur métalliques, des yeux lumineux, un halo ou une peau argentée, vert opalescent ou rouge cuivré. Ces marques sont d’abord discrètes mais deviennent évidentes lorsque l’Aasimar embrasse pleinement sa nature céleste.`,
+    description: dedent(`
+      Les Aasimars (prononcé A-si-mar) sont des mortels porteurs d'une étincelle des Plans Supérieurs dans leur âme. Qu'ils descendent d’un être angélique ou qu’ils aient été imprégnés d’un pouvoir céleste, ils peuvent attiser cette étincelle pour apporter lumière, guérison et fureur divine.
+      Un Aasimar peut naître dans n’importe quelle population mortelle. Il ressemble à ses parents, mais vit jusqu’à 160 ans et présente des traits célestes tels que des taches de rousseur métalliques, des yeux lumineux, un halo ou une peau argentée, vert opalescent ou rouge cuivré.
+      Ces marques sont d’abord discrètes mais deviennent évidentes lorsque l’Aasimar embrasse pleinement sa nature céleste.
+      `),
   },
   dragonborn: {
     name: "Drakéide",
-    description: `Les ancêtres des drakéides ont éclos d’œufs de dragons chromatiques ou métalliques. Certains récits racontent que ces œufs furent bénis par Bahamut et Tiamat pour peupler le multivers à leur image. D’autres prétendent que les dragons eux-mêmes ont créé les premiers drakéides, sans intervention divine. Quelles que soient leurs origines, les drakéides se sont installés sur le Plan Matériel. Ils ressemblent à des dragons bipèdes et sans ailes : écailles, yeux vifs, ossature robuste et cornes leur donnent une apparence draconique fidèle à leurs ancêtres.`,
+    description: dedent(`
+      Les ancêtres des drakéides ont éclos d’œufs de dragons chromatiques ou métalliques. Certains récits racontent que ces œufs furent bénis par Bahamut et Tiamat pour peupler le multivers à leur image. D’autres prétendent que les dragons eux-mêmes ont créé les premiers drakéides, sans intervention divine.
+      Quelles que soient leurs origines, les drakéides se sont installés sur le Plan Matériel. Ils ressemblent à des dragons bipèdes et sans ailes : écailles, yeux vifs, ossature robuste et cornes leur donnent une apparence draconique fidèle à leurs ancêtres.
+      `),
   },
   dwarf: {
     name: "Nain",
-    description: `Les nains furent sculptés de la terre aux temps anciens par un dieu de la forge, connu sous divers noms tels que Moradin ou Reorx. Ce dieu leur donna une affinité avec la pierre, le métal et la vie souterraine, ainsi qu’une grande résilience. Leur espérance de vie avoisine les 350 ans. Petits, trapus, souvent barbus, les nains ont bâti des cités fortifiées dans les montagnes et sous terre. Leurs légendes les plus anciennes racontent des conflits avec des géants et les horreurs de l’Outreterre. Dans certaines régions, on distingue les nains des collines et des montagnes selon leurs origines géographiques.`,
+    description: dedent(`
+      Les nains furent sculptés de la terre aux temps anciens par un dieu de la forge, connu sous divers noms tels que Moradin ou Reorx. Ce dieu leur donna une affinité avec la pierre, le métal et la vie souterraine, ainsi qu’une grande résilience. Leur espérance de vie avoisine les 350 ans.
+      Petits, trapus, souvent barbus, les nains ont bâti des cités fortifiées dans les montagnes et sous terre.
+      Leurs légendes les plus anciennes racontent des conflits avec des géants et les horreurs de l’Outreterre. Dans certaines régions, on distingue les nains des collines et des montagnes selon leurs origines géographiques.
+      `),
   },
   elf: {
     name: "Elfe",
-    description: `Créés par le dieu Corellon, les premiers elfes pouvaient changer de forme à volonté. Ils perdirent ce don après avoir conspiré avec la déesse Lolth. Lorsque cette dernière fut bannie dans l’Abysse, la plupart des elfes la rejetèrent et furent pardonnés, mais leur pouvoir originel resta perdu. Retirés dans le Feywild, ils y furent façonnés par la magie de ce plan. Curieux, ils finirent par explorer d'autres mondes, notamment sur le Plan Matériel. Les elfes ont les oreilles pointues, ne possèdent ni poils ni barbe, vivent environ 750 ans et méditent plutôt que de dormir. Leur environnement les transforme subtilement après plusieurs siècles, donnant naissance à des variantes telles que les drows, hauts-elfes et elfes des bois.`,
+    description: dedent(`
+      Créés par le dieu Corellon, les premiers elfes pouvaient changer de forme à volonté. Ils perdirent ce don après avoir conspiré avec la déesse Lolth. Lorsque cette dernière fut bannie dans l’Abysse, la plupart des elfes la rejetèrent et furent pardonnés, mais leur pouvoir originel resta perdu.
+      Retirés dans le Feywild, ils y furent façonnés par la magie de ce plan. Curieux, ils finirent par explorer d'autres mondes, notamment sur le Plan Matériel.
+      Les elfes ont les oreilles pointues, ne possèdent ni poils ni barbe, vivent environ 750 ans et méditent plutôt que de dormir.
+      Leur environnement les transforme subtilement après plusieurs siècles, donnant naissance à des variantes telles que les drows, hauts-elfes et elfes des bois.
+      `),
   },
   gnome: {
     name: "Gnome",
-    description: `Les gnomes sont des êtres magiques créés par des dieux de l’invention, de l’illusion et de la vie souterraine. Discrets et reclus, ils vivaient dans des forêts et des terriers, évitant les autres peuples. Leur petite taille était compensée par une grande intelligence. Ils piégeaient leurs prédateurs et creusaient des galeries complexes. Ils apprirent la magie auprès de dieux comme Garl Brilledor et Baervan le Vagabond. Cette magie donna naissance à deux lignées : les gnomes des forêts et les gnomes des rochers. Les gnomes sont petits, avec de grands yeux et des oreilles pointues, et vivent environ 425 ans. Beaucoup aiment avoir un toit au-dessus de la tête, même si ce toit est parfois un simple chapeau.`,
+    description: dedent(`
+      Les gnomes sont des êtres magiques créés par des dieux de l’invention, de l’illusion et de la vie souterraine. Discrets et reclus, ils vivaient dans des forêts et des terriers, évitant les autres peuples. Leur petite taille était compensée par une grande intelligence.
+      Ils piégeaient leurs prédateurs et creusaient des galeries complexes. Ils apprirent la magie auprès de dieux comme Garl Brilledor et Baervan le Vagabond. Cette magie donna naissance à deux lignées : les gnomes des forêts et les gnomes des rochers.
+      Les gnomes sont petits, avec de grands yeux et des oreilles pointues, et vivent environ 425 ans. Beaucoup aiment avoir un toit au-dessus de la tête, même si ce toit est parfois un simple chapeau.
+      `),
   },
   goliath: {
     name: "Goliath",
-    description: `Les goliaths, plus grands que la plupart des peuples, sont les lointains descendants des géants. Ils portent les faveurs de leurs ancêtres, qui se manifestent par des dons surnaturels comme la capacité de grandir temporairement jusqu’à approcher la taille de leurs aïeux. Leurs traits varient selon leur ascendance : certains rappellent les géants de pierre, d’autres les géants de feu. Malgré ce lien, les goliaths ont tracé leur propre voie dans le multivers, loin des querelles qui déchirent les géants, et cherchent à dépasser les exploits de leurs ancêtres.`,
+    description: dedent(`
+      Les goliaths, plus grands que la plupart des peuples, sont les lointains descendants des géants. Ils portent les faveurs de leurs ancêtres, qui se manifestent par des dons surnaturels comme la capacité de grandir temporairement jusqu’à approcher la taille de leurs aïeux.
+      Leurs traits varient selon leur ascendance : certains rappellent les géants de pierre, d’autres les géants de feu. Malgré ce lien, les goliaths ont tracé leur propre voie dans le multivers, loin des querelles qui déchirent les géants, et cherchent à dépasser les exploits de leurs ancêtres.
+      `),
   },
   halfling: {
     name: "Halfelin",
-    description: `Guidés par des dieux protecteurs de la vie et du foyer, les halfelins vivent dans des communautés paisibles où famille et entraide sont centrales. Pourtant, leur esprit curieux pousse certains à explorer le vaste monde. De la taille d’un enfant humain, ils se faufilent aisément dans la foule ou les endroits étroits. Leur légendaire chance semble leur sauver la vie dans les pires situations, un don qu’ils attribuent à leurs divinités comme Yondalla ou Brandobaris. Cette bénédiction pourrait aussi expliquer leur longévité, avoisinant les 150 ans. Leurs sociétés sont variées : des villages champêtres aux réseaux criminels comme le clan Boromar.`,
+    description: dedent(`
+      Guidés par des dieux protecteurs de la vie et du foyer, les halfelins vivent dans des communautés paisibles où famille et entraide sont centrales. Pourtant, leur esprit curieux pousse certains à explorer le vaste monde. De la taille d’un enfant humain, ils se faufilent aisément dans la foule ou les endroits étroits.
+      Leur légendaire chance semble leur sauver la vie dans les pires situations, un don qu’ils attribuent à leurs divinités comme Yondalla ou Brandobaris. Cette bénédiction pourrait aussi expliquer leur longévité, avoisinant les 150 ans.
+      Leurs sociétés sont variées : des villages champêtres aux réseaux criminels comme le clan Boromar.
+      `),
   },
   human: {
     name: "Humain",
-    description: `Présents dans tout le multivers, les humains sont d’une diversité remarquable. Leur ambition, leur ingéniosité et leur volonté d’aller toujours plus loin les rendent admirés ou redoutés. Leur apparence varie tout autant que celle des peuples de la Terre. Leur origine exacte est disputée, mais certains érudits situent les premiers regroupements humains à Sigil, la Cité des Portes, où naquit la langue commune. Depuis, les humains ont essaimé partout, apportant avec eux une culture cosmopolite.`,
+    description: dedent(`
+      Présents dans tout le multivers, les humains sont d’une diversité remarquable. Leur ambition, leur ingéniosité et leur volonté d’aller toujours plus loin les rendent admirés ou redoutés.
+      Leur apparence varie tout autant que celle des peuples de la Terre. Leur origine exacte est disputée, mais certains érudits situent les premiers regroupements humains à Sigil, la Cité des Portes, où naquit la langue commune. Depuis, les humains ont essaimé partout, apportant avec eux une culture cosmopolite.
+      `),
   },
   orc: {
     name: "Orque",
-    description: `Les orques furent créés par Gruumsh, un puissant dieu errant à travers le Plan Matériel. Il leur donna la force de survivre aux vastes étendues sauvages et aux monstres qui s’y cachent. Même lorsqu’ils vénèrent d’autres dieux, les orques conservent les dons de Gruumsh : endurance, ténacité et vision nocturne. De taille imposante, à la peau grise, avec des oreilles pointues et des crocs proéminents, ils sont marqués par leur héritage. Nombre d’orques grandissent en écoutant les exploits de leurs ancêtres, rêvant de les égaler. D’autres préfèrent se forger leur propre voie, libérés du poids des traditions.`,
+    description: dedent(`
+      Les orques furent créés par Gruumsh, un puissant dieu errant à travers le Plan Matériel. Il leur donna la force de survivre aux vastes étendues sauvages et aux monstres qui s’y cachent. Même lorsqu’ils vénèrent d’autres dieux, les orques conservent les dons de Gruumsh : endurance, ténacité et vision nocturne.
+      De taille imposante, à la peau grise, avec des oreilles pointues et des crocs proéminents, ils sont marqués par leur héritage. Nombre d’orques grandissent en écoutant les exploits de leurs ancêtres, rêvant de les égaler. D’autres préfèrent se forger leur propre voie, libérés du poids des traditions.
+      `),
   },
   tiefling: {
     name: "Tieffelin",
-    description: `Les tieffelins sont nés dans les Plans Inférieurs ou descendent d’êtres fiélons comme des démons ou des diables. Ce lien de sang leur confère un legs infernal : une promesse de puissance, mais aussi une apparence souvent stigmatisée. Ils peuvent choisir d’embrasser ou de rejeter cet héritage. Les trois principales lignées sont l’Abyssale, la Chthonienne et l’Infernale, chacune liée à une forme de pouvoir des Plans Inférieurs.`,
+    description: dedent(`
+      Les tieffelins sont nés dans les Plans Inférieurs ou descendent d’êtres fiélons comme des démons ou des diables. Ce lien de sang leur confère un legs infernal : une promesse de puissance, mais aussi une apparence souvent stigmatisée.
+      Ils peuvent choisir d’embrasser ou de rejeter cet héritage. Les trois principales lignées sont l’Abyssale, la Chthonienne et l’Infernale, chacune liée à une forme de pouvoir des Plans Inférieurs.
+      `),
   },
 };
 
@@ -685,27 +747,52 @@ export const speciesTraitsTranslations = {
   },
   "celestial-revelation": {
     name: "Révélation céleste",
-    description: `À partir du niveau 3, vous pouvez vous transformer en utilisant une action bonus et en choisissant une des options suivantes (à choisir à chaque transformation). La transformation dure 1 minute ou jusqu’à ce que vous y mettiez fin (aucune action requise). Une fois transformé, vous ne pouvez pas réutiliser ce trait avant un repos long. Une fois par tour durant la transformation, vous pouvez infliger des dégâts supplémentaires à une cible touchée par une attaque ou un sort. Ces dégâts supplémentaires sont égaux à votre bonus de maîtrise et sont de type nécrotique (Ombre nécrotique) ou radiant (Ailes célestes, Radiance intérieure).`,
+    description: dedent(`
+      À partir du niveau 3, vous pouvez vous transformer en utilisant une action bonus et en choisissant une des options suivantes (à choisir à chaque transformation).
+      La transformation dure 1 minute ou jusqu’à ce que vous y mettiez fin (aucune action requise).
+      Une fois transformé, vous ne pouvez pas réutiliser ce trait avant un repos long.
+      Une fois par tour durant la transformation, vous pouvez infliger des dégâts supplémentaires à une cible touchée par une attaque ou un sort.
+      Ces dégâts supplémentaires sont égaux à votre bonus de maîtrise et sont de type nécrotique (Ombre nécrotique) ou radiant (Ailes célestes, Radiance intérieure).
+    `),
   },
   "heavenly-wings": {
     name: "Ailes célestes",
-    description: `Deux ailes spectrales apparaissent temporairement dans votre dos. Tant que la transformation dure, vous bénéficiez d'une vitesse de vol égale à votre vitesse de déplacement.`,
+    description: dedent(`
+      Deux ailes spectrales apparaissent temporairement dans votre dos.
+      Tant que la transformation dure, vous bénéficiez d'une vitesse de vol égale à votre vitesse de déplacement.
+    `),
   },
   "inner-radiance": {
     name: "Radiance intérieure",
-    description: `Une lumière intense émane temporairement de vos yeux et de votre bouche. Vous émettez une lumière vive dans un rayon de 3 mètres et une lumière faible sur 3 mètres supplémentaires. À la fin de chacun de vos tours, chaque créature dans un rayon de 3 mètres subit un nombre de dégâts radiants égal à votre bonus de maîtrise.`,
+    description: dedent(`
+      Une lumière intense émane temporairement de vos yeux et de votre bouche.
+      Vous émettez une lumière vive dans un rayon de 3 mètres et une lumière faible sur 3 mètres supplémentaires.
+      À la fin de chacun de vos tours, chaque créature dans un rayon de 3 mètres subit un nombre de dégâts radiants égal à votre bonus de maîtrise.
+    `),
   },
   "necrotic-shroud": {
     name: "Ombre nécrotique",
-    description: `Vos yeux deviennent brièvement des puits de ténèbres, et des ailes atrophiées apparaissent temporairement dans votre dos. Les créatures (sauf vos alliés) dans un rayon de 3 mètres doivent réussir un jet de sauvegarde de Charisme (DD = 8 + votre modificateur de Charisme + votre bonus de maîtrise), ou être Effrayées jusqu’à la fin de votre prochain tour.`,
+    description: dedent(`
+      Vos yeux deviennent brièvement des puits de ténèbres, et des ailes atrophiées apparaissent temporairement dans votre dos.
+      Les créatures (sauf vos alliés) dans un rayon de 3 mètres doivent réussir un jet de sauvegarde de Charisme (DD = 8 + votre modificateur de Charisme + votre bonus de maîtrise), ou être Effrayées jusqu’à la fin de votre prochain tour.
+    `),
   },
   "draconic-ancestry": {
     name: "Ascendance draconique",
-    description: `Votre lignée est issue d’un ancêtre draconique. Choisissez un type de dragon dans la table des ancêtres draconiques. Ce choix détermine votre Souffle et votre Résistance aux dégâts, ainsi que certains aspects de votre apparence. Ancêtres draconiques : Noir / Cuivre → Acide, Bleu / Bronze → Foudre, Laiton / Or / Rouge → Feu, Vert → Poison, Argent / Blanc → Froid.`,
+    description: dedent(`
+      Votre lignée est issue d’un ancêtre draconique. Choisissez un type de dragon dans la table des ancêtres draconiques.
+      Ce choix détermine votre Souffle et votre Résistance aux dégâts, ainsi que certains aspects de votre apparence.
+    `),
   },
   "breath-weapon": {
     name: "Souffle",
-    description: `Lorsque vous effectuez une action d’attaque, vous pouvez remplacer une de vos attaques par une exhalation d’énergie magique : un cône de 4,50 m ou une ligne de 9 m de long pour 1,50 m de large (à choisir à chaque fois). Chaque créature dans la zone doit effectuer un jet de sauvegarde de Dextérité (DD = 8 + votre modificateur de Constitution + bonus de maîtrise). En cas d’échec, la créature subit 1d10 dégâts (type selon votre ascendance). En cas de réussite, elle subit la moitié. Les dégâts augmentent à 2d10 au niveau 5, 3d10 au niveau 11, 4d10 au niveau 17. Vous pouvez utiliser ce souffle un nombre de fois égal à votre bonus de maîtrise, et regagnez toutes les utilisations après un repos long.`,
+    description: dedent(`
+      Lorsque vous effectuez une action d’attaque, vous pouvez remplacer une de vos attaques par une exhalation d’énergie magique : un cône de 4,50 m ou une ligne de 9 m de long pour 1,50 m de large (à choisir à chaque fois).
+      Chaque créature dans la zone doit effectuer un jet de sauvegarde de Dextérité (DD = 8 + votre modificateur de Constitution + bonus de maîtrise).
+      En cas d’échec, la créature subit 1d10 dégâts (type selon votre ascendance). En cas de réussite, elle subit la moitié.
+      Les dégâts augmentent à 2d10 au niveau 5, 3d10 au niveau 11, 4d10 au niveau 17.
+      Vous pouvez utiliser ce souffle un nombre de fois égal à votre bonus de maîtrise, et regagnez toutes les utilisations après un repos long.
+    `),
   },
   "damage-resistance": {
     name: "Résistance aux dégâts",
@@ -713,7 +800,10 @@ export const speciesTraitsTranslations = {
   },
   "draconic-flight": {
     name: "Vol draconique",
-    description: `Au niveau 5, vous pouvez canaliser la magie draconique pour voler temporairement. En action bonus, vous faites apparaître des ailes spectrales pour 10 minutes ou jusqu’à ce que vous les fassiez disparaître (aucune action) ou que vous deveniez incapable d’agir. Durant ce temps, vous obtenez une vitesse de vol égale à votre vitesse de déplacement. Les ailes reflètent l’énergie de votre souffle. Ce trait est utilisable une fois par repos long.`,
+    description: dedent(`
+      Au niveau 5, vous pouvez canaliser la magie draconique pour voler temporairement. En action bonus, vous faites apparaître des ailes spectrales pour 10 minutes ou jusqu’à ce que vous les fassiez disparaître (aucune action) ou que vous deveniez incapable d’agir.
+      Durant ce temps, vous obtenez une vitesse de vol égale à votre vitesse de déplacement. Les ailes reflètent l’énergie de votre souffle. Ce trait est utilisable une fois par repos long.
+    `),
   },
   "dwarven-resilience": {
     name: "Résilience naine",
@@ -725,11 +815,15 @@ export const speciesTraitsTranslations = {
   },
   stonecunning: {
     name: "Connaissance de la pierre",
-    description: `En action bonus, vous obtenez la Tremorsense dans un rayon de 18 mètres pendant 10 minutes. Vous devez être en contact avec de la pierre naturelle ou travaillée. Vous pouvez utiliser ce trait un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos long.`,
+    description: dedent(`
+      En action bonus, vous obtenez la Tremorsense dans un rayon de 18 mètres pendant 10 minutes. Vous devez être en contact avec de la pierre naturelle ou travaillée. Vous pouvez utiliser ce trait un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos long.
+    `),
   },
   "elven-lineage": {
     name: "Lignée elfique",
-    description: `Vous appartenez à une lignée magique vous conférant des aptitudes surnaturelles. Choisissez une lignée parmi celles proposées. Vous gagnez un sort de niveau 1 associé. Aux niveaux 3 et 5, vous obtenez des sorts supplémentaires. Vous les avez toujours préparés, pouvez les lancer une fois sans emplacement, et récupérez cette utilisation après un repos long. Vous pouvez aussi les lancer avec vos emplacements de sorts. Choisissez Intelligence, Sagesse ou Charisme comme caractéristique d’incantation.`,
+    description: dedent(`
+      Vous appartenez à une lignée magique vous conférant des aptitudes surnaturelles. Choisissez une lignée parmi celles proposées. Vous gagnez un sort de niveau 1 associé. Aux niveaux 3 et 5, vous obtenez des sorts supplémentaires. Vous les avez toujours préparés, pouvez les lancer une fois sans emplacement, et récupérez cette utilisation après un repos long. Vous pouvez aussi les lancer avec vos emplacements de sorts. Choisissez Intelligence, Sagesse ou Charisme comme caractéristique d’incantation.
+    `),
   },
   "fey-ancestry": {
     name: "Ascendance féerique",
@@ -741,7 +835,10 @@ export const speciesTraitsTranslations = {
   },
   trance: {
     name: "Transe",
-    description: `Vous n’avez pas besoin de dormir et la magie ne peut pas vous endormir. Un repos long ne vous prend que 4 heures si vous méditez sans perdre conscience.`,
+    description: dedent(`
+      Vous n’avez pas besoin de dormir et la magie ne peut pas vous endormir.
+      Un repos long ne vous prend que 4 heures si vous méditez en pleine conscience.
+    `),
   },
   "gnomish-cunning": {
     name: "Ruse gnomique",
@@ -749,19 +846,34 @@ export const speciesTraitsTranslations = {
   },
   "gnomish-lineage": {
     name: "Lignée gnomique",
-    description: `Vous appartenez à une lignée magique vous conférant des capacités surnaturelles. Choisissez entre Gnome des forêts ou Gnome des rochers.`,
+    description: dedent(`
+      Vous appartenez à une lignée magique vous conférant des capacités surnaturelles.
+      Choisissez entre Gnome des forêts ou Gnome des rochers.
+    `),
   },
   "giant-ancestry": {
     name: "Ascendance géante",
-    description: `Vous descendez des géants. Choisissez une bénédiction surnaturelle parmi les suivantes : Nuage, Feu, Givre, Colline, Pierre ou Tempête. Vous pouvez l’utiliser un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos long.`,
+    description: dedent(`
+      Vous descendez des géants.
+      Choisissez une bénédiction surnaturelle parmi les suivantes : Nuage, Feu, Givre, Colline, Pierre ou Tempête.
+      Vous pouvez l’utiliser un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos long.
+    `),
   },
   "large-form": {
     name: "Forme gigantesque",
-    description: `À partir du niveau 5, vous pouvez augmenter votre taille à « Grande » en action bonus si l’espace le permet. La transformation dure 10 minutes ou jusqu’à ce que vous y mettiez fin (aucune action). Pendant ce temps, vous avez l’Avantage aux tests de Force et votre vitesse augmente de 3 mètres. Ce trait est utilisable une fois par repos long.`,
+    description: dedent(`
+      À partir du niveau 5, vous pouvez augmenter votre taille à « Grande » en action bonus si l’espace le permet.
+      La transformation dure 10 minutes ou jusqu’à ce que vous y mettiez fin (aucune action).
+      Pendant ce temps, vous avez l’Avantage aux tests de Force et votre vitesse augmente de 3 mètres.
+      Ce trait est utilisable une fois par repos long.
+    `),
   },
   "powerful-build": {
     name: "Puissante carrure",
-    description: `Vous avez l’Avantage aux jets de sauvegarde pour mettre fin à l’état Agrippé. De plus, vous êtes considéré comme une taille de plus pour calculer votre capacité de port.`,
+    description: dedent(`
+      Vous avez l’Avantage aux jets de sauvegarde pour mettre fin à l’état Agrippé.
+      De plus, vous êtes considéré comme une taille de plus pour calculer votre capacité de port.
+    `),
   },
   brave: {
     name: "Courageux",
@@ -793,7 +905,11 @@ export const speciesTraitsTranslations = {
   },
   "adrenaline-rush": {
     name: "Poussée d’adrénaline",
-    description: `Vous pouvez utiliser l’action Se précipiter comme une action bonus. Lorsque vous le faites, vous gagnez un nombre de points de vie temporaires égal à votre bonus de maîtrise. Vous pouvez utiliser ce trait un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos court ou long.`,
+    description: dedent(`
+      Vous pouvez utiliser l’action Se précipiter comme une action bonus.
+      Lorsque vous le faites, vous gagnez un nombre de points de vie temporaires égal à votre bonus de maîtrise.
+      Vous pouvez utiliser ce trait un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos court ou long.
+    `),
   },
   "relentless-endurance": {
     name: "Endurance inébranlable",
@@ -801,11 +917,18 @@ export const speciesTraitsTranslations = {
   },
   "fiendish-legacy": {
     name: "Héritage fiélon",
-    description: `Vous êtes le réceptacle d’un héritage vous conférant des pouvoirs surnaturels. Choisissez une lignée parmi la table des héritages fiélons. Vous obtenez un sort de niveau 1. Aux niveaux 3 et 5, vous apprenez de nouveaux sorts. Vous pouvez lancer chacun d’eux une fois sans emplacement de sort, puis à nouveau après un repos long. Vous pouvez aussi les lancer avec vos emplacements de sort. Choisissez Intelligence, Sagesse ou Charisme comme caractéristique d’incantation.`,
+    description: dedent(`
+      Vous êtes le réceptacle d’un héritage vous conférant des pouvoirs surnaturels.
+      Choisissez une lignée parmi la table des héritages fiélons.
+      Vous obtenez un sort de niveau 1.
+      Aux niveaux 3 et 5, vous apprenez de nouveaux sorts.
+      Vous pouvez lancer chacun d’eux une fois sans emplacement de sort, puis à nouveau après un repos long.
+      Vous pouvez aussi les lancer avec vos emplacements de sort. Choisissez Intelligence, Sagesse ou Charisme comme caractéristique d’incantation.
+    `),
   },
   "otherworldly-presence": {
     name: "Présence d’un autre monde",
-    description: `Vous connaissez le tour de magie *Thaumaturgie*. Lorsque vous le lancez avec ce trait, il utilise la même caractéristique d’incantation que votre héritage fiélon.`,
+    description: `Vous connaissez le tour de magie Thaumaturgie. Lorsque vous le lancez avec ce trait, il utilise la même caractéristique d’incantation que votre héritage fiélon.`,
   },
 };
 
@@ -875,44 +998,44 @@ export const subspeciesTranslations = {
   // GNOME VARIANTS
   "forest-gnome": {
     name: "Gnome des forêts",
-    description: "Vous connaissez le tour de magie *Illusion mineure*.",
+    description: "Vous connaissez le tour de magie Illusion mineure.",
   },
   "rock-gnome": {
     name: "Gnome des rochers",
     description:
-      "Vous connaissez les tours de magie *Réparation* et *Prestidigitation*. En plus, vous pouvez passer 10 minutes à lancer *Prestidigitation* pour créer un petit appareil mécanique (CA 5, 1 PV), tel qu’un jouet, un allume-feu ou une boîte à musique. Il produit un effet lorsqu’il est activé par une action bonus. Vous choisissez l’effet à la création. Vous pouvez en avoir 3 au maximum, chacun durant 8 heures ou jusqu’à démantèlement.",
+      "Vous connaissez les tours de magie Réparation et Prestidigitation. En plus, vous pouvez passer 10 minutes à lancer Prestidigitation pour créer un petit appareil mécanique (CA 5, 1 PV), tel qu’un jouet, un allume-feu ou une boîte à musique. Il produit un effet lorsqu’il est activé par une action bonus. Vous choisissez l’effet à la création. Vous pouvez en avoir 3 au maximum, chacun durant 8 heures ou jusqu’à démantèlement.",
   },
 
   // GOLIATH (GIANT ANCESTRIES)
   "cloud-giant-goliath": {
-    name: "Ascendance de géant des nuages",
+    name: "Géant des nuages",
     description:
-      "*Bond des nuages* : En action bonus, vous vous téléportez magiquement jusqu’à 9 mètres dans un espace inoccupé que vous voyez.",
+      "Bond des nuages : En action bonus, vous vous téléportez magiquement jusqu’à 9 mètres dans un espace inoccupé que vous voyez.",
   },
   "fire-giant-goliath": {
-    name: "Ascendance de géant du feu",
+    name: "Géant du feu",
     description:
-      "*Brûlure du feu* : Quand vous touchez une cible avec une attaque, vous pouvez lui infliger 1d10 dégâts de feu supplémentaires.",
+      "Brûlure du feu : Quand vous touchez une cible avec une attaque, vous pouvez lui infliger 1d10 dégâts de feu supplémentaires.",
   },
   "frost-giant-goliath": {
-    name: "Ascendance de géant du givre",
+    name: "Géant du givre",
     description:
-      "*Frisson du givre* : Quand vous touchez une cible avec une attaque, vous pouvez lui infliger 1d6 dégâts de froid et réduire sa vitesse de 3 mètres jusqu’à votre prochain tour.",
+      "Frisson du givre : Quand vous touchez une cible avec une attaque, vous pouvez lui infliger 1d6 dégâts de froid et réduire sa vitesse de 3 mètres jusqu’à votre prochain tour.",
   },
   "hill-giant-goliath": {
-    name: "Ascendance de géant des collines",
+    name: "Géant des collines",
     description:
-      "*Chute des collines* : Quand vous touchez une créature de taille Grande ou moins avec une attaque, vous pouvez la faire tomber à terre (état : à terre).",
+      "Chute des collines : Quand vous touchez une créature de taille Grande ou moins avec une attaque, vous pouvez la faire tomber à terre (état : à terre).",
   },
   "stone-giant-goliath": {
-    name: "Ascendance de géant de pierre",
+    name: "Géant de pierre",
     description:
-      "*Endurance de pierre* : Quand vous subissez des dégâts, vous pouvez utiliser une réaction pour lancer 1d12, ajouter votre modificateur de Constitution, et réduire les dégâts de ce total.",
+      "Endurance de pierre : Quand vous subissez des dégâts, vous pouvez utiliser une réaction pour lancer 1d12, ajouter votre modificateur de Constitution, et réduire les dégâts de ce total.",
   },
   "storm-giant-goliath": {
-    name: "Ascendance de géant des tempêtes",
+    name: "Géant des tempêtes",
     description:
-      "*Tonnerre de la tempête* : Quand une créature dans un rayon de 18 mètres vous inflige des dégâts, vous pouvez utiliser une réaction pour lui infliger 1d8 dégâts de tonnerre.",
+      "Tonnerre de la tempête : Quand une créature dans un rayon de 18 mètres vous inflige des dégâts, vous pouvez utiliser une réaction pour lui infliger 1d8 dégâts de tonnerre.",
   },
 
   // HALFLING VARIANTS
