@@ -163,9 +163,7 @@ export const speciesTraitsSeed = [
     speciesId: 2,
     slug: "breath-weapon",
     defaultName: "Breath Weapon",
-    defaultDescription: `When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 + your Constitution modifier and Proficiency Bonus). On a failed save, a creature takes 1d10 damage of the type determined by your Draconic Ancestry trait. On a successful save, a creature takes half as much damage. This damage increases by 1d10 when you reach character levels 5 (2d10), 11 (3d10), and 17 (4d10).
-
-You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.`,
+    defaultDescription: `When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 + your Constitution modifier and Proficiency Bonus). On a failed save, a creature takes 1d10 damage of the type determined by your Draconic Ancestry trait. On a successful save, a creature takes half as much damage. This damage increases by 1d10 when you reach character levels 5 (2d10), 11 (3d10), and 17 (4d10). You can use this Breath Weapon a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.`,
     systemId: SYSTEM_ID_DD5E,
   },
   {
@@ -583,3 +581,107 @@ export const subspeciesSeed = [
     systemId: SYSTEM_ID_DD5E,
   },
 ];
+
+// Translations
+export const speciesTranslations = {
+  aasimar: {
+    en: {
+      name: "Aasimar",
+      description: `Aasimar (pronounced AH-sih-mar) are mortals who carry a spark of the Upper Planes within their souls. Whether descended from an angelic being or infused with celestial power, they can fan that spark to bring light, healing, and heavenly fury. Aasimar can arise among any population of mortals. They resemble their parents, but they live for up to 160 years and have features that hint at their celestial heritage, such as metallic freckles, luminous eyes, a halo, or the skin color of an angel (silver, opalescent green, or coppery red). These features start subtle and become obvious when the aasimar learns to reveal their full celestial nature.`,
+    },
+    fr: {
+      name: "Aasimar",
+      description: `Les Aasimars (prononcé A-si-mar) sont des mortels porteurs d'une étincelle des Plans Supérieurs dans leur âme. Qu'ils descendent d’un être angélique ou qu’ils aient été imprégnés d’un pouvoir céleste, ils peuvent attiser cette étincelle pour apporter lumière, guérison et fureur divine. Un Aasimar peut naître dans n’importe quelle population mortelle. Il ressemble à ses parents, mais vit jusqu’à 160 ans et présente des traits célestes tels que des taches de rousseur métalliques, des yeux lumineux, un halo ou une peau argentée, vert opalescent ou rouge cuivré. Ces marques sont d’abord discrètes mais deviennent évidentes lorsque l’Aasimar embrasse pleinement sa nature céleste.`,
+    },
+  },
+  dragonborn: {
+    en: {
+      name: "Dragonborn",
+      description: `The ancestors of dragonborn hatched from the eggs of chromatic and metallic dragons. One story holds that these eggs were blessed by the dragon gods Bahamut and Tiamat, who wanted to populate the multiverse with people created in their image. Another story claims that dragons created the first dragonborn without the gods’ blessings. Whatever their origin, dragonborn have made homes for themselves on the Material Plane. Dragonborn look like wingless, bipedal dragons—scaly, bright-eyed, and thick-boned with horns on their heads—and their coloration and other features are reminiscent of their draconic ancestors.`,
+    },
+    fr: {
+      name: "Drakéide",
+      description: `Les ancêtres des drakéides ont éclos d’œufs de dragons chromatiques ou métalliques. Certains récits racontent que ces œufs furent bénis par Bahamut et Tiamat pour peupler le multivers à leur image. D’autres prétendent que les dragons eux-mêmes ont créé les premiers drakéides, sans intervention divine. Quelles que soient leurs origines, les drakéides se sont installés sur le Plan Matériel. Ils ressemblent à des dragons bipèdes et sans ailes : écailles, yeux vifs, ossature robuste et cornes leur donnent une apparence draconique fidèle à leurs ancêtres.`,
+    },
+  },
+  dwarf: {
+    en: {
+      name: "Dwarf",
+      description: `Dwarves are a race of people who live in the mountains and underground. They are known for their strength, resilience, and craftsmanship. Dwarves are typically short in stature, with a stocky build and a thick beard. They have a strong sense of community and pride, and they are known for their loyalty to their friends and family. Dwarves are also known for their love of drink and food, and they are often found in taverns and other places where they can enjoy a good meal and a drink.`,
+    },
+    fr: {
+      name: "Nain",
+      description: `Les nains furent sculptés de la terre aux temps anciens par un dieu de la forge, connu sous divers noms tels que Moradin ou Reorx. Ce dieu leur donna une affinité avec la pierre, le métal et la vie souterraine, ainsi qu’une grande résilience. Leur espérance de vie avoisine les 350 ans. Petits, trapus, souvent barbus, les nains ont bâti des cités fortifiées dans les montagnes et sous terre. Leurs légendes les plus anciennes racontent des conflits avec des géants et les horreurs de l’Outreterre. Dans certaines régions, on distingue les nains des collines et des montagnes selon leurs origines géographiques.`,
+    },
+  },
+  elf: {
+    en: {
+      name: "Elf",
+      description: `Created by the god Corellon, the first elves could change their forms at will. They lost this ability when Corellon cursed them for plotting with the deity Lolth, who tried and failed to usurp Corellon’s dominion. When Lolth was cast into the Abyss, most elves renounced her and earned Corellon’s forgiveness, but that which Corellon had taken from them was lost forever. No longer able to shape-shift at will, the elves retreated to the Feywild, where their sorrow was deepened by that plane’s influence. Over time, curiosity led many of them to explore other planes of existence, including worlds in the Material Plane. Elves have pointed ears and lack facial and body hair. They live for around 750 years, and they don’t sleep but instead enter a trance when they need to rest. In that state, they remain aware of their surroundings while immersing themselves in memories and meditations. An environment subtly transforms elves after they inhabit it for a millennium or more, and it grants them certain kinds of magic. Drow, high elves, and wood elves are examples of elves who have been transformed thus.`,
+    },
+    fr: {
+      name: "Elfe",
+      description: `Créés par le dieu Corellon, les premiers elfes pouvaient changer de forme à volonté. Ils perdirent ce don après avoir conspiré avec la déesse Lolth. Lorsque cette dernière fut bannie dans l’Abysse, la plupart des elfes la rejetèrent et furent pardonnés, mais leur pouvoir originel resta perdu. Retirés dans le Feywild, ils y furent façonnés par la magie de ce plan. Curieux, ils finirent par explorer d'autres mondes, notamment sur le Plan Matériel. Les elfes ont les oreilles pointues, ne possèdent ni poils ni barbe, vivent environ 750 ans et méditent plutôt que de dormir. Leur environnement les transforme subtilement après plusieurs siècles, donnant naissance à des variantes telles que les drows, hauts-elfes et elfes des bois.`,
+    },
+  },
+  gnome: {
+    en: {
+      name: "Gnome",
+      description: `Gnomes are magical folk created by gods of invention, illusions, and life underground. The earliest gnomes were seldom seen by other folk due to the gnomes’ secretive nature and their propensity for living in forests and burrows. What they lacked in size, they made up for in cleverness. They confounded predators with traps and labyrinthine tunnels. They also learned magic from gods like Garl Glittergold, Baervan Wildwanderer, and Baravar Cloakshadow, who visited them in disguise. That magic eventually created the lineages of forest gnomes and rock gnomes. Gnomes are petite folk with big eyes and pointed ears, who live around 425 years. Many gnomes like the feeling of a roof over their head, even if that “roof” is nothing more than a hat.`,
+    },
+    fr: {
+      name: "Gnome",
+      description: `Les gnomes sont des êtres magiques créés par des dieux de l’invention, de l’illusion et de la vie souterraine. Discrets et reclus, ils vivaient dans des forêts et des terriers, évitant les autres peuples. Leur petite taille était compensée par une grande intelligence. Ils piégeaient leurs prédateurs et creusaient des galeries complexes. Ils apprirent la magie auprès de dieux comme Garl Brilledor et Baervan le Vagabond. Cette magie donna naissance à deux lignées : les gnomes des forêts et les gnomes des rochers. Les gnomes sont petits, avec de grands yeux et des oreilles pointues, et vivent environ 425 ans. Beaucoup aiment avoir un toit au-dessus de la tête, même si ce toit est parfois un simple chapeau.`,
+    },
+  },
+  goliath: {
+    en: {
+      name: "Goliath",
+      description: `Towering over most folk, goliaths are distant descendants of giants. Each goliath bears the favors of the first giants—favors that manifest in various supernatural boons, including the ability to quickly grow and temporarily approach the height of goliaths' gigantic kin. Goliaths have physical characteristics that are reminiscent of the giants in their family lines. For example, some goliaths look like stone giants, while others resemble fire giants. Whatever giants they count as kin, goliaths have forged their own path in the multiverse—unencumbered by the internecine conflicts that have ravaged giantkind for ages—and seek heights above those reached by their ancestors.`,
+    },
+    fr: {
+      name: "Goliath",
+      description: `Les goliaths, plus grands que la plupart des peuples, sont les lointains descendants des géants. Ils portent les faveurs de leurs ancêtres, qui se manifestent par des dons surnaturels comme la capacité de grandir temporairement jusqu’à approcher la taille de leurs aïeux. Leurs traits varient selon leur ascendance : certains rappellent les géants de pierre, d’autres les géants de feu. Malgré ce lien, les goliaths ont tracé leur propre voie dans le multivers, loin des querelles qui déchirent les géants, et cherchent à dépasser les exploits de leurs ancêtres.`,
+    },
+  },
+  halfling: {
+    en: {
+      name: "Halfling",
+      description: `Cherished and guided by gods who value life, home, and hearth, halflings gravitate toward bucolic havens where family and community help shape their lives. That said, many halflings possess a brave and adventurous spirit that leads them on journeys of discovery, affording them the chance to explore a bigger world and make new friends along the way. Their size—similar to that of a human child—helps them pass through crowds unnoticed and slip through tight spaces. Anyone who has spent time around halflings, particularly halfling adventurers, has likely witnessed the storied "luck of the halflings" in action. When a halfling is in mortal danger, an unseen force seems to intervene on the halfling's behalf. Many halflings believe in the power of luck, and they attribute their unusual gift to one or more of their benevolent gods, including Yondalla, Brandobaris, and Charmalaine. The same gift might contribute to their robust life spans (about 150 years). Halfling communities come in all varieties. For every sequestered shire tucked away in an unspoiled part of the world, there’s a crime syndicate like the Boromar Clan in the Eberron setting or a territorial mob of halflings like those in the Dark Sun setting.`,
+    },
+    fr: {
+      name: "Halfelin",
+      description: `Guidés par des dieux protecteurs de la vie et du foyer, les halfelins vivent dans des communautés paisibles où famille et entraide sont centrales. Pourtant, leur esprit curieux pousse certains à explorer le vaste monde. De la taille d’un enfant humain, ils se faufilent aisément dans la foule ou les endroits étroits. Leur légendaire chance semble leur sauver la vie dans les pires situations, un don qu’ils attribuent à leurs divinités comme Yondalla ou Brandobaris. Cette bénédiction pourrait aussi expliquer leur longévité, avoisinant les 150 ans. Leurs sociétés sont variées : des villages champêtres aux réseaux criminels comme le clan Boromar.`,
+    },
+  },
+  human: {
+    en: {
+      name: "Human",
+      description: `Found throughout the multiverse, humans are as varied as they are numerous, and they endeavor to achieve as much as they can in the years they are given. Their ambition and resourcefulness are commended, respected, and feared on many worlds. Humans are as diverse in appearance as the people of Earth, and they have many gods. Scholars dispute the origin of humanity, but one of the earliest known human gatherings is said to have occurred in Sigil, the torus-shaped city at the center of the multiverse and the place where the Common language was born. From there, humans could have spread to every part of the multiverse, bringing the City of Doors’ cosmopolitanism with them.`,
+    },
+    fr: {
+      name: "Humain",
+      description: `Présents dans tout le multivers, les humains sont d’une diversité remarquable. Leur ambition, leur ingéniosité et leur volonté d’aller toujours plus loin les rendent admirés ou redoutés. Leur apparence varie tout autant que celle des peuples de la Terre. Leur origine exacte est disputée, mais certains érudits situent les premiers regroupements humains à Sigil, la Cité des Portes, où naquit la langue commune. Depuis, les humains ont essaimé partout, apportant avec eux une culture cosmopolite.`,
+    },
+  },
+  orc: {
+    en: {
+      name: "Orc",
+      description: `Orcs trace their creation to Gruumsh, a powerful god who roamed the wide open spaces of the Material Plane. Gruumsh equipped his children with gifts to help them wander great plains, vast caverns, and churning seas and to face the monsters that lurk there. Even when they turn their devotion to other gods, orcs retain Gruumsh’s gifts: endurance, determination, and the ability to see in darkness. Orcs are, on average, tall and broad. They have gray skin, ears that are sharply pointed, and prominent lower canines that resemble small tusks. Orc youths on some worlds are told about their ancestors' great travels and travails. Inspired by those tales, many of those orcs wonder when Gruumsh will call on them to match the heroic deeds of old and if they will prove worthy of his favor. Other orcs are happy to leave old tales in the past and find their own way.`,
+    },
+    fr: {
+      name: "Orque",
+      description: `Les orques furent créés par Gruumsh, un puissant dieu errant à travers le Plan Matériel. Il leur donna la force de survivre aux vastes étendues sauvages et aux monstres qui s’y cachent. Même lorsqu’ils vénèrent d’autres dieux, les orques conservent les dons de Gruumsh : endurance, ténacité et vision nocturne. De taille imposante, à la peau grise, avec des oreilles pointues et des crocs proéminents, ils sont marqués par leur héritage. Nombre d’orques grandissent en écoutant les exploits de leurs ancêtres, rêvant de les égaler. D’autres préfèrent se forger leur propre voie, libérés du poids des traditions.`,
+    },
+  },
+  tiefling: {
+    en: {
+      name: "Tiefling",
+      description: `Tieflings are either born in the Lower Planes or have fiendish ancestors who originated there. A tiefling (pronounced TEE-fling) is linked by blood to a devil, a demon, or some other Fiend. This connection to the Lower Planes is the tiefling’s fiendish legacy, which comes with the promise of power yet has no effect on the tiefling’s moral outlook. A tiefling chooses whether to embrace or lament their fiendish legacy. The three legacies are Abyssal, Chthonic, and Infernal.`,
+    },
+    fr: {
+      name: "Tieffelin",
+      description: `Les tieffelins sont nés dans les Plans Inférieurs ou descendent d’êtres fiélons comme des démons ou des diables. Ce lien de sang leur confère un legs infernal : une promesse de puissance, mais aussi une apparence souvent stigmatisée. Ils peuvent choisir d’embrasser ou de rejeter cet héritage. Les trois principales lignées sont l’Abyssale, la Chthonienne et l’Infernale, chacune liée à une forme de pouvoir des Plans Inférieurs.`,
+    },
+  },
+};
