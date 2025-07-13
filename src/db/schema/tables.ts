@@ -28,6 +28,7 @@ export { species } from "./tables/species";
 export { speciesTraits } from "./tables/species-traits";
 export { spells } from "./tables/spells";
 export { subclasses } from "./tables/subclasses";
+export { subspecies } from "./tables/subspecies";
 export { systems } from "./tables/systems";
 export { tools } from "./tables/tools";
 export { toolsCraftLootables } from "./tables/tools-craft-lootables";

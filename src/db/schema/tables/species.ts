@@ -5,8 +5,8 @@ import {
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
-import { systems } from "./systems";
 import { speciesSizeEnum } from "../enums";
+import { systems } from "./systems";
 
 export const species = pgTable("species", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -19,7 +19,6 @@ export const species = pgTable("species", {
   systemId: integer("system_id")
     .notNull()
     .references(() => systems.id),
-  variant: text("variant"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

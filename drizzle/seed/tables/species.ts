@@ -9,7 +9,6 @@ export const speciesSeed = [
     speed: 30,
     size: "medium",
     systemId: SYSTEM_ID_DD5E,
-    variant: null,
   },
   {
     slug: "dragonborn",
@@ -19,7 +18,6 @@ export const speciesSeed = [
     speed: 30,
     size: "medium",
     systemId: SYSTEM_ID_DD5E,
-    variant: null,
   },
   {
     id: 3,
@@ -30,17 +28,33 @@ export const speciesSeed = [
     speed: 30,
     size: "medium",
     systemId: SYSTEM_ID_DD5E,
-    variant: null,
   },
   {
     slug: "elf",
     defaultName: "Elf",
     defaultDescription: `Created by the god Corellon, the first elves could change their forms at will. They lost this ability when Corellon cursed them for plotting with the deity Lolth, who tried and failed to usurp Corellon’s dominion. When Lolth was cast into the Abyss, most elves renounced her and earned Corellon’s forgiveness, but that which Corellon had taken from them was lost forever. No longer able to shape-shift at will, the elves retreated to the Feywild, where their sorrow was deepened by that plane’s influence. Over time, curiosity led many of them to explore other planes of existence, including worlds in the Material Plane. Elves have pointed ears and lack facial and body hair. They live for around 750 years, and they don’t sleep but instead enter a trance when they need to rest. In that state, they remain aware of their surroundings while immersing themselves in memories and meditations. An environment subtly transforms elves after they inhabit it for a millennium or more, and it grants them certain kinds of magic. Drow, high elves, and wood elves are examples of elves who have been transformed thus.`,
-    hasDarkvision: false,
+    hasDarkvision: true,
     speed: 30,
     size: "medium",
     systemId: SYSTEM_ID_DD5E,
-    variant: null,
+  },
+  {
+    slug: "gnome",
+    defaultName: "Gnome",
+    defaultDescription: `Gnomes are magical folk created by gods of invention, illusions, and life underground. The earliest gnomes were seldom seen by other folk due to the gnomes’ secretive nature and their propensity for living in forests and burrows. What they lacked in size, they made up for in cleverness. They confounded predators with traps and labyrinthine tunnels. They also learned magic from gods like Garl Glittergold, Baervan Wildwanderer, and Baravar Cloakshadow, who visited them in disguise. That magic eventually created the lineages of forest gnomes and rock gnomes. Gnomes are petite folk with big eyes and pointed ears, who live around 425 years. Many gnomes like the feeling of a roof over their head, even if that “roof” is nothing more than a hat.`,
+    hasDarkvision: true,
+    speed: 30,
+    size: "small",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "goliath",
+    defaultName: "Goliath",
+    defaultDescription: `Towering over most folk, goliaths are distant descendants of giants. Each goliath bears the favors of the first giants—favors that manifest in various supernatural boons, including the ability to quickly grow and temporarily approach the height of goliaths' gigantic kin. Goliaths have physical characteristics that are reminiscent of the giants in their family lines. For example, some goliaths look like stone giants, while others resemble fire giants. Whatever giants they count as kin, goliaths have forged their own path in the multiverse—unencumbered by the internecine conflicts that have ravaged giantkind for ages—and seek heights above those reached by their ancestors.`,
+    hasDarkvision: false,
+    speed: 35,
+    size: "medium",
+    systemId: SYSTEM_ID_DD5E,
   },
 ];
 
@@ -163,9 +177,183 @@ You can use this Breath Weapon a number of times equal to your Proficiency Bonus
     speciesId: 3,
     slug: "stonecunning",
     defaultName: "Stonecunning",
-    defaultDescription: `As a Bonus Action, you gain Tremorsense with a range of 60 feet for 10 minutes. You must be on a stone surface or touching a stone surface to use this Tremorsense. The stone can be natural or worked.
+    defaultDescription: `As a Bonus Action, you gain Tremorsense with a range of 60 feet for 10 minutes. You must be on a stone surface or touching a stone surface to use this Tremorsense. The stone can be natural or worked. You can use this Bonus Action a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    speciesId: 4,
+    slug: "darkvision",
+    defaultName: "Darkvision",
+    defaultDescription: `You have Darkvision with a range of 60 feet.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    speciesId: 4,
+    slug: "elven-lineage",
+    defaultName: "Elven Lineage",
+    defaultDescription: `You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the lineage).`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    speciesId: 4,
+    slug: "fey-ancestry",
+    defaultName: "Fey Ancestry",
+    defaultDescription: `You have Advantage on saving throws you make to avoid or end the Charmed condition.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    speciesId: 4,
+    slug: "keen-senses",
+    defaultName: "Keen Senses",
+    defaultDescription: `You have proficiency in the Insight, Perception, or Survival skill.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    speciesId: 4,
+    slug: "trance",
+    defaultName: "Trance",
+    defaultDescription: `You don’t need to sleep, and magic can’t put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    speciesId: 5,
+    slug: "darkvision",
+    defaultName: "Darkvision",
+    defaultDescription: `You have Darkvision with a range of 60 feet.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    speciesId: 5,
+    slug: "gnomish-cunning",
+    defaultName: "Gnomish Cunning",
+    defaultDescription: `You have Advantage on Intelligence, Wisdom, and Charisma saving throws.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    speciesId: 5,
+    slug: "gnomish-lineage",
+    defaultName: "Gnomish Lineage",
+    defaultDescription: `You are part of a lineage that grants you supernatural abilities. Choose one of the following options: Forest Gnome or Rock Gnome.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+];
 
-You can use this Bonus Action a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.`,
+export const subspeciesSeed = [
+  // === DRAGONBORN ANCESTRIES ===
+  {
+    slug: "black-dragonborn",
+    speciesId: 2,
+    defaultName: "Black Dragonborn",
+    defaultDescription:
+      "Descended from black dragons. Breath Weapon & Resistance: Acid.",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "blue-dragonborn",
+    speciesId: 2,
+    defaultName: "Blue Dragonborn",
+    defaultDescription:
+      "Descended from blue dragons. Breath Weapon & Resistance: Lightning.",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "brass-dragonborn",
+    speciesId: 2,
+    defaultName: "Brass Dragonborn",
+    defaultDescription:
+      "Descended from brass dragons. Breath Weapon & Resistance: Fire.",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "bronze-dragonborn",
+    speciesId: 2,
+    defaultName: "Bronze Dragonborn",
+    defaultDescription:
+      "Descended from bronze dragons. Breath Weapon & Resistance: Lightning.",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "copper-dragonborn",
+    speciesId: 2,
+    defaultName: "Copper Dragonborn",
+    defaultDescription:
+      "Descended from copper dragons. Breath Weapon & Resistance: Acid.",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "gold-dragonborn",
+    speciesId: 2,
+    defaultName: "Gold Dragonborn",
+    defaultDescription:
+      "Descended from gold dragons. Breath Weapon & Resistance: Fire.",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "green-dragonborn",
+    speciesId: 2,
+    defaultName: "Green Dragonborn",
+    defaultDescription:
+      "Descended from green dragons. Breath Weapon & Resistance: Poison.",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "red-dragonborn",
+    speciesId: 2,
+    defaultName: "Red Dragonborn",
+    defaultDescription:
+      "Descended from red dragons. Breath Weapon & Resistance: Fire.",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "silver-dragonborn",
+    speciesId: 2,
+    defaultName: "Silver Dragonborn",
+    defaultDescription:
+      "Descended from silver dragons. Breath Weapon & Resistance: Cold.",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "white-dragonborn",
+    speciesId: 2,
+    defaultName: "White Dragonborn",
+    defaultDescription:
+      "Descended from white dragons. Breath Weapon & Resistance: Cold.",
+    systemId: SYSTEM_ID_DD5E,
+  },
+  // === ELF VARIANTS ===
+  {
+    slug: "drow",
+    speciesId: 4,
+    defaultName: "Drow",
+    defaultDescription: `Drow typically dwell in the Underdark and have been shaped by it. Some drow individuals and societies avoid the Underdark altogether yet carry its magic. In the Eberron setting, for example, drow dwell in rainforests and cyclopean ruins on the continent of Xen’drik.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "high-elf",
+    speciesId: 4,
+    defaultName: "High Elf",
+    defaultDescription: `High elves have been infused with the magic of crossings between the Feywild and the Material Plane. On some worlds, high elves refer to themselves by other names. For example, they call themselves sun or moon elves in the Forgotten Realms setting, Silvanesti and Qualinesti in the Dragonlance setting, and Aereni in the Eberron setting.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "wood-elf",
+    speciesId: 4,
+    defaultName: "Wood Elf",
+    defaultDescription: `Wood elves carry the magic of primeval forests within themselves. They are known by many other names, including wild elves, green elves, and forest elves. Grugach are reclusive wood elves of the Greyhawk setting, while the Kagonesti and the Tairnadal are wood elves of the Dragonlance and Eberron settings, respectively.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "forest-gnome",
+    speciesId: 5, // assuming gnome is 5th species
+    defaultName: "Forest Gnome",
+    defaultDescription: `You know the Minor Illusion cantrip. You also always have the Speak with Animals spell prepared. You can cast it without a spell slot a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest. You can also use any spell slots you have to cast the spell.`,
+    systemId: SYSTEM_ID_DD5E,
+  },
+  {
+    slug: "rock-gnome",
+    speciesId: 5,
+    defaultName: "Rock Gnome",
+    defaultDescription: `You know the Mending and Prestidigitation cantrips. In addition, you can spend 10 minutes casting Prestidigitation to create a Tiny clockwork device (AC 5, 1 HP), such as a toy, fire starter, or music box. The device produces an effect whenever you or another creature takes a Bonus Action to activate it with a touch. If the chosen effect has options, you choose one when you create the device. You can have up to 3 such devices at once, and each falls apart 8 hours after its creation or when you dismantle it with a Utilize action.`,
     systemId: SYSTEM_ID_DD5E,
   },
 ];
