@@ -1,10 +1,14 @@
+import dedent from "ts-dedent";
 import { SYSTEM_ID_DD5E } from "../constants";
 
 export const speciesSeed = [
   {
     slug: "aasimar",
     defaultName: "Aasimar",
-    defaultDescription: `Aasimar (pronounced AH-sih-mar) are mortals who carry a spark of the Upper Planes within their souls. Whether descended from an angelic being or infused with celestial power, they can fan that spark to bring light, healing, and heavenly fury. Aasimar can arise among any population of mortals. They resemble their parents, but they live for up to 160 years and have features that hint at their celestial heritage, such as metallic freckles, luminous eyes, a halo, or the skin color of an angel (silver, opalescent green, or coppery red). These features start subtle and become obvious when the aasimar learns to reveal their full celestial nature.`,
+    defaultDescription: dedent(`
+      Aasimar (pronounced AH-sih-mar) are mortals who carry a spark of the Upper Planes within their souls. Whether descended from an angelic being or infused with celestial power, they can fan that spark to bring light, healing, and heavenly fury.
+      Aasimar can arise among any population of mortals. They resemble their parents, but they live for up to 160 years and have features that hint at their celestial heritage, such as metallic freckles, luminous eyes, a halo, or the skin color of an angel (silver, opalescent green, or coppery red). These features start subtle and become obvious when the aasimar learns to reveal their full celestial nature.
+      `),
     hasDarkvision: true,
     speed: 30,
     size: "medium",
@@ -13,7 +17,11 @@ export const speciesSeed = [
   {
     slug: "dragonborn",
     defaultName: "Dragonborn",
-    defaultDescription: `The ancestors of dragonborn hatched from the eggs of chromatic and metallic dragons. One story holds that these eggs were blessed by the dragon gods Bahamut and Tiamat, who wanted to populate the multiverse with people created in their image. Another story claims that dragons created the first dragonborn without the gods’ blessings. Whatever their origin, dragonborn have made homes for themselves on the Material Plane. Dragonborn look like wingless, bipedal dragons—scaly, bright-eyed, and thick-boned with horns on their heads—and their coloration and other features are reminiscent of their draconic ancestors.`,
+    defaultDescription: dedent(`
+      The ancestors of dragonborn hatched from the eggs of chromatic and metallic dragons. One story holds that these eggs were blessed by the dragon gods Bahamut and Tiamat, who wanted to populate the multiverse with people created in their image.
+      Another story claims that dragons created the first dragonborn without the gods’ blessings. Whatever their origin, dragonborn have made homes for themselves on the Material Plane.
+      Dragonborn look like wingless, bipedal dragons—scaly, bright-eyed, and thick-boned with horns on their heads—and their coloration and other features are reminiscent of their draconic ancestors.
+      `),
     hasDarkvision: true,
     speed: 30,
     size: "medium",
@@ -23,7 +31,14 @@ export const speciesSeed = [
     id: 3,
     slug: "dwarf",
     defaultName: "Dwarf",
-    defaultDescription: `Dwarves were raised from the earth in the elder days by a deity of the forge. Called by various names on different worlds—Moradin, Reorx, and others—that god gave dwarves an affinity for stone and metal and for living underground. The god also made them resilient like the mountains, with a life span of about 350 years. Squat and often bearded, the original dwarves carved cities and strongholds into mountainsides and under the earth. Their oldest legends tell of conflicts with the monsters of mountaintops and the Underdark, whether those monsters were towering giants or subterranean horrors. Inspired by those tales, dwarves of any culture often sing of valorous deeds—especially of the little overcoming the mighty. On some worlds in the multiverse, the first settlements of dwarves were built in hills or mountains, and the families who trace their ancestry to those settlements call themselves hill dwarves or mountain dwarves, respectively. The Greyhawk and Dragonlance settings have such communities.`,
+    defaultDescription: dedent(`
+      Dwarves were raised from the earth in the elder days by a deity of the forge. Called by various names on different worlds—Moradin, Reorx, and others—that god gave dwarves an affinity for stone and metal and for living underground.
+      The god also made them resilient like the mountains, with a life span of about 350 years. Squat and often bearded, the original dwarves carved cities and strongholds into mountainsides and under the earth.
+      Their oldest legends tell of conflicts with the monsters of mountaintops and the Underdark, whether those monsters were towering giants or subterranean horrors.
+      Inspired by those tales, dwarves of any culture often sing of valorous deeds—especially of the little overcoming the mighty.
+      On some worlds in the multiverse, the first settlements of dwarves were built in hills or mountains, and the families who trace their ancestry to those settlements call themselves hill dwarves or mountain dwarves, respectively.
+      The Greyhawk and Dragonlance settings have such communities.
+      `),
     hasDarkvision: true,
     speed: 30,
     size: "medium",
@@ -32,7 +47,11 @@ export const speciesSeed = [
   {
     slug: "elf",
     defaultName: "Elf",
-    defaultDescription: `Created by the god Corellon, the first elves could change their forms at will. They lost this ability when Corellon cursed them for plotting with the deity Lolth, who tried and failed to usurp Corellon’s dominion. When Lolth was cast into the Abyss, most elves renounced her and earned Corellon’s forgiveness, but that which Corellon had taken from them was lost forever. No longer able to shape-shift at will, the elves retreated to the Feywild, where their sorrow was deepened by that plane’s influence. Over time, curiosity led many of them to explore other planes of existence, including worlds in the Material Plane. Elves have pointed ears and lack facial and body hair. They live for around 750 years, and they don’t sleep but instead enter a trance when they need to rest. In that state, they remain aware of their surroundings while immersing themselves in memories and meditations. An environment subtly transforms elves after they inhabit it for a millennium or more, and it grants them certain kinds of magic. Drow, high elves, and wood elves are examples of elves who have been transformed thus.`,
+    defaultDescription: dedent(`
+      Created by the god Corellon, the first elves could change their forms at will. They lost this ability when Corellon cursed them for plotting with the deity Lolth, who tried and failed to usurp Corellon’s dominion.
+      When Lolth was cast into the Abyss, most elves renounced her and earned Corellon’s forgiveness, but that which Corellon had taken from them was lost forever. No longer able to shape-shift at will, the elves retreated to the Feywild, where their sorrow was deepened by that plane’s influence. Over time, curiosity led many of them to explore other planes of existence, including worlds in the Material Plane.
+      Elves have pointed ears and lack facial and body hair. They live for around 750 years, and they don’t sleep but instead enter a trance when they need to rest. In that state, they remain aware of their surroundings while immersing themselves in memories and meditations. An environment subtly transforms elves after they inhabit it for a millennium or more, and it grants them certain kinds of magic. Drow, high elves, and wood elves are examples of elves who have been transformed thus.
+      `),
     hasDarkvision: true,
     speed: 30,
     size: "medium",
@@ -41,7 +60,11 @@ export const speciesSeed = [
   {
     slug: "gnome",
     defaultName: "Gnome",
-    defaultDescription: `Gnomes are magical folk created by gods of invention, illusions, and life underground. The earliest gnomes were seldom seen by other folk due to the gnomes’ secretive nature and their propensity for living in forests and burrows. What they lacked in size, they made up for in cleverness. They confounded predators with traps and labyrinthine tunnels. They also learned magic from gods like Garl Glittergold, Baervan Wildwanderer, and Baravar Cloakshadow, who visited them in disguise. That magic eventually created the lineages of forest gnomes and rock gnomes. Gnomes are petite folk with big eyes and pointed ears, who live around 425 years. Many gnomes like the feeling of a roof over their head, even if that “roof” is nothing more than a hat.`,
+    defaultDescription: dedent(`
+      Gnomes are magical folk created by gods of invention, illusions, and life underground. The earliest gnomes were seldom seen by other folk due to the gnomes’ secretive nature and their propensity for living in forests and burrows.
+      What they lacked in size, they made up for in cleverness. They confounded predators with traps and labyrinthine tunnels. They also learned magic from gods like Garl Glittergold, Baervan Wildwanderer, and Baravar Cloakshadow, who visited them in disguise.
+      That magic eventually created the lineages of forest gnomes and rock gnomes. Gnomes are petite folk with big eyes and pointed ears, who live around 425 years. Many gnomes like the feeling of a roof over their head, even if that “roof” is nothing more than a hat.
+      `),
     hasDarkvision: true,
     speed: 30,
     size: "small",
@@ -50,7 +73,11 @@ export const speciesSeed = [
   {
     slug: "goliath",
     defaultName: "Goliath",
-    defaultDescription: `Towering over most folk, goliaths are distant descendants of giants. Each goliath bears the favors of the first giants—favors that manifest in various supernatural boons, including the ability to quickly grow and temporarily approach the height of goliaths' gigantic kin. Goliaths have physical characteristics that are reminiscent of the giants in their family lines. For example, some goliaths look like stone giants, while others resemble fire giants. Whatever giants they count as kin, goliaths have forged their own path in the multiverse—unencumbered by the internecine conflicts that have ravaged giantkind for ages—and seek heights above those reached by their ancestors.`,
+    defaultDescription: dedent(`
+      Towering over most folk, goliaths are distant descendants of giants. Each goliath bears the favors of the first giants—favors that manifest in various supernatural boons, including the ability to quickly grow and temporarily approach the height of goliaths' gigantic kin.
+      Goliaths have physical characteristics that are reminiscent of the giants in their family lines. For example, some goliaths look like stone giants, while others resemble fire giants.
+      Whatever giants they count as kin, goliaths have forged their own path in the multiverse—unencumbered by the internecine conflicts that have ravaged giantkind for ages—and seek heights above those reached by their ancestors.
+      `),
     hasDarkvision: false,
     speed: 35,
     size: "medium",
@@ -59,7 +86,11 @@ export const speciesSeed = [
   {
     slug: "halfling",
     defaultName: "Halfling",
-    defaultDescription: `Cherished and guided by gods who value life, home, and hearth, halflings gravitate toward bucolic havens where family and community help shape their lives. That said, many halflings possess a brave and adventurous spirit that leads them on journeys of discovery, affording them the chance to explore a bigger world and make new friends along the way. Their size—similar to that of a human child—helps them pass through crowds unnoticed and slip through tight spaces. Anyone who has spent time around halflings, particularly halfling adventurers, has likely witnessed the storied "luck of the halflings" in action. When a halfling is in mortal danger, an unseen force seems to intervene on the halfling's behalf. Many halflings believe in the power of luck, and they attribute their unusual gift to one or more of their benevolent gods, including Yondalla, Brandobaris, and Charmalaine. The same gift might contribute to their robust life spans (about 150 years). Halfling communities come in all varieties. For every sequestered shire tucked away in an unspoiled part of the world, there’s a crime syndicate like the Boromar Clan in the Eberron setting or a territorial mob of halflings like those in the Dark Sun setting.`,
+    defaultDescription: dedent(`
+      Cherished and guided by gods who value life, home, and hearth, halflings gravitate toward bucolic havens where family and community help shape their lives. That said, many halflings possess a brave and adventurous spirit that leads them on journeys of discovery, affording them the chance to explore a bigger world and make new friends along the way.
+      Their size—similar to that of a human child—helps them pass through crowds unnoticed and slip through tight spaces. Anyone who has spent time around halflings, particularly halfling adventurers, has likely witnessed the storied "luck of the halflings" in action. When a halfling is in mortal danger, an unseen force seems to intervene on the halfling's behalf. Many halflings believe in the power of luck, and they attribute their unusual gift to one or more of their benevolent gods, including Yondalla, Brandobaris, and Charmalaine. The same gift might contribute to their robust life spans (about 150 years).
+      Halfling communities come in all varieties. For every sequestered shire tucked away in an unspoiled part of the world, there’s a crime syndicate like the Boromar Clan in the Eberron setting or a territorial mob of halflings like those in the Dark Sun setting.
+      `),
     hasDarkvision: false,
     speed: 30,
     size: "small",
@@ -69,7 +100,10 @@ export const speciesSeed = [
   {
     slug: "human",
     defaultName: "Human",
-    defaultDescription: `Found throughout the multiverse, humans are as varied as they are numerous, and they endeavor to achieve as much as they can in the years they are given. Their ambition and resourcefulness are commended, respected, and feared on many worlds. Humans are as diverse in appearance as the people of Earth, and they have many gods. Scholars dispute the origin of humanity, but one of the earliest known human gatherings is said to have occurred in Sigil, the torus-shaped city at the center of the multiverse and the place where the Common language was born. From there, humans could have spread to every part of the multiverse, bringing the City of Doors’ cosmopolitanism with them.`,
+    defaultDescription: dedent(`
+      Found throughout the multiverse, humans are as varied as they are numerous, and they endeavor to achieve as much as they can in the years they are given. Their ambition and resourcefulness are commended, respected, and feared on many worlds.
+      Humans are as diverse in appearance as the people of Earth, and they have many gods. Scholars dispute the origin of humanity, but one of the earliest known human gatherings is said to have occurred in Sigil, the torus-shaped city at the center of the multiverse and the place where the Common language was born. From there, humans could have spread to every part of the multiverse, bringing the City of Doors’ cosmopolitanism with them.
+      `),
     hasDarkvision: false,
     speed: 30,
     size: "medium",
@@ -78,7 +112,10 @@ export const speciesSeed = [
   {
     slug: "orc",
     defaultName: "Orc",
-    defaultDescription: `Orcs trace their creation to Gruumsh, a powerful god who roamed the wide open spaces of the Material Plane. Gruumsh equipped his children with gifts to help them wander great plains, vast caverns, and churning seas and to face the monsters that lurk there. Even when they turn their devotion to other gods, orcs retain Gruumsh’s gifts: endurance, determination, and the ability to see in darkness. Orcs are, on average, tall and broad. They have gray skin, ears that are sharply pointed, and prominent lower canines that resemble small tusks. Orc youths on some worlds are told about their ancestors' great travels and travails. Inspired by those tales, many of those orcs wonder when Gruumsh will call on them to match the heroic deeds of old and if they will prove worthy of his favor. Other orcs are happy to leave old tales in the past and find their own way.`,
+    defaultDescription: dedent(`
+      Orcs trace their creation to Gruumsh, a powerful god who roamed the wide open spaces of the Material Plane. Gruumsh equipped his children with gifts to help them wander great plains, vast caverns, and churning seas and to face the monsters that lurk there. Even when they turn their devotion to other gods, orcs retain Gruumsh’s gifts: endurance, determination, and the ability to see in darkness.
+      Orcs are, on average, tall and broad. They have gray skin, ears that are sharply pointed, and prominent lower canines that resemble small tusks. Orc youths on some worlds are told about their ancestors' great travels and travails. Inspired by those tales, many of those orcs wonder when Gruumsh will call on them to match the heroic deeds of old and if they will prove worthy of his favor. Other orcs are happy to leave old tales in the past and find their own way.
+      `),
     hasDarkvision: true,
     speed: 30,
     size: "medium",
@@ -87,7 +124,10 @@ export const speciesSeed = [
   {
     slug: "tiefling",
     defaultName: "Tiefling",
-    defaultDescription: `Tieflings are either born in the Lower Planes or have fiendish ancestors who originated there. A tiefling (pronounced TEE-fling) is linked by blood to a devil, a demon, or some other Fiend. This connection to the Lower Planes is the tiefling’s fiendish legacy, which comes with the promise of power yet has no effect on the tiefling’s moral outlook. A tiefling chooses whether to embrace or lament their fiendish legacy. The three legacies are Abyssal, Chthonic, and Infernal.`,
+    defaultDescription: dedent(`
+      Tieflings are either born in the Lower Planes or have fiendish ancestors who originated there. A tiefling (pronounced TEE-fling) is linked by blood to a devil, a demon, or some other Fiend. This connection to the Lower Planes is the tiefling’s fiendish legacy, which comes with the promise of power yet has no effect on the tiefling’s moral outlook.
+      A tiefling chooses whether to embrace or lament their fiendish legacy. The three legacies are Abyssal, Chthonic, and Infernal.
+      `),
     hasDarkvision: true,
     speed: 30,
     size: "medium",
@@ -585,509 +625,322 @@ export const subspeciesSeed = [
 // Translations
 export const speciesTranslations = {
   aasimar: {
-    en: {
-      name: "Aasimar",
-      description: `Aasimar (pronounced AH-sih-mar) are mortals who carry a spark of the Upper Planes within their souls. Whether descended from an angelic being or infused with celestial power, they can fan that spark to bring light, healing, and heavenly fury. Aasimar can arise among any population of mortals. They resemble their parents, but they live for up to 160 years and have features that hint at their celestial heritage, such as metallic freckles, luminous eyes, a halo, or the skin color of an angel (silver, opalescent green, or coppery red). These features start subtle and become obvious when the aasimar learns to reveal their full celestial nature.`,
-    },
-    fr: {
-      name: "Aasimar",
-      description: `Les Aasimars (prononcé A-si-mar) sont des mortels porteurs d'une étincelle des Plans Supérieurs dans leur âme. Qu'ils descendent d’un être angélique ou qu’ils aient été imprégnés d’un pouvoir céleste, ils peuvent attiser cette étincelle pour apporter lumière, guérison et fureur divine. Un Aasimar peut naître dans n’importe quelle population mortelle. Il ressemble à ses parents, mais vit jusqu’à 160 ans et présente des traits célestes tels que des taches de rousseur métalliques, des yeux lumineux, un halo ou une peau argentée, vert opalescent ou rouge cuivré. Ces marques sont d’abord discrètes mais deviennent évidentes lorsque l’Aasimar embrasse pleinement sa nature céleste.`,
-    },
+    name: "Aasimar",
+    description: `Les Aasimars (prononcé A-si-mar) sont des mortels porteurs d'une étincelle des Plans Supérieurs dans leur âme. Qu'ils descendent d’un être angélique ou qu’ils aient été imprégnés d’un pouvoir céleste, ils peuvent attiser cette étincelle pour apporter lumière, guérison et fureur divine. Un Aasimar peut naître dans n’importe quelle population mortelle. Il ressemble à ses parents, mais vit jusqu’à 160 ans et présente des traits célestes tels que des taches de rousseur métalliques, des yeux lumineux, un halo ou une peau argentée, vert opalescent ou rouge cuivré. Ces marques sont d’abord discrètes mais deviennent évidentes lorsque l’Aasimar embrasse pleinement sa nature céleste.`,
   },
   dragonborn: {
-    en: {
-      name: "Dragonborn",
-      description: `The ancestors of dragonborn hatched from the eggs of chromatic and metallic dragons. One story holds that these eggs were blessed by the dragon gods Bahamut and Tiamat, who wanted to populate the multiverse with people created in their image. Another story claims that dragons created the first dragonborn without the gods’ blessings. Whatever their origin, dragonborn have made homes for themselves on the Material Plane. Dragonborn look like wingless, bipedal dragons—scaly, bright-eyed, and thick-boned with horns on their heads—and their coloration and other features are reminiscent of their draconic ancestors.`,
-    },
-    fr: {
-      name: "Drakéide",
-      description: `Les ancêtres des drakéides ont éclos d’œufs de dragons chromatiques ou métalliques. Certains récits racontent que ces œufs furent bénis par Bahamut et Tiamat pour peupler le multivers à leur image. D’autres prétendent que les dragons eux-mêmes ont créé les premiers drakéides, sans intervention divine. Quelles que soient leurs origines, les drakéides se sont installés sur le Plan Matériel. Ils ressemblent à des dragons bipèdes et sans ailes : écailles, yeux vifs, ossature robuste et cornes leur donnent une apparence draconique fidèle à leurs ancêtres.`,
-    },
+    name: "Drakéide",
+    description: `Les ancêtres des drakéides ont éclos d’œufs de dragons chromatiques ou métalliques. Certains récits racontent que ces œufs furent bénis par Bahamut et Tiamat pour peupler le multivers à leur image. D’autres prétendent que les dragons eux-mêmes ont créé les premiers drakéides, sans intervention divine. Quelles que soient leurs origines, les drakéides se sont installés sur le Plan Matériel. Ils ressemblent à des dragons bipèdes et sans ailes : écailles, yeux vifs, ossature robuste et cornes leur donnent une apparence draconique fidèle à leurs ancêtres.`,
   },
   dwarf: {
-    en: {
-      name: "Dwarf",
-      description: `Dwarves are a race of people who live in the mountains and underground. They are known for their strength, resilience, and craftsmanship. Dwarves are typically short in stature, with a stocky build and a thick beard. They have a strong sense of community and pride, and they are known for their loyalty to their friends and family. Dwarves are also known for their love of drink and food, and they are often found in taverns and other places where they can enjoy a good meal and a drink.`,
-    },
-    fr: {
-      name: "Nain",
-      description: `Les nains furent sculptés de la terre aux temps anciens par un dieu de la forge, connu sous divers noms tels que Moradin ou Reorx. Ce dieu leur donna une affinité avec la pierre, le métal et la vie souterraine, ainsi qu’une grande résilience. Leur espérance de vie avoisine les 350 ans. Petits, trapus, souvent barbus, les nains ont bâti des cités fortifiées dans les montagnes et sous terre. Leurs légendes les plus anciennes racontent des conflits avec des géants et les horreurs de l’Outreterre. Dans certaines régions, on distingue les nains des collines et des montagnes selon leurs origines géographiques.`,
-    },
+    name: "Nain",
+    description: `Les nains furent sculptés de la terre aux temps anciens par un dieu de la forge, connu sous divers noms tels que Moradin ou Reorx. Ce dieu leur donna une affinité avec la pierre, le métal et la vie souterraine, ainsi qu’une grande résilience. Leur espérance de vie avoisine les 350 ans. Petits, trapus, souvent barbus, les nains ont bâti des cités fortifiées dans les montagnes et sous terre. Leurs légendes les plus anciennes racontent des conflits avec des géants et les horreurs de l’Outreterre. Dans certaines régions, on distingue les nains des collines et des montagnes selon leurs origines géographiques.`,
   },
   elf: {
-    en: {
-      name: "Elf",
-      description: `Created by the god Corellon, the first elves could change their forms at will. They lost this ability when Corellon cursed them for plotting with the deity Lolth, who tried and failed to usurp Corellon’s dominion. When Lolth was cast into the Abyss, most elves renounced her and earned Corellon’s forgiveness, but that which Corellon had taken from them was lost forever. No longer able to shape-shift at will, the elves retreated to the Feywild, where their sorrow was deepened by that plane’s influence. Over time, curiosity led many of them to explore other planes of existence, including worlds in the Material Plane. Elves have pointed ears and lack facial and body hair. They live for around 750 years, and they don’t sleep but instead enter a trance when they need to rest. In that state, they remain aware of their surroundings while immersing themselves in memories and meditations. An environment subtly transforms elves after they inhabit it for a millennium or more, and it grants them certain kinds of magic. Drow, high elves, and wood elves are examples of elves who have been transformed thus.`,
-    },
-    fr: {
-      name: "Elfe",
-      description: `Créés par le dieu Corellon, les premiers elfes pouvaient changer de forme à volonté. Ils perdirent ce don après avoir conspiré avec la déesse Lolth. Lorsque cette dernière fut bannie dans l’Abysse, la plupart des elfes la rejetèrent et furent pardonnés, mais leur pouvoir originel resta perdu. Retirés dans le Feywild, ils y furent façonnés par la magie de ce plan. Curieux, ils finirent par explorer d'autres mondes, notamment sur le Plan Matériel. Les elfes ont les oreilles pointues, ne possèdent ni poils ni barbe, vivent environ 750 ans et méditent plutôt que de dormir. Leur environnement les transforme subtilement après plusieurs siècles, donnant naissance à des variantes telles que les drows, hauts-elfes et elfes des bois.`,
-    },
+    name: "Elfe",
+    description: `Créés par le dieu Corellon, les premiers elfes pouvaient changer de forme à volonté. Ils perdirent ce don après avoir conspiré avec la déesse Lolth. Lorsque cette dernière fut bannie dans l’Abysse, la plupart des elfes la rejetèrent et furent pardonnés, mais leur pouvoir originel resta perdu. Retirés dans le Feywild, ils y furent façonnés par la magie de ce plan. Curieux, ils finirent par explorer d'autres mondes, notamment sur le Plan Matériel. Les elfes ont les oreilles pointues, ne possèdent ni poils ni barbe, vivent environ 750 ans et méditent plutôt que de dormir. Leur environnement les transforme subtilement après plusieurs siècles, donnant naissance à des variantes telles que les drows, hauts-elfes et elfes des bois.`,
   },
   gnome: {
-    en: {
-      name: "Gnome",
-      description: `Gnomes are magical folk created by gods of invention, illusions, and life underground. The earliest gnomes were seldom seen by other folk due to the gnomes’ secretive nature and their propensity for living in forests and burrows. What they lacked in size, they made up for in cleverness. They confounded predators with traps and labyrinthine tunnels. They also learned magic from gods like Garl Glittergold, Baervan Wildwanderer, and Baravar Cloakshadow, who visited them in disguise. That magic eventually created the lineages of forest gnomes and rock gnomes. Gnomes are petite folk with big eyes and pointed ears, who live around 425 years. Many gnomes like the feeling of a roof over their head, even if that “roof” is nothing more than a hat.`,
-    },
-    fr: {
-      name: "Gnome",
-      description: `Les gnomes sont des êtres magiques créés par des dieux de l’invention, de l’illusion et de la vie souterraine. Discrets et reclus, ils vivaient dans des forêts et des terriers, évitant les autres peuples. Leur petite taille était compensée par une grande intelligence. Ils piégeaient leurs prédateurs et creusaient des galeries complexes. Ils apprirent la magie auprès de dieux comme Garl Brilledor et Baervan le Vagabond. Cette magie donna naissance à deux lignées : les gnomes des forêts et les gnomes des rochers. Les gnomes sont petits, avec de grands yeux et des oreilles pointues, et vivent environ 425 ans. Beaucoup aiment avoir un toit au-dessus de la tête, même si ce toit est parfois un simple chapeau.`,
-    },
+    name: "Gnome",
+    description: `Les gnomes sont des êtres magiques créés par des dieux de l’invention, de l’illusion et de la vie souterraine. Discrets et reclus, ils vivaient dans des forêts et des terriers, évitant les autres peuples. Leur petite taille était compensée par une grande intelligence. Ils piégeaient leurs prédateurs et creusaient des galeries complexes. Ils apprirent la magie auprès de dieux comme Garl Brilledor et Baervan le Vagabond. Cette magie donna naissance à deux lignées : les gnomes des forêts et les gnomes des rochers. Les gnomes sont petits, avec de grands yeux et des oreilles pointues, et vivent environ 425 ans. Beaucoup aiment avoir un toit au-dessus de la tête, même si ce toit est parfois un simple chapeau.`,
   },
   goliath: {
-    en: {
-      name: "Goliath",
-      description: `Towering over most folk, goliaths are distant descendants of giants. Each goliath bears the favors of the first giants—favors that manifest in various supernatural boons, including the ability to quickly grow and temporarily approach the height of goliaths' gigantic kin. Goliaths have physical characteristics that are reminiscent of the giants in their family lines. For example, some goliaths look like stone giants, while others resemble fire giants. Whatever giants they count as kin, goliaths have forged their own path in the multiverse—unencumbered by the internecine conflicts that have ravaged giantkind for ages—and seek heights above those reached by their ancestors.`,
-    },
-    fr: {
-      name: "Goliath",
-      description: `Les goliaths, plus grands que la plupart des peuples, sont les lointains descendants des géants. Ils portent les faveurs de leurs ancêtres, qui se manifestent par des dons surnaturels comme la capacité de grandir temporairement jusqu’à approcher la taille de leurs aïeux. Leurs traits varient selon leur ascendance : certains rappellent les géants de pierre, d’autres les géants de feu. Malgré ce lien, les goliaths ont tracé leur propre voie dans le multivers, loin des querelles qui déchirent les géants, et cherchent à dépasser les exploits de leurs ancêtres.`,
-    },
+    name: "Goliath",
+    description: `Les goliaths, plus grands que la plupart des peuples, sont les lointains descendants des géants. Ils portent les faveurs de leurs ancêtres, qui se manifestent par des dons surnaturels comme la capacité de grandir temporairement jusqu’à approcher la taille de leurs aïeux. Leurs traits varient selon leur ascendance : certains rappellent les géants de pierre, d’autres les géants de feu. Malgré ce lien, les goliaths ont tracé leur propre voie dans le multivers, loin des querelles qui déchirent les géants, et cherchent à dépasser les exploits de leurs ancêtres.`,
   },
   halfling: {
-    en: {
-      name: "Halfling",
-      description: `Cherished and guided by gods who value life, home, and hearth, halflings gravitate toward bucolic havens where family and community help shape their lives. That said, many halflings possess a brave and adventurous spirit that leads them on journeys of discovery, affording them the chance to explore a bigger world and make new friends along the way. Their size—similar to that of a human child—helps them pass through crowds unnoticed and slip through tight spaces. Anyone who has spent time around halflings, particularly halfling adventurers, has likely witnessed the storied "luck of the halflings" in action. When a halfling is in mortal danger, an unseen force seems to intervene on the halfling's behalf. Many halflings believe in the power of luck, and they attribute their unusual gift to one or more of their benevolent gods, including Yondalla, Brandobaris, and Charmalaine. The same gift might contribute to their robust life spans (about 150 years). Halfling communities come in all varieties. For every sequestered shire tucked away in an unspoiled part of the world, there’s a crime syndicate like the Boromar Clan in the Eberron setting or a territorial mob of halflings like those in the Dark Sun setting.`,
-    },
-    fr: {
-      name: "Halfelin",
-      description: `Guidés par des dieux protecteurs de la vie et du foyer, les halfelins vivent dans des communautés paisibles où famille et entraide sont centrales. Pourtant, leur esprit curieux pousse certains à explorer le vaste monde. De la taille d’un enfant humain, ils se faufilent aisément dans la foule ou les endroits étroits. Leur légendaire chance semble leur sauver la vie dans les pires situations, un don qu’ils attribuent à leurs divinités comme Yondalla ou Brandobaris. Cette bénédiction pourrait aussi expliquer leur longévité, avoisinant les 150 ans. Leurs sociétés sont variées : des villages champêtres aux réseaux criminels comme le clan Boromar.`,
-    },
+    name: "Halfelin",
+    description: `Guidés par des dieux protecteurs de la vie et du foyer, les halfelins vivent dans des communautés paisibles où famille et entraide sont centrales. Pourtant, leur esprit curieux pousse certains à explorer le vaste monde. De la taille d’un enfant humain, ils se faufilent aisément dans la foule ou les endroits étroits. Leur légendaire chance semble leur sauver la vie dans les pires situations, un don qu’ils attribuent à leurs divinités comme Yondalla ou Brandobaris. Cette bénédiction pourrait aussi expliquer leur longévité, avoisinant les 150 ans. Leurs sociétés sont variées : des villages champêtres aux réseaux criminels comme le clan Boromar.`,
   },
   human: {
-    en: {
-      name: "Human",
-      description: `Found throughout the multiverse, humans are as varied as they are numerous, and they endeavor to achieve as much as they can in the years they are given. Their ambition and resourcefulness are commended, respected, and feared on many worlds. Humans are as diverse in appearance as the people of Earth, and they have many gods. Scholars dispute the origin of humanity, but one of the earliest known human gatherings is said to have occurred in Sigil, the torus-shaped city at the center of the multiverse and the place where the Common language was born. From there, humans could have spread to every part of the multiverse, bringing the City of Doors’ cosmopolitanism with them.`,
-    },
-    fr: {
-      name: "Humain",
-      description: `Présents dans tout le multivers, les humains sont d’une diversité remarquable. Leur ambition, leur ingéniosité et leur volonté d’aller toujours plus loin les rendent admirés ou redoutés. Leur apparence varie tout autant que celle des peuples de la Terre. Leur origine exacte est disputée, mais certains érudits situent les premiers regroupements humains à Sigil, la Cité des Portes, où naquit la langue commune. Depuis, les humains ont essaimé partout, apportant avec eux une culture cosmopolite.`,
-    },
+    name: "Humain",
+    description: `Présents dans tout le multivers, les humains sont d’une diversité remarquable. Leur ambition, leur ingéniosité et leur volonté d’aller toujours plus loin les rendent admirés ou redoutés. Leur apparence varie tout autant que celle des peuples de la Terre. Leur origine exacte est disputée, mais certains érudits situent les premiers regroupements humains à Sigil, la Cité des Portes, où naquit la langue commune. Depuis, les humains ont essaimé partout, apportant avec eux une culture cosmopolite.`,
   },
   orc: {
-    en: {
-      name: "Orc",
-      description: `Orcs trace their creation to Gruumsh, a powerful god who roamed the wide open spaces of the Material Plane. Gruumsh equipped his children with gifts to help them wander great plains, vast caverns, and churning seas and to face the monsters that lurk there. Even when they turn their devotion to other gods, orcs retain Gruumsh’s gifts: endurance, determination, and the ability to see in darkness. Orcs are, on average, tall and broad. They have gray skin, ears that are sharply pointed, and prominent lower canines that resemble small tusks. Orc youths on some worlds are told about their ancestors' great travels and travails. Inspired by those tales, many of those orcs wonder when Gruumsh will call on them to match the heroic deeds of old and if they will prove worthy of his favor. Other orcs are happy to leave old tales in the past and find their own way.`,
-    },
-    fr: {
-      name: "Orque",
-      description: `Les orques furent créés par Gruumsh, un puissant dieu errant à travers le Plan Matériel. Il leur donna la force de survivre aux vastes étendues sauvages et aux monstres qui s’y cachent. Même lorsqu’ils vénèrent d’autres dieux, les orques conservent les dons de Gruumsh : endurance, ténacité et vision nocturne. De taille imposante, à la peau grise, avec des oreilles pointues et des crocs proéminents, ils sont marqués par leur héritage. Nombre d’orques grandissent en écoutant les exploits de leurs ancêtres, rêvant de les égaler. D’autres préfèrent se forger leur propre voie, libérés du poids des traditions.`,
-    },
+    name: "Orque",
+    description: `Les orques furent créés par Gruumsh, un puissant dieu errant à travers le Plan Matériel. Il leur donna la force de survivre aux vastes étendues sauvages et aux monstres qui s’y cachent. Même lorsqu’ils vénèrent d’autres dieux, les orques conservent les dons de Gruumsh : endurance, ténacité et vision nocturne. De taille imposante, à la peau grise, avec des oreilles pointues et des crocs proéminents, ils sont marqués par leur héritage. Nombre d’orques grandissent en écoutant les exploits de leurs ancêtres, rêvant de les égaler. D’autres préfèrent se forger leur propre voie, libérés du poids des traditions.`,
   },
   tiefling: {
-    en: {
-      name: "Tiefling",
-      description: `Tieflings are either born in the Lower Planes or have fiendish ancestors who originated there. A tiefling (pronounced TEE-fling) is linked by blood to a devil, a demon, or some other Fiend. This connection to the Lower Planes is the tiefling’s fiendish legacy, which comes with the promise of power yet has no effect on the tiefling’s moral outlook. A tiefling chooses whether to embrace or lament their fiendish legacy. The three legacies are Abyssal, Chthonic, and Infernal.`,
-    },
-    fr: {
-      name: "Tieffelin",
-      description: `Les tieffelins sont nés dans les Plans Inférieurs ou descendent d’êtres fiélons comme des démons ou des diables. Ce lien de sang leur confère un legs infernal : une promesse de puissance, mais aussi une apparence souvent stigmatisée. Ils peuvent choisir d’embrasser ou de rejeter cet héritage. Les trois principales lignées sont l’Abyssale, la Chthonienne et l’Infernale, chacune liée à une forme de pouvoir des Plans Inférieurs.`,
-    },
+    name: "Tieffelin",
+    description: `Les tieffelins sont nés dans les Plans Inférieurs ou descendent d’êtres fiélons comme des démons ou des diables. Ce lien de sang leur confère un legs infernal : une promesse de puissance, mais aussi une apparence souvent stigmatisée. Ils peuvent choisir d’embrasser ou de rejeter cet héritage. Les trois principales lignées sont l’Abyssale, la Chthonienne et l’Infernale, chacune liée à une forme de pouvoir des Plans Inférieurs.`,
   },
 };
 
 export const speciesTraitsTranslations = {
   "celestial-resistance": {
-    fr: {
-      name: "Résistance céleste",
-      description: `Vous avez la Résistance aux dégâts nécrotiques et radiants.`,
-    },
+    name: "Résistance céleste",
+    description: `Vous avez la Résistance aux dégâts nécrotiques et radiants.`,
   },
   darkvision: {
-    fr: {
-      name: "Vision dans le noir",
-      description: `Vous avez la vision dans le noir sur une portée de 18 mètres.`,
-    },
+    name: "Vision dans le noir",
+    description: `Vous avez la vision dans le noir sur une portée de 18 mètres.`,
   },
   "healing-hands": {
-    fr: {
-      name: "Mains guérisseuses",
-      description: `En tant qu’action magique, vous touchez une créature et lancez un nombre de d4 égal à votre bonus de maîtrise. La créature regagne un nombre de points de vie égal au total obtenu. Une fois ce trait utilisé, vous devez terminer un repos long pour l’utiliser de nouveau.`,
-    },
+    name: "Mains guérisseuses",
+    description: `En tant qu’action magique, vous touchez une créature et lancez un nombre de d4 égal à votre bonus de maîtrise. La créature regagne un nombre de points de vie égal au total obtenu. Une fois ce trait utilisé, vous devez terminer un repos long pour l’utiliser de nouveau.`,
   },
   "light-bearer": {
-    fr: {
-      name: "Porte-lumière",
-      description: `Vous connaissez le tour de magie *Lumière*. Le Charisme est la caractéristique d'incantation associée.`,
-    },
+    name: "Porte-lumière",
+    description: `Vous connaissez le tour de magie *Lumière*. Le Charisme est la caractéristique d'incantation associée.`,
   },
   "celestial-revelation": {
-    fr: {
-      name: "Révélation céleste",
-      description: `À partir du niveau 3, vous pouvez vous transformer en utilisant une action bonus et en choisissant une des options suivantes (à choisir à chaque transformation). La transformation dure 1 minute ou jusqu’à ce que vous y mettiez fin (aucune action requise). Une fois transformé, vous ne pouvez pas réutiliser ce trait avant un repos long. Une fois par tour durant la transformation, vous pouvez infliger des dégâts supplémentaires à une cible touchée par une attaque ou un sort. Ces dégâts supplémentaires sont égaux à votre bonus de maîtrise et sont de type nécrotique (Ombre nécrotique) ou radiant (Ailes célestes, Radiance intérieure).`,
-    },
+    name: "Révélation céleste",
+    description: `À partir du niveau 3, vous pouvez vous transformer en utilisant une action bonus et en choisissant une des options suivantes (à choisir à chaque transformation). La transformation dure 1 minute ou jusqu’à ce que vous y mettiez fin (aucune action requise). Une fois transformé, vous ne pouvez pas réutiliser ce trait avant un repos long. Une fois par tour durant la transformation, vous pouvez infliger des dégâts supplémentaires à une cible touchée par une attaque ou un sort. Ces dégâts supplémentaires sont égaux à votre bonus de maîtrise et sont de type nécrotique (Ombre nécrotique) ou radiant (Ailes célestes, Radiance intérieure).`,
   },
   "heavenly-wings": {
-    fr: {
-      name: "Ailes célestes",
-      description: `Deux ailes spectrales apparaissent temporairement dans votre dos. Tant que la transformation dure, vous bénéficiez d'une vitesse de vol égale à votre vitesse de déplacement.`,
-    },
+    name: "Ailes célestes",
+    description: `Deux ailes spectrales apparaissent temporairement dans votre dos. Tant que la transformation dure, vous bénéficiez d'une vitesse de vol égale à votre vitesse de déplacement.`,
   },
   "inner-radiance": {
-    fr: {
-      name: "Radiance intérieure",
-      description: `Une lumière intense émane temporairement de vos yeux et de votre bouche. Vous émettez une lumière vive dans un rayon de 3 mètres et une lumière faible sur 3 mètres supplémentaires. À la fin de chacun de vos tours, chaque créature dans un rayon de 3 mètres subit un nombre de dégâts radiants égal à votre bonus de maîtrise.`,
-    },
+    name: "Radiance intérieure",
+    description: `Une lumière intense émane temporairement de vos yeux et de votre bouche. Vous émettez une lumière vive dans un rayon de 3 mètres et une lumière faible sur 3 mètres supplémentaires. À la fin de chacun de vos tours, chaque créature dans un rayon de 3 mètres subit un nombre de dégâts radiants égal à votre bonus de maîtrise.`,
   },
   "necrotic-shroud": {
-    fr: {
-      name: "Ombre nécrotique",
-      description: `Vos yeux deviennent brièvement des puits de ténèbres, et des ailes atrophiées apparaissent temporairement dans votre dos. Les créatures (sauf vos alliés) dans un rayon de 3 mètres doivent réussir un jet de sauvegarde de Charisme (DD = 8 + votre modificateur de Charisme + votre bonus de maîtrise), ou être Effrayées jusqu’à la fin de votre prochain tour.`,
-    },
+    name: "Ombre nécrotique",
+    description: `Vos yeux deviennent brièvement des puits de ténèbres, et des ailes atrophiées apparaissent temporairement dans votre dos. Les créatures (sauf vos alliés) dans un rayon de 3 mètres doivent réussir un jet de sauvegarde de Charisme (DD = 8 + votre modificateur de Charisme + votre bonus de maîtrise), ou être Effrayées jusqu’à la fin de votre prochain tour.`,
   },
   "draconic-ancestry": {
-    fr: {
-      name: "Ascendance draconique",
-      description: `Votre lignée est issue d’un ancêtre draconique. Choisissez un type de dragon dans la table des ancêtres draconiques. Ce choix détermine votre Souffle et votre Résistance aux dégâts, ainsi que certains aspects de votre apparence. Ancêtres draconiques : Noir / Cuivre → Acide, Bleu / Bronze → Foudre, Laiton / Or / Rouge → Feu, Vert → Poison, Argent / Blanc → Froid.`,
-    },
+    name: "Ascendance draconique",
+    description: `Votre lignée est issue d’un ancêtre draconique. Choisissez un type de dragon dans la table des ancêtres draconiques. Ce choix détermine votre Souffle et votre Résistance aux dégâts, ainsi que certains aspects de votre apparence. Ancêtres draconiques : Noir / Cuivre → Acide, Bleu / Bronze → Foudre, Laiton / Or / Rouge → Feu, Vert → Poison, Argent / Blanc → Froid.`,
   },
   "breath-weapon": {
-    fr: {
-      name: "Souffle",
-      description: `Lorsque vous effectuez une action d’attaque, vous pouvez remplacer une de vos attaques par une exhalation d’énergie magique : un cône de 4,50 m ou une ligne de 9 m de long pour 1,50 m de large (à choisir à chaque fois). Chaque créature dans la zone doit effectuer un jet de sauvegarde de Dextérité (DD = 8 + votre modificateur de Constitution + bonus de maîtrise). En cas d’échec, la créature subit 1d10 dégâts (type selon votre ascendance). En cas de réussite, elle subit la moitié. Les dégâts augmentent à 2d10 au niveau 5, 3d10 au niveau 11, 4d10 au niveau 17. Vous pouvez utiliser ce souffle un nombre de fois égal à votre bonus de maîtrise, et regagnez toutes les utilisations après un repos long.`,
-    },
+    name: "Souffle",
+    description: `Lorsque vous effectuez une action d’attaque, vous pouvez remplacer une de vos attaques par une exhalation d’énergie magique : un cône de 4,50 m ou une ligne de 9 m de long pour 1,50 m de large (à choisir à chaque fois). Chaque créature dans la zone doit effectuer un jet de sauvegarde de Dextérité (DD = 8 + votre modificateur de Constitution + bonus de maîtrise). En cas d’échec, la créature subit 1d10 dégâts (type selon votre ascendance). En cas de réussite, elle subit la moitié. Les dégâts augmentent à 2d10 au niveau 5, 3d10 au niveau 11, 4d10 au niveau 17. Vous pouvez utiliser ce souffle un nombre de fois égal à votre bonus de maîtrise, et regagnez toutes les utilisations après un repos long.`,
   },
   "damage-resistance": {
-    fr: {
-      name: "Résistance aux dégâts",
-      description: `Vous avez la Résistance au type de dégâts associé à votre ascendance draconique.`,
-    },
+    name: "Résistance aux dégâts",
+    description: `Vous avez la Résistance au type de dégâts associé à votre ascendance draconique.`,
   },
   "draconic-flight": {
-    fr: {
-      name: "Vol draconique",
-      description: `Au niveau 5, vous pouvez canaliser la magie draconique pour voler temporairement. En action bonus, vous faites apparaître des ailes spectrales pour 10 minutes ou jusqu’à ce que vous les fassiez disparaître (aucune action) ou que vous deveniez incapable d’agir. Durant ce temps, vous obtenez une vitesse de vol égale à votre vitesse de déplacement. Les ailes reflètent l’énergie de votre souffle. Ce trait est utilisable une fois par repos long.`,
-    },
+    name: "Vol draconique",
+    description: `Au niveau 5, vous pouvez canaliser la magie draconique pour voler temporairement. En action bonus, vous faites apparaître des ailes spectrales pour 10 minutes ou jusqu’à ce que vous les fassiez disparaître (aucune action) ou que vous deveniez incapable d’agir. Durant ce temps, vous obtenez une vitesse de vol égale à votre vitesse de déplacement. Les ailes reflètent l’énergie de votre souffle. Ce trait est utilisable une fois par repos long.`,
   },
   "dwarven-resilience": {
-    fr: {
-      name: "Résilience naine",
-      description: `Vous avez la Résistance aux dégâts de Poison et un Avantage aux jets de sauvegarde pour éviter ou mettre fin à l’état Empoisonné.`,
-    },
+    name: "Résilience naine",
+    description: `Vous avez la Résistance aux dégâts de Poison et un Avantage aux jets de sauvegarde pour éviter ou mettre fin à l’état Empoisonné.`,
   },
   "dwarven-toughness": {
-    fr: {
-      name: "Robustesse naine",
-      description: `Votre maximum de points de vie augmente de 1, et augmente encore de 1 à chaque fois que vous gagnez un niveau.`,
-    },
+    name: "Robustesse naine",
+    description: `Votre maximum de points de vie augmente de 1, et augmente encore de 1 à chaque fois que vous gagnez un niveau.`,
   },
   stonecunning: {
-    fr: {
-      name: "Connaissance de la pierre",
-      description: `En action bonus, vous obtenez la Tremorsense dans un rayon de 18 mètres pendant 10 minutes. Vous devez être en contact avec de la pierre naturelle ou travaillée. Vous pouvez utiliser ce trait un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos long.`,
-    },
+    name: "Connaissance de la pierre",
+    description: `En action bonus, vous obtenez la Tremorsense dans un rayon de 18 mètres pendant 10 minutes. Vous devez être en contact avec de la pierre naturelle ou travaillée. Vous pouvez utiliser ce trait un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos long.`,
   },
   "elven-lineage": {
-    fr: {
-      name: "Lignée elfique",
-      description: `Vous appartenez à une lignée magique vous conférant des aptitudes surnaturelles. Choisissez une lignée parmi celles proposées. Vous gagnez un sort de niveau 1 associé. Aux niveaux 3 et 5, vous obtenez des sorts supplémentaires. Vous les avez toujours préparés, pouvez les lancer une fois sans emplacement, et récupérez cette utilisation après un repos long. Vous pouvez aussi les lancer avec vos emplacements de sorts. Choisissez Intelligence, Sagesse ou Charisme comme caractéristique d’incantation.`,
-    },
+    name: "Lignée elfique",
+    description: `Vous appartenez à une lignée magique vous conférant des aptitudes surnaturelles. Choisissez une lignée parmi celles proposées. Vous gagnez un sort de niveau 1 associé. Aux niveaux 3 et 5, vous obtenez des sorts supplémentaires. Vous les avez toujours préparés, pouvez les lancer une fois sans emplacement, et récupérez cette utilisation après un repos long. Vous pouvez aussi les lancer avec vos emplacements de sorts. Choisissez Intelligence, Sagesse ou Charisme comme caractéristique d’incantation.`,
   },
   "fey-ancestry": {
-    fr: {
-      name: "Ascendance féerique",
-      description: `Vous avez l’Avantage aux jets de sauvegarde contre l’état Charmé.`,
-    },
+    name: "Ascendance féerique",
+    description: `Vous avez l’Avantage aux jets de sauvegarde contre l’état Charmé.`,
   },
   "keen-senses": {
-    fr: {
-      name: "Sens aiguisés",
-      description: `Vous maîtrisez l’une des compétences suivantes : Intuition, Perception ou Survie.`,
-    },
+    name: "Sens aiguisés",
+    description: `Vous maîtrisez l’une des compétences suivantes : Intuition, Perception ou Survie.`,
   },
   trance: {
-    fr: {
-      name: "Transe",
-      description: `Vous n’avez pas besoin de dormir et la magie ne peut pas vous endormir. Un repos long ne vous prend que 4 heures si vous méditez sans perdre conscience.`,
-    },
+    name: "Transe",
+    description: `Vous n’avez pas besoin de dormir et la magie ne peut pas vous endormir. Un repos long ne vous prend que 4 heures si vous méditez sans perdre conscience.`,
   },
   "gnomish-cunning": {
-    fr: {
-      name: "Ruse gnomique",
-      description: `Vous avez l’Avantage aux jets de sauvegarde d’Intelligence, de Sagesse et de Charisme.`,
-    },
+    name: "Ruse gnomique",
+    description: `Vous avez l’Avantage aux jets de sauvegarde d’Intelligence, de Sagesse et de Charisme.`,
   },
   "gnomish-lineage": {
-    fr: {
-      name: "Lignée gnomique",
-      description: `Vous appartenez à une lignée magique vous conférant des capacités surnaturelles. Choisissez entre Gnome des forêts ou Gnome des rochers.`,
-    },
+    name: "Lignée gnomique",
+    description: `Vous appartenez à une lignée magique vous conférant des capacités surnaturelles. Choisissez entre Gnome des forêts ou Gnome des rochers.`,
   },
   "giant-ancestry": {
-    fr: {
-      name: "Ascendance géante",
-      description: `Vous descendez des géants. Choisissez une bénédiction surnaturelle parmi les suivantes : Nuage, Feu, Givre, Colline, Pierre ou Tempête. Vous pouvez l’utiliser un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos long.`,
-    },
+    name: "Ascendance géante",
+    description: `Vous descendez des géants. Choisissez une bénédiction surnaturelle parmi les suivantes : Nuage, Feu, Givre, Colline, Pierre ou Tempête. Vous pouvez l’utiliser un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos long.`,
   },
   "large-form": {
-    fr: {
-      name: "Forme gigantesque",
-      description: `À partir du niveau 5, vous pouvez augmenter votre taille à « Grande » en action bonus si l’espace le permet. La transformation dure 10 minutes ou jusqu’à ce que vous y mettiez fin (aucune action). Pendant ce temps, vous avez l’Avantage aux tests de Force et votre vitesse augmente de 3 mètres. Ce trait est utilisable une fois par repos long.`,
-    },
+    name: "Forme gigantesque",
+    description: `À partir du niveau 5, vous pouvez augmenter votre taille à « Grande » en action bonus si l’espace le permet. La transformation dure 10 minutes ou jusqu’à ce que vous y mettiez fin (aucune action). Pendant ce temps, vous avez l’Avantage aux tests de Force et votre vitesse augmente de 3 mètres. Ce trait est utilisable une fois par repos long.`,
   },
   "powerful-build": {
-    fr: {
-      name: "Puissante carrure",
-      description: `Vous avez l’Avantage aux jets de sauvegarde pour mettre fin à l’état Agrippé. De plus, vous êtes considéré comme une taille de plus pour calculer votre capacité de port.`,
-    },
+    name: "Puissante carrure",
+    description: `Vous avez l’Avantage aux jets de sauvegarde pour mettre fin à l’état Agrippé. De plus, vous êtes considéré comme une taille de plus pour calculer votre capacité de port.`,
   },
   brave: {
-    fr: {
-      name: "Courageux",
-      description: `Vous avez l’Avantage aux jets de sauvegarde contre l’état Effrayé.`,
-    },
+    name: "Courageux",
+    description: `Vous avez l’Avantage aux jets de sauvegarde contre l’état Effrayé.`,
   },
   "halfling-nimbleness": {
-    fr: {
-      name: "Agilité halfeline",
-      description: `Vous pouvez vous déplacer à travers l’espace de toute créature d’une taille supérieure à la vôtre, sans pouvoir vous arrêter dans cet espace.`,
-    },
+    name: "Agilité halfeline",
+    description: `Vous pouvez vous déplacer à travers l’espace de toute créature d’une taille supérieure à la vôtre, sans pouvoir vous arrêter dans cet espace.`,
   },
   luck: {
-    fr: {
-      name: "Chance",
-      description: `Lorsque vous obtenez un 1 sur un d20 lors d’un test, vous pouvez relancer le dé et devez utiliser le nouveau résultat.`,
-    },
+    name: "Chance",
+    description: `Lorsque vous obtenez un 1 sur un d20 lors d’un test, vous pouvez relancer le dé et devez utiliser le nouveau résultat.`,
   },
   "naturally-stealthy": {
-    fr: {
-      name: "Discrétion naturelle",
-      description: `Vous pouvez vous cacher même si vous êtes seulement dissimulé par une créature d’au moins une taille supérieure à la vôtre.`,
-    },
+    name: "Discrétion naturelle",
+    description: `Vous pouvez vous cacher même si vous êtes seulement dissimulé par une créature d’au moins une taille supérieure à la vôtre.`,
   },
   resourceful: {
-    fr: {
-      name: "Débrouillard",
-      description: `Vous gagnez de l’Inspiration héroïque à chaque fois que vous terminez un repos long.`,
-    },
+    name: "Débrouillard",
+    description: `Vous gagnez de l’Inspiration héroïque à chaque fois que vous terminez un repos long.`,
   },
   skillful: {
-    fr: {
-      name: "Compétent",
-      description: `Vous gagnez la maîtrise dans une compétence de votre choix.`,
-    },
+    name: "Compétent",
+    description: `Vous gagnez la maîtrise dans une compétence de votre choix.`,
   },
   versatile: {
-    fr: {
-      name: "Polyvalent",
-      description: `Vous gagnez un don d’origine de votre choix (voir chapitre 5). Le don « Compétent » est recommandé.`,
-    },
+    name: "Polyvalent",
+    description: `Vous gagnez un don d’origine de votre choix (voir chapitre 5). Le don « Compétent » est recommandé.`,
   },
   "adrenaline-rush": {
-    fr: {
-      name: "Poussée d’adrénaline",
-      description: `Vous pouvez utiliser l’action Se précipiter comme une action bonus. Lorsque vous le faites, vous gagnez un nombre de points de vie temporaires égal à votre bonus de maîtrise. Vous pouvez utiliser ce trait un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos court ou long.`,
-    },
+    name: "Poussée d’adrénaline",
+    description: `Vous pouvez utiliser l’action Se précipiter comme une action bonus. Lorsque vous le faites, vous gagnez un nombre de points de vie temporaires égal à votre bonus de maîtrise. Vous pouvez utiliser ce trait un nombre de fois égal à votre bonus de maîtrise, et récupérez toutes les utilisations après un repos court ou long.`,
   },
   "relentless-endurance": {
-    fr: {
-      name: "Endurance inébranlable",
-      description: `Lorsque vous tombez à 0 point de vie sans mourir sur le coup, vous pouvez rester à 1 point de vie à la place. Vous ne pouvez utiliser ce trait qu’une fois par repos long.`,
-    },
+    name: "Endurance inébranlable",
+    description: `Lorsque vous tombez à 0 point de vie sans mourir sur le coup, vous pouvez rester à 1 point de vie à la place. Vous ne pouvez utiliser ce trait qu’une fois par repos long.`,
   },
   "fiendish-legacy": {
-    fr: {
-      name: "Héritage fiélon",
-      description: `Vous êtes le réceptacle d’un héritage vous conférant des pouvoirs surnaturels. Choisissez une lignée parmi la table des héritages fiélons. Vous obtenez un sort de niveau 1. Aux niveaux 3 et 5, vous apprenez de nouveaux sorts. Vous pouvez lancer chacun d’eux une fois sans emplacement de sort, puis à nouveau après un repos long. Vous pouvez aussi les lancer avec vos emplacements de sort. Choisissez Intelligence, Sagesse ou Charisme comme caractéristique d’incantation.`,
-    },
+    name: "Héritage fiélon",
+    description: `Vous êtes le réceptacle d’un héritage vous conférant des pouvoirs surnaturels. Choisissez une lignée parmi la table des héritages fiélons. Vous obtenez un sort de niveau 1. Aux niveaux 3 et 5, vous apprenez de nouveaux sorts. Vous pouvez lancer chacun d’eux une fois sans emplacement de sort, puis à nouveau après un repos long. Vous pouvez aussi les lancer avec vos emplacements de sort. Choisissez Intelligence, Sagesse ou Charisme comme caractéristique d’incantation.`,
   },
   "otherworldly-presence": {
-    fr: {
-      name: "Présence d’un autre monde",
-      description: `Vous connaissez le tour de magie *Thaumaturgie*. Lorsque vous le lancez avec ce trait, il utilise la même caractéristique d’incantation que votre héritage fiélon.`,
-    },
+    name: "Présence d’un autre monde",
+    description: `Vous connaissez le tour de magie *Thaumaturgie*. Lorsque vous le lancez avec ce trait, il utilise la même caractéristique d’incantation que votre héritage fiélon.`,
   },
 };
 
 export const subspeciesTranslations = {
   "black-dragonborn": {
-    fr: {
-      name: "Drakéide noir",
-      description:
-        "Descendant des dragons noirs. Souffle & Résistance : Acide.",
-    },
+    name: "Drakéide noir",
+    description: "Descendant des dragons noirs. Souffle & Résistance : Acide.",
   },
   "blue-dragonborn": {
-    fr: {
-      name: "Drakéide bleu",
-      description:
-        "Descendant des dragons bleus. Souffle & Résistance : Foudre.",
-    },
+    name: "Drakéide bleu",
+    description: "Descendant des dragons bleus. Souffle & Résistance : Foudre.",
   },
   "brass-dragonborn": {
-    fr: {
-      name: "Drakéide de laiton",
-      description:
-        "Descendant des dragons de laiton. Souffle & Résistance : Feu.",
-    },
+    name: "Drakéide de laiton",
+    description:
+      "Descendant des dragons de laiton. Souffle & Résistance : Feu.",
   },
   "bronze-dragonborn": {
-    fr: {
-      name: "Drakéide de bronze",
-      description:
-        "Descendant des dragons de bronze. Souffle & Résistance : Foudre.",
-    },
+    name: "Drakéide de bronze",
+    description:
+      "Descendant des dragons de bronze. Souffle & Résistance : Foudre.",
   },
   "copper-dragonborn": {
-    fr: {
-      name: "Drakéide de cuivre",
-      description:
-        "Descendant des dragons de cuivre. Souffle & Résistance : Acide.",
-    },
+    name: "Drakéide de cuivre",
+    description:
+      "Descendant des dragons de cuivre. Souffle & Résistance : Acide.",
   },
   "gold-dragonborn": {
-    fr: {
-      name: "Drakéide d’or",
-      description: "Descendant des dragons d’or. Souffle & Résistance : Feu.",
-    },
+    name: "Drakéide d’or",
+    description: "Descendant des dragons d’or. Souffle & Résistance : Feu.",
   },
   "green-dragonborn": {
-    fr: {
-      name: "Drakéide vert",
-      description:
-        "Descendant des dragons verts. Souffle & Résistance : Poison.",
-    },
+    name: "Drakéide vert",
+    description: "Descendant des dragons verts. Souffle & Résistance : Poison.",
   },
   "red-dragonborn": {
-    fr: {
-      name: "Drakéide rouge",
-      description: "Descendant des dragons rouges. Souffle & Résistance : Feu.",
-    },
+    name: "Drakéide rouge",
+    description: "Descendant des dragons rouges. Souffle & Résistance : Feu.",
   },
   "silver-dragonborn": {
-    fr: {
-      name: "Drakéide d’argent",
-      description:
-        "Descendant des dragons d’argent. Souffle & Résistance : Froid.",
-    },
+    name: "Drakéide d’argent",
+    description:
+      "Descendant des dragons d’argent. Souffle & Résistance : Froid.",
   },
   "white-dragonborn": {
-    fr: {
-      name: "Drakéide blanc",
-      description:
-        "Descendant des dragons blancs. Souffle & Résistance : Froid.",
-    },
+    name: "Drakéide blanc",
+    description: "Descendant des dragons blancs. Souffle & Résistance : Froid.",
   },
 
   // ELF VARIANTS
   drow: {
-    fr: {
-      name: "Elfe noir",
-      description:
-        "Les drows vivent généralement dans l’Outreterre et ont été transformés par elle. Certains drows évitent ce lieu tout en portant sa magie. Dans le monde d’Eberron, par exemple, ils vivent dans des jungles et ruines cyclopéennes du continent de Xen’drik.",
-    },
+    name: "Elfe noir",
+    description:
+      "Les drows vivent généralement dans l’Outreterre et ont été transformés par elle. Certains drows évitent ce lieu tout en portant sa magie. Dans le monde d’Eberron, par exemple, ils vivent dans des jungles et ruines cyclopéennes du continent de Xen’drik.",
   },
   "high-elf": {
-    fr: {
-      name: "Haut elfe",
-      description:
-        "Les hauts elfes sont imprégnés de la magie entre le Feywild et le Plan Matériel. Ils portent divers noms selon les mondes : elfes du soleil ou de la lune dans les Royaumes Oubliés, Silvanesti et Qualinesti dans Dragonlance, Aereni dans Eberron.",
-    },
+    name: "Haut elfe",
+    description:
+      "Les hauts elfes sont imprégnés de la magie entre le Feywild et le Plan Matériel. Ils portent divers noms selon les mondes : elfes du soleil ou de la lune dans les Royaumes Oubliés, Silvanesti et Qualinesti dans Dragonlance, Aereni dans Eberron.",
   },
   "wood-elf": {
-    fr: {
-      name: "Elfe des bois",
-      description:
-        "Les elfes des bois portent la magie des forêts primordiales. On les appelle aussi elfes sauvages, verts ou forestiers. Les Grugach sont des elfes des bois solitaires de Greyhawk, les Kagonesti et Tairnadal sont respectivement de Dragonlance et Eberron.",
-    },
+    name: "Elfe des bois",
+    description:
+      "Les elfes des bois portent la magie des forêts primordiales. On les appelle aussi elfes sauvages, verts ou forestiers. Les Grugach sont des elfes des bois solitaires de Greyhawk, les Kagonesti et Tairnadal sont respectivement de Dragonlance et Eberron.",
   },
 
   // GNOME VARIANTS
   "forest-gnome": {
-    fr: {
-      name: "Gnome des forêts",
-      description:
-        "Vous connaissez le tour de magie *Illusion mineure*. Vous avez aussi toujours le sort *Parler avec les animaux* préparé. Vous pouvez le lancer sans emplacement un nombre de fois égal à votre bonus de maîtrise, et regagnez tous les usages après un repos long. Vous pouvez aussi le lancer avec vos emplacements de sorts.",
-    },
+    name: "Gnome des forêts",
+    description: "Vous connaissez le tour de magie *Illusion mineure*.",
   },
   "rock-gnome": {
-    fr: {
-      name: "Gnome des rochers",
-      description:
-        "Vous connaissez les tours de magie *Réparation* et *Prestidigitation*. En plus, vous pouvez passer 10 minutes à lancer *Prestidigitation* pour créer un petit appareil mécanique (CA 5, 1 PV), tel qu’un jouet, un allume-feu ou une boîte à musique. Il produit un effet lorsqu’il est activé par une action bonus. Vous choisissez l’effet à la création. Vous pouvez en avoir 3 au maximum, chacun durant 8 heures ou jusqu’à démantèlement.",
-    },
+    name: "Gnome des rochers",
+    description:
+      "Vous connaissez les tours de magie *Réparation* et *Prestidigitation*. En plus, vous pouvez passer 10 minutes à lancer *Prestidigitation* pour créer un petit appareil mécanique (CA 5, 1 PV), tel qu’un jouet, un allume-feu ou une boîte à musique. Il produit un effet lorsqu’il est activé par une action bonus. Vous choisissez l’effet à la création. Vous pouvez en avoir 3 au maximum, chacun durant 8 heures ou jusqu’à démantèlement.",
   },
 
   // GOLIATH (GIANT ANCESTRIES)
   "cloud-giant-goliath": {
-    fr: {
-      name: "Ascendance de géant des nuages",
-      description:
-        "*Bond des nuages* : En action bonus, vous vous téléportez magiquement jusqu’à 9 mètres dans un espace inoccupé que vous voyez.",
-    },
+    name: "Ascendance de géant des nuages",
+    description:
+      "*Bond des nuages* : En action bonus, vous vous téléportez magiquement jusqu’à 9 mètres dans un espace inoccupé que vous voyez.",
   },
   "fire-giant-goliath": {
-    fr: {
-      name: "Ascendance de géant du feu",
-      description:
-        "*Brûlure du feu* : Quand vous touchez une cible avec une attaque, vous pouvez lui infliger 1d10 dégâts de feu supplémentaires.",
-    },
+    name: "Ascendance de géant du feu",
+    description:
+      "*Brûlure du feu* : Quand vous touchez une cible avec une attaque, vous pouvez lui infliger 1d10 dégâts de feu supplémentaires.",
   },
   "frost-giant-goliath": {
-    fr: {
-      name: "Ascendance de géant du givre",
-      description:
-        "*Frisson du givre* : Quand vous touchez une cible avec une attaque, vous pouvez lui infliger 1d6 dégâts de froid et réduire sa vitesse de 3 mètres jusqu’à votre prochain tour.",
-    },
+    name: "Ascendance de géant du givre",
+    description:
+      "*Frisson du givre* : Quand vous touchez une cible avec une attaque, vous pouvez lui infliger 1d6 dégâts de froid et réduire sa vitesse de 3 mètres jusqu’à votre prochain tour.",
   },
   "hill-giant-goliath": {
-    fr: {
-      name: "Ascendance de géant des collines",
-      description:
-        "*Chute des collines* : Quand vous touchez une créature de taille Grande ou moins avec une attaque, vous pouvez la faire tomber à terre (état : à terre).",
-    },
+    name: "Ascendance de géant des collines",
+    description:
+      "*Chute des collines* : Quand vous touchez une créature de taille Grande ou moins avec une attaque, vous pouvez la faire tomber à terre (état : à terre).",
   },
   "stone-giant-goliath": {
-    fr: {
-      name: "Ascendance de géant de pierre",
-      description:
-        "*Endurance de pierre* : Quand vous subissez des dégâts, vous pouvez utiliser une réaction pour lancer 1d12, ajouter votre modificateur de Constitution, et réduire les dégâts de ce total.",
-    },
+    name: "Ascendance de géant de pierre",
+    description:
+      "*Endurance de pierre* : Quand vous subissez des dégâts, vous pouvez utiliser une réaction pour lancer 1d12, ajouter votre modificateur de Constitution, et réduire les dégâts de ce total.",
   },
   "storm-giant-goliath": {
-    fr: {
-      name: "Ascendance de géant des tempêtes",
-      description:
-        "*Tonnerre de la tempête* : Quand une créature dans un rayon de 18 mètres vous inflige des dégâts, vous pouvez utiliser une réaction pour lui infliger 1d8 dégâts de tonnerre.",
-    },
+    name: "Ascendance de géant des tempêtes",
+    description:
+      "*Tonnerre de la tempête* : Quand une créature dans un rayon de 18 mètres vous inflige des dégâts, vous pouvez utiliser une réaction pour lui infliger 1d8 dégâts de tonnerre.",
   },
 
   // HALFLING VARIANTS
   "strongheart-halfling": {
-    fr: {
-      name: "Halfelin cœur-vaillant",
-      description:
-        "Les halfelins qui vivent sous terre sont parfois appelés cœurs-vaillants ou robustes.",
-    },
+    name: "Halfelin cœur-vaillant",
+    description:
+      "Les halfelins qui vivent sous terre sont parfois appelés cœurs-vaillants ou robustes.",
   },
   "lightfoot-halfling": {
-    fr: {
-      name: "Halfelin pied-léger",
-      description:
-        "Les halfelins nomades ou vivant parmi les humains sont parfois appelés pieds-légers ou grands compagnons.",
-    },
+    name: "Halfelin pied-léger",
+    description:
+      "Les halfelins nomades ou vivant parmi les humains sont parfois appelés pieds-légers ou grands compagnons.",
   },
 
   // TIEFLING LEGACIES
   "abyssal-tiefling": {
-    fr: {
-      name: "Tieffelin abyssal",
-      description:
-        "L’entropie de l’Abysse, le chaos du Pandémonium et le désespoir de Carcéri appellent les tieffelins à l’héritage abyssal. Cornes, fourrure, défenses et odeurs étranges sont fréquents chez eux, qui portent souvent le sang des démons.",
-    },
+    name: "Tieffelin abyssal",
+    description:
+      "L’entropie de l’Abysse, le chaos du Pandémonium et le désespoir de Carcéri appellent les tieffelins à l’héritage abyssal. Cornes, fourrure, défenses et odeurs étranges sont fréquents chez eux, qui portent souvent le sang des démons.",
   },
   "chthonic-tiefling": {
-    fr: {
-      name: "Tieffelin chtonien",
-      description:
-        "Les tieffelins à l’héritage chtonien ressentent l’appel de Carcéri, la cupidité de Géhenne et la morosité des Enfers gris. Certains ont une allure cadavérique, d’autres la beauté étrange d’une succube, ou des traits rappelant une sorcière nocturne ou un yugoloth.",
-    },
+    name: "Tieffelin chtonien",
+    description:
+      "Les tieffelins à l’héritage chtonien ressentent l’appel de Carcéri, la cupidité de Géhenne et la morosité des Enfers gris. Certains ont une allure cadavérique, d’autres la beauté étrange d’une succube, ou des traits rappelant une sorcière nocturne ou un yugoloth.",
   },
   "infernal-tiefling": {
-    fr: {
-      name: "Tieffelin infernal",
-      description:
-        "L’héritage infernal lie les tieffelins aux Neuf Enfers, à Géhenne et aux champs de bataille d’Achéron. Cornes, épines, queue, yeux dorés et une légère odeur de soufre ou de fumée sont fréquents chez ceux qui descendent des diables.",
-    },
+    name: "Tieffelin infernal",
+    description:
+      "L’héritage infernal lie les tieffelins aux Neuf Enfers, à Géhenne et aux champs de bataille d’Achéron. Cornes, épines, queue, yeux dorés et une légère odeur de soufre ou de fumée sont fréquents chez ceux qui descendent des diables.",
   },
 };
