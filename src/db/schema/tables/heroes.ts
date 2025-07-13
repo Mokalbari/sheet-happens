@@ -4,6 +4,7 @@ import { backgrounds } from "./backgrounds";
 import { classes } from "./classes";
 import { species } from "./species";
 import { subclasses } from "./subclasses";
+import { subspecies } from "./subspecies";
 import { systems } from "./systems";
 import { users } from "./users";
 
@@ -28,6 +29,7 @@ export const heroes = pgTable("heroes", {
   speciesId: integer("species_id")
     .notNull()
     .references(() => species.id),
+  subspeciesId: integer("subspecies_id").references(() => subspecies.id),
 
   alignment: alignmentEnum("alignment"),
 

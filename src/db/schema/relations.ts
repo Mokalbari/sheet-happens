@@ -29,6 +29,7 @@ import { species } from "./tables/species";
 import { speciesTraits } from "./tables/species-traits";
 import { spells } from "./tables/spells";
 import { subclasses } from "./tables/subclasses";
+import { subspecies } from "./tables/subspecies";
 import { systems } from "./tables/systems";
 import { tools } from "./tables/tools";
 import { toolsCraftLootables } from "./tables/tools-craft-lootables";
@@ -247,6 +248,10 @@ export const heroesRelations = relations(heroes, ({ one, many }) => ({
     fields: [heroes.speciesId],
     references: [species.id],
   }),
+  subspecies: one(subspecies, {
+    fields: [heroes.subspeciesId],
+    references: [subspecies.id],
+  }),
   feats: many(heroHasFeats),
   spells: many(heroHasSpells),
   stats: many(heroStats),
@@ -282,6 +287,7 @@ export const speciesRelations = relations(species, ({ one, many }) => ({
     references: [systems.id],
   }),
   traits: many(speciesTraits),
+  subspecies: many(subspecies),
   heroes: many(heroes),
 }));
 
@@ -309,6 +315,18 @@ export const speciesTraitsRelations = relations(
   })
 );
 
+export const subspeciesRelations = relations(subspecies, ({ one, many }) => ({
+  system: one(systems, {
+    fields: [subspecies.systemId],
+    references: [systems.id],
+  }),
+  species: one(species, {
+    fields: [subspecies.speciesId],
+    references: [species.id],
+  }),
+  heroes: many(heroes),
+}));
+
 export const spellsRelations = relations(spells, ({ one, many }) => ({
   system: one(systems, {
     fields: [spells.systemId],
@@ -329,6 +347,7 @@ export const systemsRelations = relations(systems, ({ many }) => ({
   tools: many(tools),
   lootables: many(lootables),
   species: many(species),
+  subspecies: many(subspecies),
   feats: many(feats),
   classFeatures: many(classFeatures),
   subclasses: many(subclasses),
