@@ -1,3 +1,4 @@
+import { species } from "@/db/schema";
 import dedent from "ts-dedent";
 import { SYSTEM_ID_DD5E } from "../constants";
 
@@ -23,6 +24,8 @@ interface SpeciesSeed {
   systemId: number;
   variant?: Species;
 }
+
+type SpeciesInsert = typeof species.$inferInsert;
 
 export const speciesSeed: SpeciesSeed[] = [
   {
