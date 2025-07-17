@@ -17,7 +17,7 @@ export const armors = pgTable("armors", {
     .notNull()
     .references(() => systems.id),
 
-  armorType: armorTypeEnum("armor_type").notNull(),
+  armorType: armorTypeEnum("armor_type"),
   // base AC (ex: 11 for leather armor)
   baseArmorClass: integer("armor_class"),
 
@@ -27,6 +27,8 @@ export const armors = pgTable("armors", {
   // max dex bonus (ex: +2 hide armor) given by the armor
   maxDexterityBonus: integer("max_dexterity_bonus"),
   hasStealthDisadvantage: boolean("has_stealth_disadvantage").notNull(),
+  // can the character swim wearing this armor?
+  canSwim: boolean("can_swim"),
   // weight in lb
   weight: integer("weight"),
   // value in copper pieces (1 gp = 100 cp, 1 sp = 10 cp)
