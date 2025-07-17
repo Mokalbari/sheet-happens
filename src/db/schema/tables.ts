@@ -13,6 +13,7 @@ export { featGrantsSkills } from "./tables/feat-grants-skills";
 export { featGrantsSpells } from "./tables/feat-grants-spells";
 export { featGrantsTools } from "./tables/feat-grants-tools";
 export { feats } from "./tables/feats";
+export { featsRequiredAbilities } from "./tables/feats-required-abilities";
 export { heroAbilityScores } from "./tables/hero-ability-scores";
 export { heroEquipment } from "./tables/hero-equipment";
 export { heroHasFeats } from "./tables/hero-has-feats";
