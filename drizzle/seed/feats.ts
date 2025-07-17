@@ -1478,3 +1478,384 @@ export const feats: FeatsInsert[] = [
     isRepeatable: false,
   },
 ];
+
+const featsTranslations = [
+  {
+    alert: {
+      name: "Vigilant",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Maîtrise de l’initiative.** Lorsque vous lancez l’initiative, vous pouvez ajouter votre bonus de maîtrise au jet.\n**Échange d’initiative.** Juste après avoir lancé votre initiative, vous pouvez l’échanger avec celle d’un allié consentant dans le même combat. Vous ne pouvez pas effectuer cet échange si vous ou l’allié êtes dans l’état incapable.",
+    },
+    crafter: {
+      name: "Artisan",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Maîtrise d’outils.** Vous gagnez la maîtrise de trois outils d’artisan de votre choix figurant dans la table de fabrication rapide.\n**Réduction.** Lorsque vous achetez un objet non magique, vous bénéficiez d’une réduction de 20 %.\n**Fabrication rapide.** Lorsque vous terminez un repos long, vous pouvez fabriquer un objet de la table de fabrication rapide, à condition d’avoir les outils associés et la maîtrise de ceux-ci. L’objet dure jusqu’à votre prochain repos long, après quoi il tombe en morceaux.",
+    },
+    healer: {
+      name: "Guérisseur",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Médecin de bataille.** Si vous possédez une trousse de soins, vous pouvez en utiliser une charge pour soigner une créature située à 1,50 mètre de vous en utilisant une action d’usage. Cette créature peut dépenser un dé de vie, que vous lancez. Elle récupère un nombre de points de vie égal au résultat plus votre bonus de maîtrise.\n**Relances de soin.** Chaque fois que vous lancez un dé pour déterminer le nombre de points de vie rendus par un sort ou le bénéfice de Médecin de bataille, vous pouvez relancer le dé s’il indique un 1. Vous devez utiliser le nouveau résultat.",
+    },
+    lucky: {
+      name: "Chanceux",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Points de chance.** Vous avez un nombre de points de chance égal à votre bonus de maîtrise et pouvez les utiliser comme décrit ci-dessous. Vous récupérez les points dépensés à la fin d’un repos long.\n**Avantage.** Lorsque vous effectuez un test nécessitant un d20, vous pouvez dépenser 1 point de chance pour bénéficier de l’avantage.\n**Désavantage.** Lorsqu’une créature fait un jet d’attaque contre vous, vous pouvez dépenser 1 point de chance pour lui imposer le désavantage.",
+    },
+    "magic-initiate": {
+      name: "Initiation à la magie",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Deux tours de magie.** Vous apprenez deux tours de magie de votre choix provenant de la liste de sorts de clerc, druide ou magicien.\n**Intelligence, Sagesse ou Charisme** est la caractéristique d’incantation pour les sorts liés à ce don (choisissez au moment où vous obtenez ce don).\n**Sort de niveau 1.** Choisissez un sort de niveau 1 de la même liste que celle des tours de magie choisis. Vous avez toujours ce sort préparé. Vous pouvez le lancer une fois sans utiliser d’emplacement de sort, et récupérez cette capacité après un repos long. Vous pouvez aussi le lancer avec vos emplacements de sort disponibles.\n**Changement de sort.** Chaque fois que vous gagnez un niveau, vous pouvez remplacer l’un des sorts choisis avec un autre de même niveau issu de la même liste.\n**Cumulable.** Vous pouvez prendre ce don plusieurs fois, mais devez choisir une liste de sorts différente à chaque fois.",
+    },
+    musician: {
+      name: "Musicien",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Formation musicale.** Vous gagnez la maîtrise de trois instruments de musique de votre choix.\n**Chanson encourageante.** Lorsque vous terminez un repos court ou long, vous pouvez jouer un air sur un instrument que vous maîtrisez pour offrir une Inspiration héroïque aux alliés qui l’entendent. Le nombre d’alliés affectés est égal à votre bonus de maîtrise.",
+    },
+    "savage-attacker": {
+      name: "Attaquant sauvage",
+      description:
+        "Vous avez appris à infliger des frappes particulièrement dévastatrices. Une fois par tour, lorsque vous touchez une cible avec une arme, vous pouvez lancer deux fois les dés de dégâts de l’arme et garder le résultat de votre choix.",
+    },
+    skilled: {
+      name: "Compétent",
+      description:
+        "Vous gagnez la maîtrise de trois compétences ou outils de votre choix.\n**Cumulable.** Vous pouvez choisir ce don plusieurs fois.",
+    },
+    "tavern-brawler": {
+      name: "Bagarreur de taverne",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Coup de poing amélioré.** Quand vous touchez avec une attaque à mains nues, vous infligez des dégâts contondants égaux à 1d4 + votre modificateur de Force.\n**Relance des dégâts.** Lorsque vous lancez un dé de dégâts pour une attaque à mains nues, vous pouvez relancer un 1. Vous devez garder le second résultat.\n**Armes improvisées.** Vous avez la maîtrise des armes improvisées.\n**Poussée.** Quand vous touchez une créature avec une attaque à mains nues lors d’une action d’attaque, vous pouvez la repousser de 1,50 m. Ce bénéfice ne peut être utilisé qu’une fois par tour.",
+    },
+    tough: {
+      name: "Robuste",
+      description:
+        "Votre maximum de points de vie augmente d’un montant égal au double de votre niveau de personnage lorsque vous gagnez ce don. Par la suite, chaque fois que vous gagnez un niveau, votre maximum de points de vie augmente de 2 supplémentaires.",
+    },
+    "ability-score-improvement": {
+      name: "Amélioration de caractéristique",
+      description:
+        "Augmentez une caractéristique de votre choix de 2, ou augmentez deux caractéristiques de votre choix de 1. Ce don ne permet pas de dépasser 20 dans une caractéristique.\n**Cumulable.** Vous pouvez prendre ce don plusieurs fois.",
+    },
+    actor: {
+      name: "Comédien",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Charisme de 1, jusqu’à un maximum de 20.\n**Impersonation.** Lorsque vous êtes déguisé en une personne réelle ou fictive, vous avez l’avantage aux tests de Charisme (Tromperie ou Représentation) pour convaincre les autres que vous êtes cette personne.\n**Imitation.** Vous pouvez imiter les sons d’autres créatures, y compris la parole. Une créature qui entend l’imitation doit réussir un jet de Sagesse (Intuition) pour détecter la supercherie (DD = 8 + votre modificateur de Charisme + votre bonus de maîtrise).",
+    },
+    athlete: {
+      name: "Athlète",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Vitesse d’escalade.** Vous gagnez une vitesse d’escalade égale à votre vitesse de déplacement.\n**Redressement.** Lorsque vous êtes à terre (état « prone »), vous pouvez vous relever en ne dépensant que 1,50 m de mouvement.\n**Sauts.** Vous pouvez effectuer un saut en longueur ou en hauteur avec seulement 1,50 m d’élan.",
+    },
+    charger: {
+      name: "Chargeur",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Course améliorée.** Lorsque vous utilisez l’action de course, votre vitesse augmente de 3 mètres pour cette action.\n**Attaque en charge.** Si vous vous déplacez d’au moins 3 mètres en ligne droite vers une cible avant de la toucher avec une attaque de mêlée, choisissez un effet : infligez 1d8 dégâts supplémentaires, ou poussez la cible jusqu’à 3 mètres si elle fait au maximum une taille de plus que vous. Ce bénéfice ne peut être utilisé qu’une fois par tour.",
+    },
+    chef: {
+      name: "Chef cuisinier",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Constitution ou Sagesse de 1, jusqu’à un maximum de 20.\n**Ustensiles de cuisine.** Vous gagnez la maîtrise des ustensiles de cuisine si ce n’est pas déjà le cas.\n**Repas réparateur.** Pendant un repos court, vous pouvez cuisiner un plat spécial si vous avez des ingrédients et des ustensiles de cuisine à disposition. Vous pouvez nourrir un nombre de créatures égal à 4 + votre bonus de maîtrise. Chaque créature qui consomme ce repas et dépense au moins un dé de vie pour récupérer des points de vie regagne 1d8 points de vie supplémentaires.\n**Gâteries revigorantes.** En une heure ou à la fin d’un repos long, vous pouvez cuisiner un nombre de gâteries égal à votre bonus de maîtrise. Elles durent 8 heures. Une créature peut utiliser une action bonus pour en manger une et gagner un nombre de points de vie temporaires égal à votre bonus de maîtrise.",
+    },
+    "crossbow-expert": {
+      name: "Expert en arbalète",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Dextérité de 1, jusqu’à un maximum de 20.\n**Ignore le rechargement.** Vous ignorez la propriété de rechargement de l’arbalète légère, de l’arbalète de poing et de l’arbalète lourde. Si vous tenez l'une d'elles, vous pouvez la recharger même si vous n’avez pas une main libre.\n**Tir en mêlée.** Être à 1,50 mètre d’un ennemi n’impose pas de désavantage à vos jets d’attaque avec des arbalètes.\n**Double tir.** Lorsque vous effectuez l’attaque supplémentaire avec une arme possédant la propriété Légère, vous pouvez ajouter votre modificateur de caractéristique aux dégâts si l’arme est une arbalète légère et que vous n’ajoutez pas déjà ce modificateur.",
+    },
+    crusher: {
+      name: "Broyeur",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Constitution de 1, jusqu’à un maximum de 20.\n**Poussée.** Une fois par tour, lorsque vous touchez une créature avec une attaque infligeant des dégâts contondants, vous pouvez la déplacer de 1,50 mètre vers un espace inoccupé, si elle ne fait pas plus d’une taille de plus que vous.\n**Coup critique renforcé.** Lorsque vous infligez un coup critique avec une attaque contondante, les attaques contre cette créature ont l’avantage jusqu’au début de votre prochain tour.",
+    },
+    "defensive-duelist": {
+      name: "Duelliste défensif",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Dextérité de 1, jusqu’à un maximum de 20.\n**Parade.** Si vous tenez une arme avec la propriété Finesse et qu’une autre créature vous touche avec une attaque de mêlée, vous pouvez utiliser votre réaction pour ajouter votre bonus de maîtrise à votre classe d’armure, ce qui peut faire échouer l’attaque. Vous conservez ce bonus contre les attaques de mêlée jusqu’au début de votre prochain tour.",
+    },
+    "dual-wielder": {
+      name: "Ambidextre",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Combat amélioré à deux armes.** Lorsque vous effectuez une action d’attaque avec une arme légère, vous pouvez effectuer une attaque supplémentaire avec une autre arme de mêlée tenue dans l’autre main qui n’a pas la propriété Deux-mains. Vous n’ajoutez pas votre modificateur de caractéristique aux dégâts sauf s’il est négatif.\n**Dégainement rapide.** Vous pouvez dégainer ou rengainer deux armes qui ne possèdent pas la propriété Deux-mains là où vous ne pourriez normalement en gérer qu’une seule.",
+    },
+    durable: {
+      name: "Endurant",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Constitution de 1, jusqu’à un maximum de 20.\n**Défier la mort.** Vous avez l’avantage aux jets de sauvegarde contre la mort.\n**Récupération rapide.** En utilisant une action bonus, vous pouvez dépenser un dé de vie et regagner un nombre de points de vie égal au résultat du dé.",
+    },
+    "elemental-adept": {
+      name: "Adepte élémentaire",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence, Sagesse ou Charisme de 1, jusqu’à un maximum de 20.\n**Maîtrise élémentaire.** Choisissez un type de dégâts parmi les suivants : acide, froid, feu, foudre ou tonnerre. Vos sorts ignorent la résistance à ce type de dégâts. De plus, lorsque vous lancez un sort infligeant ce type de dégâts, vous pouvez traiter les 1 obtenus sur les dés de dégâts comme des 2.\n**Cumulable.** Vous pouvez choisir ce don plusieurs fois, à condition de choisir un type de dégâts différent à chaque fois.",
+    },
+    "fey-touched": {
+      name: "Marqué par les fées",
+      description:
+        "Votre exposition à la magie du Feywild vous octroie les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence, Sagesse ou Charisme de 1, jusqu’à un maximum de 20.\n**Magie féerique.** Choisissez un sort de niveau 1 de l’école de divination ou d’enchantement. Vous avez toujours ce sort et le sort Pas brumeux préparés. Vous pouvez lancer chacun de ces sorts une fois sans emplacement. Une fois lancé de cette manière, vous devez finir un repos long pour le relancer ainsi. Vous pouvez également les lancer avec vos emplacements de sort. La caractéristique d’incantation utilisée est celle augmentée par ce don.",
+    },
+    grappler: {
+      name: "Lutteur",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Frappe et prise.** Quand vous touchez une créature avec une attaque à mains nues pendant une action d’attaque, vous pouvez lui infliger des dégâts et la saisir. Ce bénéfice ne peut être utilisé qu’une fois par tour.\n**Avantage en lutte.** Vous avez l’avantage aux jets d’attaque contre une créature que vous avez saisie.\n**Lutteur rapide.** Votre vitesse de déplacement n’est pas réduite lorsque vous déplacez une créature saisie si elle fait votre taille ou moins.",
+    },
+    "great-weapon-master": {
+      name: "Maître des armes lourdes",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force de 1, jusqu’à un maximum de 20.\n**Maîtrise des armes lourdes.** Lorsque vous touchez une créature avec une arme possédant la propriété Lourde pendant une action d’attaque, vous infligez des dégâts supplémentaires égaux à votre bonus de maîtrise.\n**Frappe brutale.** Juste après avoir infligé un coup critique avec une arme de mêlée ou réduit une créature à 0 point de vie, vous pouvez effectuer une attaque supplémentaire avec la même arme en tant qu’action bonus.",
+    },
+    "heavily-armored": {
+      name: "Lourdement armuré",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Constitution ou Force de 1, jusqu’à un maximum de 20.\n**Formation à l’armure lourde.** Vous gagnez la formation aux armures lourdes.",
+    },
+    "heavy-armor-master": {
+      name: "Maître des armures lourdes",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Constitution ou Force de 1, jusqu’à un maximum de 20.\n**Réduction des dégâts.** Lorsque vous êtes touché par une attaque en portant une armure lourde, les dégâts contondants, perforants et tranchants infligés par cette attaque sont réduits d’un montant égal à votre bonus de maîtrise.",
+    },
+    "inspiring-leader": {
+      name: "Chef inspirant",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Sagesse ou Charisme de 1, jusqu’à un maximum de 20.\n**Performance motivante.** Lorsque vous terminez un repos court ou long, vous pouvez donner une performance inspirante (discours, chanson, danse). Jusqu’à six alliés (vous inclus) à 9 mètres qui en sont témoins gagnent des points de vie temporaires égaux à votre niveau de personnage + le modificateur de la caractéristique augmentée par ce don.",
+    },
+    "keen-mind": {
+      name: "Esprit vif",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence de 1, jusqu’à un maximum de 20.\n**Connaissances.** Choisissez une compétence parmi Arcanes, Histoire, Investigation, Nature ou Religion. Si vous ne la maîtrisez pas, vous gagnez la maîtrise. Si vous la maîtrisez déjà, vous gagnez l’expertise.\n**Étude rapide.** Vous pouvez effectuer l’action d’Étude en tant qu’action bonus.",
+    },
+    "lightly-armored": {
+      name: "Légèrement armuré",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Formation à l’armure.** Vous gagnez la formation aux armures légères et aux boucliers.",
+    },
+    "mage-slayer": {
+      name: "Tueur de mages",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Briseur de concentration.** Lorsque vous infligez des dégâts à une créature qui se concentre sur un sort, elle a un désavantage au jet de sauvegarde pour maintenir sa concentration.\n**Esprit protégé.** Si vous échouez à un jet de sauvegarde d’Intelligence, de Sagesse ou de Charisme, vous pouvez choisir de réussir à la place. Une fois utilisé, vous ne pouvez plus le faire avant un repos court ou long.",
+    },
+    "martial-weapon-training": {
+      name: "Formation aux armes martiales",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Maîtrise des armes.** Vous gagnez la maîtrise des armes martiales.",
+    },
+    "medium-armor-master": {
+      name: "Maître des armures intermédiaires",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Port d’armure agile.** Tant que vous portez une armure intermédiaire et que votre Dextérité est de 16 ou plus, vous ajoutez +3 à la CA au lieu de +2.",
+    },
+    "moderately-armored": {
+      name: "Modérément armuré",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Formation à l’armure.** Vous gagnez la formation aux armures intermédiaires.",
+    },
+    "mounted-combatant": {
+      name: "Combattant monté",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force, Dextérité ou Sagesse de 1, jusqu’à un maximum de 20.\n**Attaque montée.** Tant que vous êtes monté, vous avez l’avantage sur les attaques contre les créatures non montées à 1,50 mètre de votre monture et d’au moins une taille de moins.\n**Bond d’évitement.** Si votre monture est soumise à un effet impliquant un jet de sauvegarde de Dextérité pour moitié dégâts, elle ne subit aucun dégât en cas de réussite, ou la moitié en cas d’échec. Vous devez la chevaucher et ni vous ni elle ne devez être incapables.\n**Déviation.** Tant que vous êtes monté, vous pouvez intercepter une attaque destinée à votre monture et la rediriger vers vous, à condition de ne pas être dans l’état incapable.",
+    },
+    observant: {
+      name: "Observateur",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence ou Sagesse de 1, jusqu’à un maximum de 20.\n**Observation affûtée.** Choisissez l’une des compétences suivantes : Intuition, Investigation ou Perception. Si vous ne la maîtrisez pas, vous gagnez la maîtrise. Si vous la maîtrisez déjà, vous gagnez l’expertise.\n**Recherche rapide.** Vous pouvez effectuer l’action de Fouille en tant qu’action bonus.",
+    },
+    piercer: {
+      name: "Perceur",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Perforation.** Une fois par tour, lorsque vous touchez une créature avec une attaque infligeant des dégâts perforants, vous pouvez relancer un dé de dégâts et utiliser le nouveau résultat.\n**Coup critique renforcé.** Quand vous infligez un coup critique avec des dégâts perforants, vous lancez un dé de dégâts supplémentaire pour déterminer les dégâts supplémentaires.",
+    },
+    poisoner: {
+      name: "Empoisonneur",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Dextérité ou Intelligence de 1, jusqu’à un maximum de 20.\n**Poison puissant.** Vos jets de dégâts infligeant des dégâts de poison ignorent la résistance au poison.\n**Préparation de poison.** Vous gagnez la maîtrise du kit d’empoisonneur. En 1 heure, en dépensant 50 po d’ingrédients, vous pouvez créer un nombre de doses égal à votre bonus de maîtrise. En action bonus, vous pouvez appliquer une dose sur une arme ou munition ; elle reste active pendant 1 minute ou jusqu’à toucher une cible. Une créature touchée doit réussir un jet de Constitution (DD = 8 + votre mod. de caractéristique + bonus de maîtrise) ou subir 2d8 dégâts de poison et être Empoisonnée jusqu’à la fin de votre prochain tour.",
+    },
+    "polearm-master": {
+      name: "Maître d’armes d’hast",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Dextérité ou Force de 1, jusqu’à un maximum de 20.\n**Frappe avec le manche.** Juste après avoir effectué l’action Attaquer avec un bâton, une lance ou une arme avec les propriétés Lourde et Allonge, vous pouvez utiliser une action bonus pour attaquer avec l’autre extrémité de l’arme. Elle inflige des dégâts contondants, avec un dé de dégâts de d4.\n**Frappe réactive.** Tant que vous tenez l’une des armes mentionnées, vous pouvez utiliser votre réaction pour faire une attaque de mêlée contre une créature qui entre dans votre allonge avec cette arme.",
+    },
+    resilient: {
+      name: "Résilient",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Choisissez une caractéristique dans laquelle vous n’avez pas de sauvegarde de maîtrise. Augmentez-la de 1, jusqu’à un maximum de 20.\n**Maîtrise de sauvegarde.** Vous gagnez la maîtrise des jets de sauvegarde liés à cette caractéristique.",
+    },
+    "ritual-caster": {
+      name: "Lanceur de rituels",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence, Sagesse ou Charisme de 1, jusqu’à un maximum de 20.\n**Sorts rituels.** Choisissez un nombre de sorts de niveau 1 avec le tag Rituel égal à votre bonus de maîtrise. Vous avez toujours ces sorts préparés, et vous pouvez les lancer avec vos emplacements de sort.\n**Rituel rapide.** Vous pouvez lancer un sort rituel préparé avec son temps d’incantation normal au lieu du temps prolongé d’un rituel. Cela ne consomme pas d’emplacement de sort. Une fois utilisé, ce bénéfice nécessite un repos long pour être réutilisé.",
+    },
+    sentinel: {
+      name: "Sentinelle",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Gardien.** Si une créature à 1,50 mètre de vous prend l’action Se désengager ou attaque une autre cible que vous, vous pouvez utiliser une réaction pour faire une attaque d’opportunité contre elle.\n**Interruption.** Lorsque vous touchez une créature avec une attaque d’opportunité, sa vitesse devient 0 jusqu’à la fin du tour en cours.",
+    },
+    "shadow-touched": {
+      name: "Marqué par l’Ombre",
+      description:
+        "Votre exposition à la magie du Shadowfell vous accorde les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence, Sagesse ou Charisme de 1, jusqu’à un maximum de 20.\n**Magie des ombres.** Choisissez un sort de niveau 1 de l’école d’illusion ou de nécromancie. Vous avez toujours ce sort et le sort Invisibilité préparés. Vous pouvez lancer chacun de ces sorts une fois sans emplacement. Une fois lancé de cette façon, vous devez finir un repos long pour relancer ainsi. Vous pouvez aussi les lancer avec vos emplacements. La caractéristique utilisée est celle augmentée par ce don.",
+    },
+    sharpshooter: {
+      name: "Tireur d’élite",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Dextérité de 1, jusqu’à un maximum de 20.\n**Ignorer les couverts.** Vos attaques à distance ignorent la demi-couverture et les trois-quarts de couverture.\n**Tir en mêlée.** Être à 1,50 mètre d’un ennemi ne vous impose pas de désavantage avec des armes à distance.\n**Tir à longue portée.** Attaquer à portée longue n’impose pas de désavantage à vos jets d’attaque à distance.",
+    },
+    "shield-master": {
+      name: "Maître du bouclier",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force de 1, jusqu’à un maximum de 20.\n**Coup de bouclier.** Si vous attaquez une créature à 1,50 mètre avec une arme de mêlée et que vous touchez, vous pouvez utiliser votre bouclier équipé pour l’ébranler. Elle doit réussir un jet de sauvegarde de Force (DD 8 + mod. de Force + bonus de maîtrise) ou être repoussée de 1,50 mètre ou être à terre (au choix). Ce bénéfice ne peut être utilisé qu’une fois par tour.\n**Interposition.** Si vous êtes soumis à un effet nécessitant un jet de sauvegarde de Dextérité pour subir la moitié des dégâts, vous pouvez utiliser votre réaction pour ne subir aucun dégât en cas de réussite, à condition de tenir un bouclier.",
+    },
+    "skill-expert": {
+      name: "Expert en compétences",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à un maximum de 20.\n**Maîtrise de compétence.** Vous gagnez la maîtrise d’une compétence de votre choix.\n**Expertise.** Choisissez une compétence que vous maîtrisez mais pour laquelle vous n’avez pas l’expertise. Vous gagnez l’expertise avec cette compétence.",
+    },
+    skulker: {
+      name: "Rôdeur de l’ombre",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Dextérité de 1, jusqu’à un maximum de 20.\n**Vision aveugle.** Vous avez la vision aveugle dans un rayon de 3 mètres.\n**Brouillard de guerre.** Vous exploitez les distractions du combat pour bénéficier de l’avantage aux tests de Dextérité (Discrétion) effectués dans le cadre de l’action Se cacher pendant un combat.\n**Tir furtif.** Si vous effectuez une attaque en étant caché et que vous ratez, votre attaque ne révèle pas votre position.",
+    },
+    slasher: {
+      name: "Trancheur",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Tendon sectionné.** Une fois par tour, quand vous touchez une créature avec une attaque infligeant des dégâts tranchants, vous pouvez réduire sa vitesse de 3 mètres jusqu’au début de votre prochain tour.\n**Coup critique renforcé.** Si vous infligez un coup critique infligeant des dégâts tranchants à une créature, celle-ci a le désavantage à ses jets d’attaque jusqu’au début de votre prochain tour.",
+    },
+    speedy: {
+      name: "Rapide",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Dextérité ou Constitution de 1, jusqu’à un maximum de 20.\n**Vitesse accrue.** Votre vitesse augmente de 3 mètres.\n**Course sur terrain difficile.** Lorsque vous effectuez une action de course, le terrain difficile ne vous coûte pas de déplacement supplémentaire jusqu’à la fin du tour.\n**Mouvement agile.** Les attaques d’opportunité contre vous ont le désavantage.",
+    },
+    "spell-sniper": {
+      name: "Franc-tireur magique",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence, Sagesse ou Charisme de 1, jusqu’à un maximum de 20.\n**Ignorer les couverts.** Vos jets d’attaque de sorts ignorent la demi-couverture et les trois-quarts de couverture.\n**Lancer en mêlée.** Être à 1,50 mètre d’un ennemi ne vous impose pas de désavantage aux jets d’attaque de sorts.\n**Portée étendue.** Quand vous lancez un sort avec une portée d’au moins 3 mètres nécessitant un jet d’attaque, vous pouvez augmenter sa portée de 18 mètres.",
+    },
+    telekinetic: {
+      name: "Télékinésiste",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence, Sagesse ou Charisme de 1, jusqu’à un maximum de 20.\n**Télékinésie mineure.** Vous apprenez le sort Main de mage. Vous pouvez le lancer sans composantes verbales ni somatiques, rendre la main spectrale invisible et en augmenter la portée de 9 mètres. La caractéristique d’incantation utilisée est celle augmentée par ce don.\n**Poussée télékinétique.** En action bonus, vous pouvez repousser une créature visible dans un rayon de 9 mètres. Elle doit réussir un jet de sauvegarde de Force (DD 8 + modificateur + bonus de maîtrise) ou être déplacée de 1,50 mètre vers ou loin de vous.",
+    },
+    telepathic: {
+      name: "Télépathe",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence, Sagesse ou Charisme de 1, jusqu’à un maximum de 20.\n**Parole télépathique.** Vous pouvez parler mentalement à toute créature visible dans un rayon de 18 mètres. Vous devez partager une langue connue avec la créature pour qu’elle vous comprenne. Cela ne permet pas à la créature de vous répondre par télépathie.\n**Détection des pensées.** Vous avez toujours le sort Détection des pensées préparé. Vous pouvez le lancer sans emplacement ni composantes, et devez finir un repos long pour relancer ainsi. Vous pouvez aussi le lancer avec vos emplacements. La caractéristique utilisée est celle augmentée par ce don.",
+    },
+    "war-caster": {
+      name: "Lanceur de guerre",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence, Sagesse ou Charisme de 1, jusqu’à un maximum de 20.\n**Concentration.** Vous avez l’avantage aux jets de sauvegarde de Constitution pour maintenir la concentration sur un sort.\n**Sort réactif.** Lorsqu’une créature provoque une attaque d’opportunité en quittant votre portée, vous pouvez utiliser votre réaction pour lui lancer un sort au lieu d’effectuer l’attaque. Le sort doit avoir un temps d’incantation d’une action et ne cibler que cette créature.\n**Composantes somatiques.** Vous pouvez effectuer les composantes somatiques d’un sort même si vos mains tiennent des armes ou un bouclier.",
+    },
+    "weapon-master": {
+      name: "Maître d’arme",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à un maximum de 20.\n**Propriété de maîtrise.** Votre entraînement vous permet d’utiliser la propriété de maîtrise d’un type d’arme simple ou martiale de votre choix, si vous la maîtrisez. Vous pouvez changer ce type d’arme après un repos long.",
+    },
+    archery: {
+      name: "Tir à l’arc",
+      description:
+        "Vous gagnez un bonus de +2 aux jets d’attaque effectués avec des armes à distance.",
+    },
+    "blind-fighting": {
+      name: "Combat à l’aveugle",
+      description: "Vous avez la vision aveugle dans un rayon de 3 mètres.",
+    },
+  },
+  {
+    defense: {
+      name: "Défense",
+      description:
+        "Lorsque vous portez une armure légère, intermédiaire ou lourde, vous gagnez un bonus de +1 à la classe d’armure.",
+    },
+    dueling: {
+      name: "Duel",
+      description:
+        "Lorsque vous maniez une arme de mêlée dans une main et aucune autre arme, vous gagnez un bonus de +2 aux jets de dégâts avec cette arme.",
+    },
+    "great-weapon-fighting": {
+      name: "Combat avec arme lourde",
+      description:
+        "Lorsque vous lancez les dés de dégâts pour une attaque avec une arme de mêlée tenue à deux mains, vous pouvez considérer les résultats de 1 ou 2 comme des 3. L’arme doit avoir la propriété Deux mains ou Polyvalente.",
+    },
+    interception: {
+      name: "Interception",
+      description:
+        "Quand une créature que vous voyez touche une autre créature à 1,50 mètre de vous, vous pouvez utiliser votre réaction pour réduire les dégâts de 1d10 + votre bonus de maîtrise. Vous devez tenir un bouclier ou une arme simple ou martiale.",
+    },
+    protection: {
+      name: "Protection",
+      description:
+        "Quand une créature attaque une autre cible que vous à 1,50 mètre, vous pouvez interposer votre bouclier (si vous en tenez un) pour imposer le désavantage au jet d’attaque déclencheur et à tous les jets contre la cible jusqu’au début de votre prochain tour.",
+    },
+    "thrown-weapon-fighting": {
+      name: "Combat avec arme de jet",
+      description:
+        "Quand vous touchez avec une attaque à distance utilisant une arme avec la propriété Jet, vous gagnez un bonus de +2 aux dégâts.",
+    },
+    "two-weapon-fighting": {
+      name: "Combat à deux armes",
+      description:
+        "Quand vous effectuez une attaque supplémentaire avec une arme Légère, vous pouvez ajouter votre modificateur de caractéristique aux dégâts si ce n’est pas déjà le cas.",
+    },
+    "unarmed-fighting": {
+      name: "Combat à mains nues",
+      description:
+        "Quand vous touchez avec une attaque à mains nues, vous infligez 1d6 + votre modificateur de Force de dégâts contondants. Si vous ne tenez ni arme ni bouclier, le d6 devient un d8. Au début de chacun de vos tours, vous pouvez infliger 1d4 dégâts contondants à une créature que vous agrippez.",
+    },
+    "boon-of-combat-prowess": {
+      name: "Don de prouesse martiale",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à 30.\n**Visée infaillible.** Quand vous ratez une attaque, vous pouvez décider qu’elle touche à la place. Réutilisable au début de votre prochain tour.",
+    },
+    "boon-of-dimensional-travel": {
+      name: "Don de déplacement dimensionnel",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à 30.\n**Pas instantané.** Juste après avoir utilisé l’action Attaque ou Magie, vous pouvez vous téléporter de 9 mètres vers un espace libre visible.",
+    },
+    "boon-of-energy-resistance": {
+      name: "Don de résistance énergétique",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à 30.\n**Résistances.** Vous avez résistance à deux types de dégâts parmi : Acide, Froid, Feu, Foudre, Nécrotique, Poison, Psychique, Radiant, Tonnerre. Vous pouvez en changer après un repos long.\n**Redirection d’énergie.** Quand vous subissez l’un de ces types, vous pouvez réagir pour forcer une créature visible dans un rayon de 18 mètres à faire un jet de sauvegarde de Dextérité ou subir 2d12 + mod. Constitution de dégâts.",
+    },
+    "boon-of-fate": {
+      name: "Don du destin",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à 30.\n**Faveur du destin.** Quand un test de D20 réussi ou raté a lieu à 18 mètres de vous, vous pouvez lancer 2d4 et ajouter/soustraire le total au jet. Utilisable après l’initiative ou un repos court/long.",
+    },
+    "boon-of-fortitude": {
+      name: "Don de robustesse",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à 30.\n**Santé renforcée.** Vos points de vie maximum augmentent de 40. Quand vous regagnez des PV, vous en regagnez en plus un nombre égal à votre modificateur de Constitution (1 fois par tour).",
+    },
+    "boon-of-irresistible-offense": {
+      name: "Don d’offensive irrésistible",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Force ou Dextérité de 1, jusqu’à 30.\n**Ignore la résistance.** Vos dégâts contondants, perforants et tranchants ignorent toujours les résistances.\n**Frappe irrésistible.** Sur un 20 au d20 d’attaque, infligez des dégâts supplémentaires égaux à la caractéristique augmentée.",
+    },
+    "boon-of-recovery": {
+      name: "Don de récupération",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à 30.\n**Dernière chance.** Si vous tombez à 0 PV, vous tombez à 1 PV et regagnez la moitié de vos PV max (1 fois par repos long).\n**Récupération vitale.** Vous avez un pool de dix d10. En action bonus, vous pouvez en dépenser pour regagner des PV égaux au total lancé. Le pool se recharge au repos long.",
+    },
+    "boon-of-skill": {
+      name: "Don de compétence",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à 30.\n**Aptitude universelle.** Vous gagnez la maîtrise de toutes les compétences.\n**Expertise.** Choisissez une compétence non expertisée. Vous gagnez l’expertise.",
+    },
+    "boon-of-speed": {
+      name: "Don de vitesse",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à 30.\n**Esquiveur.** En action bonus, vous pouvez Désengager et mettre fin à l’état Agrippé.\n**Vitesse.** Votre vitesse augmente de 9 mètres.",
+    },
+    "boon-of-spell-recall": {
+      name: "Don de souvenir magique",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez votre Intelligence, Sagesse ou Charisme de 1, jusqu’à 30.\n**Incantation gratuite.** Quand vous lancez un sort avec un emplacement de niveau 1–4, lancez 1d4. Si le résultat égale le niveau, l’emplacement n’est pas dépensé.",
+    },
+    "boon-of-the-night-spirit": {
+      name: "Don de l’esprit nocturne",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à 30.\n**Fusion avec l’ombre.** En lumière faible ou obscurité, vous pouvez devenir Invisible en action bonus. L’effet prend fin après toute action/réaction.\n**Forme obscure.** En lumière faible ou obscurité, vous avez résistance à tous les dégâts sauf Psychiques et Radiants.",
+    },
+    "boon-of-truesight": {
+      name: "Don de vision véritable",
+      description:
+        "Vous gagnez les bénéfices suivants.\n**Augmentation de caractéristique.** Augmentez une caractéristique de votre choix de 1, jusqu’à 30.\n**Vision véritable.** Vous avez la vision véritable sur 18 mètres.",
+    },
+  },
+];
