@@ -7,7 +7,7 @@ export interface SeedOptions<T> {
   tableName: string;
   table: any;
   data: T[];
-  schema: z.ZodSchema<T>;
+  schema?: z.ZodSchema<T>;
   translations?: {
     entity: string;
     table: any;
@@ -35,13 +35,16 @@ export async function seedWithTranslations<T>(
     const { data: validatedData, error: validationError } = await tryCatch(
       Promise.all(
         data.map(async (item, index) => {
-          const result = schema.safeParse(item);
-          if (!result.success) {
-            throw new Error(
-              `Invalid ${tableName} data at index ${index}: ${result.error.message}`
-            );
+          if (schema) {
+            const result = schema.safeParse(item);
+            if (!result.success) {
+              throw new Error(
+                `Invalid ${tableName} data at index ${index}: ${result.error.message}`
+              );
+            }
+            return result.data;
           }
-          return result.data;
+          return item;
         })
       )
     );
@@ -114,13 +117,16 @@ export async function seedWithoutTranslations<T>(
     const { data: validatedData, error: validationError } = await tryCatch(
       Promise.all(
         data.map(async (item, index) => {
-          const result = schema.safeParse(item);
-          if (!result.success) {
-            throw new Error(
-              `Invalid ${tableName} data at index ${index}: ${result.error.message}`
-            );
+          if (schema) {
+            const result = schema.safeParse(item);
+            if (!result.success) {
+              throw new Error(
+                `Invalid ${tableName} data at index ${index}: ${result.error.message}`
+              );
+            }
+            return result.data;
           }
-          return result.data;
+          return item;
         })
       )
     );

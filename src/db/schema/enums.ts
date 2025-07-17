@@ -124,7 +124,7 @@ export const SPECIES_SIZE_ENUM = [
 export type SpeciesSize = (typeof SPECIES_SIZE_ENUM)[number];
 export const speciesSizeEnum = pgEnum("species_size", SPECIES_SIZE_ENUM);
 
-export const SYSTEM_ENUM = ["dd5e2024", "homebrew"] as const;
+export const SYSTEM_ENUM = ["dd5e2024", "homebrew", "shadow-dark"] as const;
 export type SystemEnum = (typeof SYSTEM_ENUM)[number];
 export const systemEnum = pgEnum("system", SYSTEM_ENUM);
 
@@ -148,7 +148,14 @@ export const WEAPON_MASTERY_ENUM = [
 export type WeaponMastery = (typeof WEAPON_MASTERY_ENUM)[number];
 export const weaponMasteryEnum = pgEnum("weapon_mastery", WEAPON_MASTERY_ENUM);
 
-export const WEAPON_TYPE_ENUM = ["simple", "martial", "exotic"] as const;
+export const WEAPON_TYPE_ENUM = [
+  "simple",
+  "martial",
+  "exotic",
+  "melee",
+  "range",
+  "melee/range",
+] as const;
 export type WeaponType = (typeof WEAPON_TYPE_ENUM)[number];
 export const weaponTypeEnum = pgEnum("weapon_type", WEAPON_TYPE_ENUM);
 
@@ -225,3 +232,13 @@ export const weaponDamageTypeEnum = pgEnum(
 export const FEAT_LOGIC_ENUM = ["AND", "OR"] as const;
 export type FeatLogic = (typeof FEAT_LOGIC_ENUM)[number];
 export const featLogicEnum = pgEnum("feat_logic", FEAT_LOGIC_ENUM);
+
+export const RANGE_TYPE_ENUM = [
+  "close",
+  "near",
+  "far",
+  "close/near",
+  "close/far",
+] as const;
+export type RangeType = (typeof RANGE_TYPE_ENUM)[number];
+export const rangeTypeEnum = pgEnum("range_type", RANGE_TYPE_ENUM);
