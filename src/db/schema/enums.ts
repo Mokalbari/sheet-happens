@@ -221,3 +221,7 @@ export const weaponDamageTypeEnum = pgEnum(
   "weapon_damage_type",
   WEAPON_DAMAGE_TYPE_ENUM
 );
+
+export const FEAT_LOGIC_ENUM = ["AND", "OR"] as const;
+export type FeatLogic = (typeof FEAT_LOGIC_ENUM)[number];
+export const featLogicEnum = pgEnum("feat_logic", FEAT_LOGIC_ENUM);

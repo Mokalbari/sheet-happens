@@ -23,6 +23,10 @@ export const feats = pgTable("feats", {
   isGrantingSpell: boolean("is_granting_spell"),
   isRepeatable: boolean("is_repeatable").notNull().default(false),
 
+  isOrigin: boolean("is_origin"),
+  isEpicBoon: boolean("is_epic_boon"),
+  isWeaponFighting: boolean("is_weapon_fighting"),
+
   // timestamps
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),

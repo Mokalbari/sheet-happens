@@ -10,12 +10,6 @@ export const backgrounds = pgTable("backgrounds", {
     .notNull()
     .references(() => systems.id),
 
-  // abilities id
-  // feat id
-  // skills id
-  // tools id
-  // equipments id
-
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
