@@ -1,7 +1,7 @@
 import { systems } from "@/db/schema";
 import "dotenv/config";
 import { z } from "zod";
-import { createMainFunction, seed } from "../utils";
+import { createMainFunction, seed } from "../../utils";
 
 const systemSchema = z.object({
   name: z.enum(["dd5e2024", "homebrew"]),

@@ -1,7 +1,7 @@
 import { armors, armorTypeEnum, translations } from "@/db/schema";
 import z from "zod";
+import { createMainFunction, seed } from "../../utils";
 import { SYSTEM_ID_DD5E } from "../constants";
-import { createMainFunction, seed } from "../utils";
 
 const armorSchema = z.object({
   slug: z.string().min(1).max(100),

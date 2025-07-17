@@ -1,7 +1,7 @@
 import { tools, translations } from "@/db/schema";
 import z from "zod";
+import { createMainFunction } from "../../utils";
 import { ABILITIES_IDS, SYSTEM_ID_DD5E } from "../constants";
-import { createMainFunction } from "../utils";
 
 const toolsSchema = z.object({
   slug: z.string(),

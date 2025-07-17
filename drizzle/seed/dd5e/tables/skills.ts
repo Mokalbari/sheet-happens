@@ -1,8 +1,8 @@
 import { abilities, skills, translations } from "@/db/schema";
 import "dotenv/config";
 import { z } from "zod";
+import { createMainFunction, seed } from "../../utils";
 import { SYSTEM_ID_DD5E } from "../constants";
-import { createMainFunction, seed } from "../utils";
 
 const skillSchema = z.object({
   slug: z.string().min(1).max(100),

@@ -1,6 +1,6 @@
 import { species, speciesTraits, subspecies, translations } from "@/db/schema";
 import z from "zod";
-import { createMainFunction } from "../utils";
+import { createMainFunction } from "../../utils";
 import {
   speciesSeed,
   speciesTraitsSeed,

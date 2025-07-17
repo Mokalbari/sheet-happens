@@ -1,6 +1,6 @@
 import dedent from "ts-dedent";
 import z from "zod";
-import { SYSTEM_ID_DD5E } from "./constants";
+import { SYSTEM_ID_DD5E } from "../constants";
 
 const featsSchema = z.object({
   slug: z.string().min(1),
