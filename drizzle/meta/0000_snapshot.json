@@ -1,5 +1,5 @@
 {
-  "id": "f0c33d36-8c92-46a0-a18d-43ea91e7ec5f",
+  "id": "11e74923-925b-4ff7-afd1-8ba4137667eb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -144,7 +144,7 @@
           "type": "armor_type",
           "typeSchema": "public",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "armor_class": {
           "name": "armor_class",
@@ -176,6 +176,12 @@
           "type": "boolean",
           "primaryKey": false,
           "notNull": true
+        },
+        "can_swim": {
+          "name": "can_swim",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
         },
         "weight": {
           "name": "weight",
@@ -641,13 +647,13 @@
           "name": "level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "feature_type": {
           "name": "feature_type",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "created_at": {
           "name": "created_at",
@@ -1550,6 +1556,24 @@
           "notNull": true,
           "default": false
         },
+        "is_origin": {
+          "name": "is_origin",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_epic_boon": {
+          "name": "is_epic_boon",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_weapon_fighting": {
+          "name": "is_weapon_fighting",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
@@ -1591,6 +1615,103 @@
           ]
         }
       },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.feats_required_abilities": {
+      "name": "feats_required_abilities",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "feats_required_abilities_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "feat_id": {
+          "name": "feat_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ability_id": {
+          "name": "ability_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logic": {
+          "name": "logic",
+          "type": "feat_logic",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "min_ability_score": {
+          "name": "min_ability_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 1
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "feats_required_abilities_feat_id_feats_id_fk": {
+          "name": "feats_required_abilities_feat_id_feats_id_fk",
+          "tableFrom": "feats_required_abilities",
+          "tableTo": "feats",
+          "columnsFrom": [
+            "feat_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "feats_required_abilities_ability_id_abilities_id_fk": {
+          "name": "feats_required_abilities_ability_id_abilities_id_fk",
+          "tableFrom": "feats_required_abilities",
+          "tableTo": "abilities",
+          "columnsFrom": [
+            "ability_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -2526,6 +2647,12 @@
           "primaryKey": false,
           "notNull": true
         },
+        "subspecies_id": {
+          "name": "subspecies_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "alignment": {
           "name": "alignment",
           "type": "alignment",
@@ -2627,6 +2754,19 @@
           "tableTo": "species",
           "columnsFrom": [
             "species_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "heroes_subspecies_id_subspecies_id_fk": {
+          "name": "heroes_subspecies_id_subspecies_id_fk",
+          "tableFrom": "heroes",
+          "tableTo": "subspecies",
+          "columnsFrom": [
+            "subspecies_id"
           ],
           "columnsTo": [
             "id"
@@ -2919,9 +3059,9 @@
           "primaryKey": false,
           "notNull": true
         },
-        "variant": {
-          "name": "variant",
-          "type": "text",
+        "known_languages": {
+          "name": "known_languages",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -3393,6 +3533,115 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "public.subspecies": {
+      "name": "subspecies",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "subspecies_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "species_id": {
+          "name": "species_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "default_name": {
+          "name": "default_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "default_description": {
+          "name": "default_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "system_id": {
+          "name": "system_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "subspecies_species_id_species_id_fk": {
+          "name": "subspecies_species_id_species_id_fk",
+          "tableFrom": "subspecies",
+          "tableTo": "species",
+          "columnsFrom": [
+            "species_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "subspecies_system_id_systems_id_fk": {
+          "name": "subspecies_system_id_systems_id_fk",
+          "tableFrom": "subspecies",
+          "tableTo": "systems",
+          "columnsFrom": [
+            "system_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "subspecies_slug_unique": {
+          "name": "subspecies_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.systems": {
       "name": "systems",
       "schema": "",
@@ -3478,8 +3727,14 @@
           "primaryKey": false,
           "notNull": true
         },
-        "default_description": {
-          "name": "default_description",
+        "default_utility": {
+          "name": "default_utility",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "default_craft": {
+          "name": "default_craft",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -3499,6 +3754,18 @@
         "value": {
           "name": "value",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_musical_instrument": {
+          "name": "is_musical_instrument",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_gaming_tool": {
+          "name": "is_gaming_tool",
+          "type": "boolean",
           "primaryKey": false,
           "notNull": false
         },
@@ -3816,156 +4083,6 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.weapon_has_properties": {
-      "name": "weapon_has_properties",
-      "schema": "",
-      "columns": {
-        "weapon_id": {
-          "name": "weapon_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "weapon_property_id": {
-          "name": "weapon_property_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "weapon_has_properties_weapon_id_weapons_id_fk": {
-          "name": "weapon_has_properties_weapon_id_weapons_id_fk",
-          "tableFrom": "weapon_has_properties",
-          "tableTo": "weapons",
-          "columnsFrom": [
-            "weapon_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "weapon_has_properties_weapon_property_id_weapon_properties_id_fk": {
-          "name": "weapon_has_properties_weapon_property_id_weapon_properties_id_fk",
-          "tableFrom": "weapon_has_properties",
-          "tableTo": "weapon_properties",
-          "columnsFrom": [
-            "weapon_property_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.weapon_properties": {
-      "name": "weapon_properties",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "integer",
-          "primaryKey": true,
-          "notNull": true,
-          "identity": {
-            "type": "always",
-            "name": "weapon_properties_id_seq",
-            "schema": "public",
-            "increment": "1",
-            "startWith": "1",
-            "minValue": "1",
-            "maxValue": "2147483647",
-            "cache": "1",
-            "cycle": false
-          }
-        },
-        "slug": {
-          "name": "slug",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "default_name": {
-          "name": "default_name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "system_id": {
-          "name": "system_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "weapon_properties_system_id_systems_id_fk": {
-          "name": "weapon_properties_system_id_systems_id_fk",
-          "tableFrom": "weapon_properties",
-          "tableTo": "systems",
-          "columnsFrom": [
-            "system_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "weapon_properties_slug_unique": {
-          "name": "weapon_properties_slug_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "slug"
-          ]
-        }
-      },
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
     "public.weapons": {
       "name": "weapons",
       "schema": "",
@@ -4012,6 +4129,13 @@
           "primaryKey": false,
           "notNull": true
         },
+        "damage_type": {
+          "name": "damage_type",
+          "type": "weapon_damage_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
         "secondary_damage_dice": {
           "name": "secondary_damage_dice",
           "type": "hit_dice",
@@ -4026,9 +4150,28 @@
           "primaryKey": false,
           "notNull": true
         },
+        "weapon_properties": {
+          "name": "weapon_properties",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
         "weapon_mastery": {
           "name": "weapon_mastery",
           "type": "weapon_mastery",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "range": {
+          "name": "range",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "range_type": {
+          "name": "range_type",
+          "type": "range_type",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false
@@ -4041,7 +4184,7 @@
         },
         "weight": {
           "name": "weight",
-          "type": "integer",
+          "type": "numeric(10, 2)",
           "primaryKey": false,
           "notNull": false
         },
@@ -4169,6 +4312,14 @@
         "wizard"
       ]
     },
+    "public.feat_logic": {
+      "name": "feat_logic",
+      "schema": "public",
+      "values": [
+        "AND",
+        "OR"
+      ]
+    },
     "public.hero_information": {
       "name": "hero_information",
       "schema": "public",
@@ -4189,7 +4340,8 @@
         "d6",
         "d8",
         "d10",
-        "d12"
+        "d12",
+        "2d6"
       ]
     },
     "public.locale": {
@@ -4198,6 +4350,17 @@
       "values": [
         "en",
         "fr"
+      ]
+    },
+    "public.range_type": {
+      "name": "range_type",
+      "schema": "public",
+      "values": [
+        "close",
+        "near",
+        "far",
+        "close/near",
+        "close/far"
       ]
     },
     "public.species_size": {
@@ -4285,7 +4448,8 @@
       "schema": "public",
       "values": [
         "dd5e2024",
-        "homebrew"
+        "homebrew",
+        "shadow-dark"
       ]
     },
     "public.translation_entity": {
@@ -4302,11 +4466,21 @@
         "skills",
         "species",
         "speciesTraits",
+        "subspecies",
         "spells",
         "subclasses",
         "tools",
         "weapons",
         "weaponProperties"
+      ]
+    },
+    "public.weapon_damage_type": {
+      "name": "weapon_damage_type",
+      "schema": "public",
+      "values": [
+        "bludgeoning",
+        "piercing",
+        "slashing"
       ]
     },
     "public.weapon_mastery": {
@@ -4323,13 +4497,33 @@
         "vex"
       ]
     },
+    "public.weapon_property": {
+      "name": "weapon_property",
+      "schema": "public",
+      "values": [
+        "ammunition",
+        "finesse",
+        "heavy",
+        "light",
+        "loading",
+        "reach",
+        "special",
+        "range",
+        "thrown",
+        "two-handed",
+        "versatile"
+      ]
+    },
     "public.weapon_type": {
       "name": "weapon_type",
       "schema": "public",
       "values": [
         "simple",
         "martial",
-        "exotic"
+        "exotic",
+        "melee",
+        "range",
+        "melee/range"
       ]
     }
   },

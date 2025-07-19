@@ -28,7 +28,7 @@ export const I18N_ENTITY_FIELDS: Record<string, string[]> = {
   abilities: ["name"],
   armors: ["name"],
   backgrounds: ["name"],
-  classFeatures: ["name"],
+  classFeatures: ["name", "description"],
   classes: ["name"],
   feats: ["name"],
   lootables: ["name"],

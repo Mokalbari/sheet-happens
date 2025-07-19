@@ -4,9 +4,11 @@ CREATE TYPE "public"."area_of_effect" AS ENUM('sphere', 'cube', 'cylinder', 'lin
 CREATE TYPE "public"."armor_type" AS ENUM('light', 'medium', 'heavy', 'shield');--> statement-breakpoint
 CREATE TYPE "public"."class_ability_role" AS ENUM('main', 'save');--> statement-breakpoint
 CREATE TYPE "public"."dnd5e_class" AS ENUM('barbarian', 'bard', 'cleric', 'druid', 'fighter', 'monk', 'paladin', 'ranger', 'rogue', 'sorcerer', 'warlock', 'wizard');--> statement-breakpoint
+CREATE TYPE "public"."feat_logic" AS ENUM('AND', 'OR');--> statement-breakpoint
 CREATE TYPE "public"."hero_information" AS ENUM('appearance', 'backstory', 'personalityTraits', 'ideals', 'bonds', 'flaws');--> statement-breakpoint
-CREATE TYPE "public"."hit_dice" AS ENUM('d4', 'd6', 'd8', 'd10', 'd12');--> statement-breakpoint
+CREATE TYPE "public"."hit_dice" AS ENUM('d4', 'd6', 'd8', 'd10', 'd12', '2d6');--> statement-breakpoint
 CREATE TYPE "public"."locale" AS ENUM('en', 'fr');--> statement-breakpoint
+CREATE TYPE "public"."range_type" AS ENUM('close', 'near', 'far', 'close/near', 'close/far');--> statement-breakpoint
 CREATE TYPE "public"."species_size" AS ENUM('tiny', 'small', 'medium', 'large', 'huge', 'gargantuan');--> statement-breakpoint
 CREATE TYPE "public"."spell_casting_time" AS ENUM('bonus_action', 'action', 'reaction', 'minute', 'hour', 'day');--> statement-breakpoint
 CREATE TYPE "public"."spell_duration" AS ENUM('instant', 'long', 'until_dispelled');--> statement-breakpoint
@@ -14,10 +16,12 @@ CREATE TYPE "public"."spell_grant_type" AS ENUM('specific_spell', 'spell_choice'
 CREATE TYPE "public"."spell_range" AS ENUM('touch', 'self', 'range', 'infinite');--> statement-breakpoint
 CREATE TYPE "public"."spell_saving_throw" AS ENUM('strength', 'dexterity', 'constitution', 'wisdom', 'intelligence', 'charisma');--> statement-breakpoint
 CREATE TYPE "public"."spell_school" AS ENUM('abjuration', 'conjuration', 'divination', 'enchantment', 'evocation', 'illusion', 'necromancy', 'transmutation');--> statement-breakpoint
-CREATE TYPE "public"."system" AS ENUM('dd5e2024', 'homebrew');--> statement-breakpoint
-CREATE TYPE "public"."translation_entity" AS ENUM('abilities', 'armors', 'backgrounds', 'classFeatures', 'classes', 'feats', 'lootables', 'skills', 'species', 'speciesTraits', 'spells', 'subclasses', 'tools', 'weapons', 'weaponProperties');--> statement-breakpoint
+CREATE TYPE "public"."system" AS ENUM('dd5e2024', 'homebrew', 'shadow-dark');--> statement-breakpoint
+CREATE TYPE "public"."translation_entity" AS ENUM('abilities', 'armors', 'backgrounds', 'classFeatures', 'classes', 'feats', 'lootables', 'skills', 'species', 'speciesTraits', 'subspecies', 'spells', 'subclasses', 'tools', 'weapons', 'weaponProperties');--> statement-breakpoint
+CREATE TYPE "public"."weapon_damage_type" AS ENUM('bludgeoning', 'piercing', 'slashing');--> statement-breakpoint
 CREATE TYPE "public"."weapon_mastery" AS ENUM('cleave', 'graze', 'nick', 'push', 'sap', 'slow', 'topple', 'vex');--> statement-breakpoint
-CREATE TYPE "public"."weapon_type" AS ENUM('simple', 'martial', 'exotic');--> statement-breakpoint
+CREATE TYPE "public"."weapon_property" AS ENUM('ammunition', 'finesse', 'heavy', 'light', 'loading', 'reach', 'special', 'range', 'thrown', 'two-handed', 'versatile');--> statement-breakpoint
+CREATE TYPE "public"."weapon_type" AS ENUM('simple', 'martial', 'exotic', 'melee', 'range', 'melee/range');--> statement-breakpoint
 CREATE TABLE "abilities" (
 	"id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "abilities_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
 	"slug" text NOT NULL,
@@ -35,12 +39,13 @@ CREATE TABLE "armors" (
 	"default_name" text NOT NULL,
 	"default_description" text,
 	"system_id" integer NOT NULL,
-	"armor_type" "armor_type" NOT NULL,
+	"armor_type" "armor_type",
 	"armor_class" integer,
 	"armor_type_bonus" integer,
 	"has_dexterity_bonus" boolean DEFAULT false NOT NULL,
 	"max_dexterity_bonus" integer,
 	"has_stealth_disadvantage" boolean NOT NULL,
+	"can_swim" boolean,
 	"weight" integer,
 	"value" integer,
 	"created_at" timestamp DEFAULT now() NOT NULL,
@@ -92,8 +97,8 @@ CREATE TABLE "class_features" (
 	"class_id" integer NOT NULL,
 	"subclass_id" integer,
 	"system_id" integer NOT NULL,
-	"level" integer NOT NULL,
-	"feature_type" text NOT NULL,
+	"level" integer,
+	"feature_type" text,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT "class_features_slug_unique" UNIQUE("slug")
@@ -194,9 +199,22 @@ CREATE TABLE "feats" (
 	"is_granting_tool" boolean,
 	"is_granting_spell" boolean,
 	"is_repeatable" boolean DEFAULT false NOT NULL,
+	"is_origin" boolean,
+	"is_epic_boon" boolean,
+	"is_weapon_fighting" boolean,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT "feats_slug_unique" UNIQUE("slug")
+);
+--> statement-breakpoint
+CREATE TABLE "feats_required_abilities" (
+	"id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "feats_required_abilities_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
+	"feat_id" integer,
+	"ability_id" integer,
+	"logic" "feat_logic",
+	"min_ability_score" integer DEFAULT 1 NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "hero_ability_scores" (
@@ -302,6 +320,7 @@ CREATE TABLE "heroes" (
 	"subclass_id" integer,
 	"background_id" integer NOT NULL,
 	"species_id" integer NOT NULL,
+	"subspecies_id" integer,
 	"alignment" "alignment",
 	"extra_info" jsonb,
 	"created_at" timestamp DEFAULT now() NOT NULL,
@@ -342,7 +361,7 @@ CREATE TABLE "species" (
 	"speed" integer DEFAULT 9 NOT NULL,
 	"size" "species_size" DEFAULT 'medium' NOT NULL,
 	"system_id" integer NOT NULL,
-	"variant" text,
+	"known_languages" jsonb,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT "species_slug_unique" UNIQUE("slug")
@@ -400,6 +419,18 @@ CREATE TABLE "subclasses" (
 	CONSTRAINT "subclasses_slug_unique" UNIQUE("slug")
 );
 --> statement-breakpoint
+CREATE TABLE "subspecies" (
+	"id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "subspecies_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
+	"slug" text NOT NULL,
+	"species_id" integer NOT NULL,
+	"default_name" text NOT NULL,
+	"default_description" text,
+	"system_id" integer NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL,
+	CONSTRAINT "subspecies_slug_unique" UNIQUE("slug")
+);
+--> statement-breakpoint
 CREATE TABLE "systems" (
 	"id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "systems_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
 	"name" "system" DEFAULT 'dd5e2024' NOT NULL,
@@ -411,10 +442,13 @@ CREATE TABLE "tools" (
 	"id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "tools_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
 	"slug" text NOT NULL,
 	"default_name" text NOT NULL,
-	"default_description" text,
+	"default_utility" text,
+	"default_craft" text,
 	"ability_id" integer,
 	"weight" integer,
 	"value" integer,
+	"is_musical_instrument" boolean,
+	"is_gaming_tool" boolean,
 	"system_id" integer NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
@@ -453,34 +487,21 @@ CREATE TABLE "users" (
 	CONSTRAINT "users_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
-CREATE TABLE "weapon_has_properties" (
-	"weapon_id" integer NOT NULL,
-	"weapon_property_id" integer NOT NULL,
-	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now() NOT NULL
-);
---> statement-breakpoint
-CREATE TABLE "weapon_properties" (
-	"id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "weapon_properties_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
-	"slug" text NOT NULL,
-	"default_name" text NOT NULL,
-	"system_id" integer NOT NULL,
-	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now() NOT NULL,
-	CONSTRAINT "weapon_properties_slug_unique" UNIQUE("slug")
-);
---> statement-breakpoint
 CREATE TABLE "weapons" (
 	"id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "weapons_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
 	"slug" text NOT NULL,
 	"default_name" text NOT NULL,
 	"default_description" text,
 	"default_damage_dice" "hit_dice" NOT NULL,
+	"damage_type" "weapon_damage_type",
 	"secondary_damage_dice" "hit_dice",
 	"weapon_type" "weapon_type" NOT NULL,
+	"weapon_properties" jsonb,
 	"weapon_mastery" "weapon_mastery",
+	"range" jsonb,
+	"range_type" "range_type",
 	"system_id" integer NOT NULL,
-	"weight" integer,
+	"weight" numeric(10, 2),
 	"value" integer,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
@@ -513,6 +534,8 @@ ALTER TABLE "feat_grants_spells" ADD CONSTRAINT "feat_grants_spells_specific_spe
 ALTER TABLE "feat_grants_tools" ADD CONSTRAINT "feat_grants_tools_feat_id_feats_id_fk" FOREIGN KEY ("feat_id") REFERENCES "public"."feats"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "feat_grants_tools" ADD CONSTRAINT "feat_grants_tools_tool_id_tools_id_fk" FOREIGN KEY ("tool_id") REFERENCES "public"."tools"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "feats" ADD CONSTRAINT "feats_system_id_systems_id_fk" FOREIGN KEY ("system_id") REFERENCES "public"."systems"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "feats_required_abilities" ADD CONSTRAINT "feats_required_abilities_feat_id_feats_id_fk" FOREIGN KEY ("feat_id") REFERENCES "public"."feats"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "feats_required_abilities" ADD CONSTRAINT "feats_required_abilities_ability_id_abilities_id_fk" FOREIGN KEY ("ability_id") REFERENCES "public"."abilities"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "hero_ability_scores" ADD CONSTRAINT "hero_ability_scores_hero_id_heroes_id_fk" FOREIGN KEY ("hero_id") REFERENCES "public"."heroes"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "hero_ability_scores" ADD CONSTRAINT "hero_ability_scores_ability_id_abilities_id_fk" FOREIGN KEY ("ability_id") REFERENCES "public"."abilities"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "hero_equipment" ADD CONSTRAINT "hero_equipment_hero_id_heroes_id_fk" FOREIGN KEY ("hero_id") REFERENCES "public"."heroes"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
@@ -535,6 +558,7 @@ ALTER TABLE "heroes" ADD CONSTRAINT "heroes_class_id_classes_id_fk" FOREIGN KEY 
 ALTER TABLE "heroes" ADD CONSTRAINT "heroes_subclass_id_subclasses_id_fk" FOREIGN KEY ("subclass_id") REFERENCES "public"."subclasses"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "heroes" ADD CONSTRAINT "heroes_background_id_backgrounds_id_fk" FOREIGN KEY ("background_id") REFERENCES "public"."backgrounds"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "heroes" ADD CONSTRAINT "heroes_species_id_species_id_fk" FOREIGN KEY ("species_id") REFERENCES "public"."species"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "heroes" ADD CONSTRAINT "heroes_subspecies_id_subspecies_id_fk" FOREIGN KEY ("subspecies_id") REFERENCES "public"."subspecies"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "lootables" ADD CONSTRAINT "lootables_system_id_systems_id_fk" FOREIGN KEY ("system_id") REFERENCES "public"."systems"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "skills" ADD CONSTRAINT "skills_system_id_systems_id_fk" FOREIGN KEY ("system_id") REFERENCES "public"."systems"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "skills" ADD CONSTRAINT "skills_ability_id_abilities_id_fk" FOREIGN KEY ("ability_id") REFERENCES "public"."abilities"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
@@ -544,11 +568,10 @@ ALTER TABLE "species_traits" ADD CONSTRAINT "species_traits_system_id_systems_id
 ALTER TABLE "spells" ADD CONSTRAINT "spells_system_id_systems_id_fk" FOREIGN KEY ("system_id") REFERENCES "public"."systems"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "subclasses" ADD CONSTRAINT "subclasses_class_id_classes_id_fk" FOREIGN KEY ("class_id") REFERENCES "public"."classes"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "subclasses" ADD CONSTRAINT "subclasses_system_id_systems_id_fk" FOREIGN KEY ("system_id") REFERENCES "public"."systems"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "subspecies" ADD CONSTRAINT "subspecies_species_id_species_id_fk" FOREIGN KEY ("species_id") REFERENCES "public"."species"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "subspecies" ADD CONSTRAINT "subspecies_system_id_systems_id_fk" FOREIGN KEY ("system_id") REFERENCES "public"."systems"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "tools" ADD CONSTRAINT "tools_ability_id_abilities_id_fk" FOREIGN KEY ("ability_id") REFERENCES "public"."abilities"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "tools" ADD CONSTRAINT "tools_system_id_systems_id_fk" FOREIGN KEY ("system_id") REFERENCES "public"."systems"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "tools_craft_lootables" ADD CONSTRAINT "tools_craft_lootables_tool_id_tools_id_fk" FOREIGN KEY ("tool_id") REFERENCES "public"."tools"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "tools_craft_lootables" ADD CONSTRAINT "tools_craft_lootables_lootable_id_lootables_id_fk" FOREIGN KEY ("lootable_id") REFERENCES "public"."lootables"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "weapon_has_properties" ADD CONSTRAINT "weapon_has_properties_weapon_id_weapons_id_fk" FOREIGN KEY ("weapon_id") REFERENCES "public"."weapons"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "weapon_has_properties" ADD CONSTRAINT "weapon_has_properties_weapon_property_id_weapon_properties_id_fk" FOREIGN KEY ("weapon_property_id") REFERENCES "public"."weapon_properties"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "weapon_properties" ADD CONSTRAINT "weapon_properties_system_id_systems_id_fk" FOREIGN KEY ("system_id") REFERENCES "public"."systems"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "weapons" ADD CONSTRAINT "weapons_system_id_systems_id_fk" FOREIGN KEY ("system_id") REFERENCES "public"."systems"("id") ON DELETE no action ON UPDATE no action;

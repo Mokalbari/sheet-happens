@@ -1,54 +1,12 @@
 {
-  "version": "5",
+  "version": "7",
   "dialect": "postgresql",
   "entries": [
     {
       "idx": 0,
       "version": "7",
-      "when": 1751713963375,
-      "tag": "0000_sudden_old_lace",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1751714516019,
-      "tag": "0001_overconfident_beast",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1751715003150,
-      "tag": "0002_gigantic_jackpot",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1751715197863,
-      "tag": "0003_salty_wolfsbane",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1752395048561,
-      "tag": "0004_rare_storm",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1752926560173,
-      "tag": "0005_organic_red_skull",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "7",
-      "when": 1752934201204,
-      "tag": "0006_whole_shooting_star",
+      "when": 1752934280107,
+      "tag": "0000_hesitant_katie_power",
       "breakpoints": true
     }
   ]
