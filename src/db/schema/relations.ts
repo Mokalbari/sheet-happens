@@ -6,9 +6,11 @@ import { backgroundAbilities } from "./tables/background-abilities";
 import { backgroundSkills } from "./tables/background-skills";
 import { backgrounds } from "./tables/backgrounds";
 import { classAbilities } from "./tables/class-abilities";
+import { classArmors } from "./tables/class-armors";
 import { classFeatures } from "./tables/class-features";
 import { classMasteries } from "./tables/class-masteries";
 import { classSkills } from "./tables/class-skills";
+import { classWeapons } from "./tables/class-weapons";
 import { classes } from "./tables/classes";
 import { featGrantsAbilities } from "./tables/feat-grants-abilities";
 import { featGrantsSkills } from "./tables/feat-grants-skills";
@@ -52,11 +54,12 @@ export const abilitiesRelations = relations(abilities, ({ one, many }) => ({
   featsRequiredAbilities: many(featsRequiredAbilities),
 }));
 
-export const armorsRelations = relations(armors, ({ one }) => ({
+export const armorsRelations = relations(armors, ({ one, many }) => ({
   system: one(systems, {
     fields: [armors.systemId],
     references: [systems.id],
   }),
+  classes: many(classArmors),
 }));
 
 export const backgroundAbilitiesRelations = relations(
@@ -126,6 +129,28 @@ export const classSkillsRelations = relations(classSkills, ({ one }) => ({
   }),
 }));
 
+export const classArmorsRelations = relations(classArmors, ({ one }) => ({
+  class: one(classes, {
+    fields: [classArmors.classId],
+    references: [classes.id],
+  }),
+  armor: one(armors, {
+    fields: [classArmors.armorId],
+    references: [armors.id],
+  }),
+}));
+
+export const classWeaponsRelations = relations(classWeapons, ({ one }) => ({
+  class: one(classes, {
+    fields: [classWeapons.classId],
+    references: [classes.id],
+  }),
+  weapon: one(weapons, {
+    fields: [classWeapons.weaponId],
+    references: [weapons.id],
+  }),
+}));
+
 export const classFeaturesRelations = relations(classFeatures, ({ one }) => ({
   class: one(classes, {
     fields: [classFeatures.classId],
@@ -148,6 +173,8 @@ export const classesRelations = relations(classes, ({ one, many }) => ({
   }),
   abilities: many(classAbilities),
   skills: many(classSkills),
+  armors: many(classArmors),
+  weapons: many(classWeapons),
   heroes: many(heroes),
   features: many(classFeatures),
   subclasses: many(subclasses),
@@ -411,6 +438,7 @@ export const weaponsRelations = relations(weapons, ({ one, many }) => ({
     fields: [weapons.systemId],
     references: [systems.id],
   }),
+  classes: many(classWeapons),
 }));
 
 export const subclassesRelations = relations(subclasses, ({ one, many }) => ({
