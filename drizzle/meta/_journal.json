@@ -43,6 +43,13 @@
       "when": 1752926560173,
       "tag": "0005_organic_red_skull",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1752934201204,
+      "tag": "0006_whole_shooting_star",
+      "breakpoints": true
     }
   ]
 }

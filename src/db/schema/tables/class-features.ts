@@ -17,8 +17,8 @@ export const classFeatures = pgTable("class_features", {
     .notNull()
     .references(() => systems.id),
 
-  level: integer("level").notNull(),
-  featureType: text("feature_type").notNull(), // e.g., "ability", "spellcasting", "proficiency", etc.
+  level: integer("level"),
+  featureType: text("feature_type"), // e.g., "ability", "spellcasting", "proficiency", etc.
 
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),

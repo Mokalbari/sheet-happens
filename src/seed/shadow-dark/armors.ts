@@ -1,5 +1,4 @@
-import { armors, translations } from "../../schema";
-import { createMainFunction, seed } from "../utils";
+import { armors } from "../../schema";
 import { SYSTEM_ID_SHADOW_DARK } from "./constants";
 
 type ArmorInsertSchema = typeof armors.$inferInsert;
@@ -70,20 +69,20 @@ const armorsTranslations = {
   },
 };
 
-async function seedArmors(db: any) {
-  return await seed(db, {
-    tableName: "armors",
-    table: armors,
-    data: armorsSeedData,
-    translations: {
-      entity: "armors",
-      table: translations,
-      translations: armorsTranslations,
-      field: "name",
-    },
-  });
-}
+// async function seedArmors(db: any) {
+//   return await seed(db, {
+//     tableName: "armors",
+//     table: armors,
+//     data: armorsSeedData,
+//     translations: {
+//       entity: "armors",
+//       table: translations,
+//       translations: armorsTranslations,
+//       field: "name",
+//     },
+//   });
+// }
 
-const main = createMainFunction(seedArmors);
+// const main = createMainFunction(seedArmors);
 
-main();
+// main();

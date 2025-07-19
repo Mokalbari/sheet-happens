@@ -1,5 +1,4 @@
-import { translations, weapons } from "@/db/schema";
-import { createMainFunction, seed } from "../utils";
+import { weapons } from "@/db/schema";
 import { SYSTEM_ID_SHADOW_DARK } from "./constants";
 
 type WeaponInsertSchema = typeof weapons.$inferInsert;
@@ -222,20 +221,20 @@ const weaponsTranslations = {
   },
 };
 
-async function seedWeapons(db: any) {
-  return await seed(db, {
-    tableName: "weapons",
-    table: weapons,
-    data: weaponsSeedData,
-    translations: {
-      entity: "weapons",
-      table: translations,
-      translations: weaponsTranslations,
-      field: "name",
-    },
-  });
-}
+// async function seedWeapons(db: any) {
+//   return await seed(db, {
+//     tableName: "weapons",
+//     table: weapons,
+//     data: weaponsSeedData,
+//     translations: {
+//       entity: "weapons",
+//       table: translations,
+//       translations: weaponsTranslations,
+//       field: "name",
+//     },
+//   });
+// }
 
-const main = createMainFunction(seedWeapons);
+// const main = createMainFunction(seedWeapons);
 
-main();
+// main();
