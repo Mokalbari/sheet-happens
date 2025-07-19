@@ -8,6 +8,13 @@
       "when": 1752934280107,
       "tag": "0000_hesitant_katie_power",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1752936292119,
+      "tag": "0001_nosy_talos",
+      "breakpoints": true
     }
   ]
 }
