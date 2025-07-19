@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { featsRequiredAbilities } from "./tables";
+import { classTalents, featsRequiredAbilities } from "./tables";
 import { abilities } from "./tables/abilities";
 import { armors } from "./tables/armors";
 import { backgroundAbilities } from "./tables/background-abilities";
@@ -129,6 +129,13 @@ export const classSkillsRelations = relations(classSkills, ({ one }) => ({
   }),
 }));
 
+export const classTalentsRelations = relations(classTalents, ({ one }) => ({
+  class: one(classes, {
+    fields: [classTalents.classId],
+    references: [classes.id],
+  }),
+}));
+
 export const classArmorsRelations = relations(classArmors, ({ one }) => ({
   class: one(classes, {
     fields: [classArmors.classId],
@@ -182,6 +189,7 @@ export const classesRelations = relations(classes, ({ one, many }) => ({
     fields: [classes.id],
     references: [classMasteries.classId],
   }),
+  talents: many(classTalents),
 }));
 
 export const featsRelations = relations(feats, ({ one, many }) => ({

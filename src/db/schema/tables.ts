@@ -8,6 +8,7 @@ export { classArmors } from "./tables/class-armors";
 export { classFeatures } from "./tables/class-features";
 export { classMasteries } from "./tables/class-masteries";
 export { classSkills } from "./tables/class-skills";
+export { classTalents } from "./tables/class-talents";
 export { classWeapons } from "./tables/class-weapons";
 export { classes } from "./tables/classes";
 export { featGrantsAbilities } from "./tables/feat-grants-abilities";

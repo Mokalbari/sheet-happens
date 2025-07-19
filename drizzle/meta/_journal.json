@@ -15,6 +15,13 @@
       "when": 1752936292119,
       "tag": "0001_nosy_talos",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1752937939269,
+      "tag": "0002_simple_gwen_stacy",
+      "breakpoints": true
     }
   ]
 }
