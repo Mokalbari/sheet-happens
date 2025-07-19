@@ -1,6 +1,7 @@
 import {
   boolean,
   integer,
+  jsonb,
   pgTable,
   text,
   timestamp,
@@ -19,6 +20,7 @@ export const species = pgTable("species", {
   systemId: integer("system_id")
     .notNull()
     .references(() => systems.id),
+  knownLanguages: jsonb("known_languages").$type<string[]>(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

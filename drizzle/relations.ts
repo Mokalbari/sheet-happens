@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm/relations";
-import { systems, backgrounds, armors, backgroundSkills, skills, classes, classMasteries, abilities, classAbilities, classFeatures, subclasses, classSkills, feats, featGrantsSkills, featGrantsTools, tools, featGrantsSpells, spells, heroes, heroHasFeats, heroAbilityScores, heroEquipment, weapons, lootables, heroHasSpells, heroHitDice, heroSpellPreparations, heroSpellSlots, species, speciesTraits, users, heroStats, toolsCraftLootables, backgroundAbilities, featGrantsAbilities } from "./schema";
+import { systems, backgrounds, backgroundSkills, skills, classes, classMasteries, abilities, classAbilities, classFeatures, subclasses, classSkills, armors, feats, featGrantsSkills, featGrantsTools, tools, featGrantsSpells, spells, heroes, heroHasFeats, heroAbilityScores, heroEquipment, weapons, lootables, heroHasSpells, heroHitDice, heroSpellPreparations, heroSpellSlots, species, speciesTraits, users, subspecies, heroStats, toolsCraftLootables, backgroundAbilities, featGrantsAbilities, featsRequiredAbilities } from "./schema";
 
 export const backgroundsRelations = relations(backgrounds, ({one, many}) => ({
 	system: one(systems, {
@@ -13,9 +13,9 @@ export const backgroundsRelations = relations(backgrounds, ({one, many}) => ({
 
 export const systemsRelations = relations(systems, ({many}) => ({
 	backgrounds: many(backgrounds),
-	armors: many(armors),
 	abilities: many(abilities),
 	classFeatures: many(classFeatures),
+	armors: many(armors),
 	feats: many(feats),
 	lootables: many(lootables),
 	spells: many(spells),
@@ -25,16 +25,9 @@ export const systemsRelations = relations(systems, ({many}) => ({
 	species: many(species),
 	classes: many(classes),
 	subclasses: many(subclasses),
-	weapons: many(weapons),
 	tools: many(tools),
-}));
-
-export const armorsRelations = relations(armors, ({one, many}) => ({
-	system: one(systems, {
-		fields: [armors.systemId],
-		references: [systems.id]
-	}),
-	heroEquipments: many(heroEquipment),
+	weapons: many(weapons),
+	subspecies: many(subspecies),
 }));
 
 export const backgroundSkillsRelations = relations(backgroundSkills, ({one}) => ({
@@ -98,6 +91,7 @@ export const abilitiesRelations = relations(abilities, ({one, many}) => ({
 		relationName: "featGrantsAbilities_specificAbilityId_abilities_id"
 	}),
 	tools: many(tools),
+	featsRequiredAbilities: many(featsRequiredAbilities),
 }));
 
 export const classAbilitiesRelations = relations(classAbilities, ({one}) => ({
@@ -150,6 +144,14 @@ export const classSkillsRelations = relations(classSkills, ({one}) => ({
 	}),
 }));
 
+export const armorsRelations = relations(armors, ({one, many}) => ({
+	system: one(systems, {
+		fields: [armors.systemId],
+		references: [systems.id]
+	}),
+	heroEquipments: many(heroEquipment),
+}));
+
 export const featGrantsSkillsRelations = relations(featGrantsSkills, ({one}) => ({
 	feat: one(feats, {
 		fields: [featGrantsSkills.featId],
@@ -171,6 +173,7 @@ export const featsRelations = relations(feats, ({one, many}) => ({
 		references: [systems.id]
 	}),
 	featGrantsAbilities: many(featGrantsAbilities),
+	featsRequiredAbilities: many(featsRequiredAbilities),
 }));
 
 export const featGrantsToolsRelations = relations(featGrantsTools, ({one}) => ({
@@ -261,6 +264,10 @@ export const heroesRelations = relations(heroes, ({one, many}) => ({
 	species: one(species, {
 		fields: [heroes.speciesId],
 		references: [species.id]
+	}),
+	subspecy: one(subspecies, {
+		fields: [heroes.subspeciesId],
+		references: [subspecies.id]
 	}),
 	heroStats: many(heroStats),
 }));
@@ -370,10 +377,23 @@ export const speciesRelations = relations(species, ({one, many}) => ({
 		fields: [species.systemId],
 		references: [systems.id]
 	}),
+	subspecies: many(subspecies),
 }));
 
 export const usersRelations = relations(users, ({many}) => ({
 	heroes: many(heroes),
+}));
+
+export const subspeciesRelations = relations(subspecies, ({one, many}) => ({
+	heroes: many(heroes),
+	species: one(species, {
+		fields: [subspecies.speciesId],
+		references: [species.id]
+	}),
+	system: one(systems, {
+		fields: [subspecies.systemId],
+		references: [systems.id]
+	}),
 }));
 
 export const heroStatsRelations = relations(heroStats, ({one}) => ({
@@ -419,5 +439,16 @@ export const featGrantsAbilitiesRelations = relations(featGrantsAbilities, ({one
 		fields: [featGrantsAbilities.specificAbilityId],
 		references: [abilities.id],
 		relationName: "featGrantsAbilities_specificAbilityId_abilities_id"
+	}),
+}));
+
+export const featsRequiredAbilitiesRelations = relations(featsRequiredAbilities, ({one}) => ({
+	feat: one(feats, {
+		fields: [featsRequiredAbilities.featId],
+		references: [feats.id]
+	}),
+	ability: one(abilities, {
+		fields: [featsRequiredAbilities.abilityId],
+		references: [abilities.id]
 	}),
 }));

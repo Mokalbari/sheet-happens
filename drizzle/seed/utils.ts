@@ -11,8 +11,8 @@ export interface SeedOptions<T> {
   translations?: {
     entity: string;
     table: any;
-    translations: Record<string, Record<string, string>>;
-    field?: string;
+    translations: Record<string, Record<string, Record<string, string>>>;
+    fields?: string[];
   };
 }
 
@@ -64,7 +64,7 @@ export async function seedWithTranslations<T>(
     console.log(`✅ ${tableName} inserted successfully:`, insertedData);
 
     const translationData: any[] = [];
-    const field = translations.field || "name";
+    const fields = translations.fields || ["name"];
 
     if (Array.isArray(insertedData)) {
       for (const item of insertedData) {
@@ -73,14 +73,23 @@ export async function seedWithTranslations<T>(
         const itemTranslations = translations.translations[itemKey];
 
         if (itemTranslations) {
-          for (const [locale, value] of Object.entries(itemTranslations)) {
-            translationData.push({
-              entity: translations.entity,
-              entityId: (item as any).id,
-              field,
-              locale: locale as "en" | "fr",
-              value,
-            });
+          for (const [fieldName, fieldTranslations] of Object.entries(
+            itemTranslations
+          )) {
+            if (
+              typeof fieldTranslations === "object" &&
+              fieldTranslations !== null
+            ) {
+              for (const [locale, value] of Object.entries(fieldTranslations)) {
+                translationData.push({
+                  entity: translations.entity,
+                  entityId: (item as any).id,
+                  field: fieldName,
+                  locale: locale as "en" | "fr",
+                  value,
+                });
+              }
+            }
           }
         }
       }

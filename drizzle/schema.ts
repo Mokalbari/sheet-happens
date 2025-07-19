@@ -7,9 +7,11 @@ export const areaOfEffect = pgEnum("area_of_effect", ['sphere', 'cube', 'cylinde
 export const armorType = pgEnum("armor_type", ['light', 'medium', 'heavy', 'shield'])
 export const classAbilityRole = pgEnum("class_ability_role", ['main', 'save'])
 export const dnd5EClass = pgEnum("dnd5e_class", ['barbarian', 'bard', 'cleric', 'druid', 'fighter', 'monk', 'paladin', 'ranger', 'rogue', 'sorcerer', 'warlock', 'wizard'])
+export const featLogic = pgEnum("feat_logic", ['AND', 'OR'])
 export const heroInformation = pgEnum("hero_information", ['appearance', 'backstory', 'personalityTraits', 'ideals', 'bonds', 'flaws'])
 export const hitDice = pgEnum("hit_dice", ['d4', 'd6', 'd8', 'd10', 'd12', '2d6'])
 export const locale = pgEnum("locale", ['en', 'fr'])
+export const rangeType = pgEnum("range_type", ['close', 'near', 'far', 'close/near', 'close/far'])
 export const speciesSize = pgEnum("species_size", ['tiny', 'small', 'medium', 'large', 'huge', 'gargantuan'])
 export const spellCastingTime = pgEnum("spell_casting_time", ['bonus_action', 'action', 'reaction', 'minute', 'hour', 'day'])
 export const spellDuration = pgEnum("spell_duration", ['instant', 'long', 'until_dispelled'])
@@ -17,12 +19,12 @@ export const spellGrantType = pgEnum("spell_grant_type", ['specific_spell', 'spe
 export const spellRange = pgEnum("spell_range", ['touch', 'self', 'range', 'infinite'])
 export const spellSavingThrow = pgEnum("spell_saving_throw", ['strength', 'dexterity', 'constitution', 'wisdom', 'intelligence', 'charisma'])
 export const spellSchool = pgEnum("spell_school", ['abjuration', 'conjuration', 'divination', 'enchantment', 'evocation', 'illusion', 'necromancy', 'transmutation'])
-export const system = pgEnum("system", ['dd5e2024', 'homebrew'])
+export const system = pgEnum("system", ['dd5e2024', 'homebrew', 'shadow-dark'])
 export const translationEntity = pgEnum("translation_entity", ['abilities', 'armors', 'backgrounds', 'classFeatures', 'classes', 'feats', 'lootables', 'skills', 'species', 'speciesTraits', 'subspecies', 'spells', 'subclasses', 'tools', 'weapons', 'weaponProperties'])
 export const weaponDamageType = pgEnum("weapon_damage_type", ['bludgeoning', 'piercing', 'slashing'])
 export const weaponMastery = pgEnum("weapon_mastery", ['cleave', 'graze', 'nick', 'push', 'sap', 'slow', 'topple', 'vex'])
 export const weaponProperty = pgEnum("weapon_property", ['ammunition', 'finesse', 'heavy', 'light', 'loading', 'reach', 'special', 'range', 'thrown', 'two-handed', 'versatile'])
-export const weaponType = pgEnum("weapon_type", ['simple', 'martial', 'exotic'])
+export const weaponType = pgEnum("weapon_type", ['simple', 'martial', 'exotic', 'melee', 'range', 'melee/range'])
 
 
 export const backgrounds = pgTable("backgrounds", {
@@ -40,31 +42,6 @@ export const backgrounds = pgTable("backgrounds", {
 			name: "backgrounds_system_id_systems_id_fk"
 		}),
 	unique("backgrounds_slug_unique").on(table.slug),
-]);
-
-export const armors = pgTable("armors", {
-	id: integer().primaryKey().generatedAlwaysAsIdentity({ name: "armors_id_seq", startWith: 1, increment: 1, minValue: 1, maxValue: 2147483647, cache: 1 }),
-	slug: text().notNull(),
-	defaultName: text("default_name").notNull(),
-	defaultDescription: text("default_description"),
-	systemId: integer("system_id").notNull(),
-	armorType: armorType("armor_type").notNull(),
-	armorClass: integer("armor_class"),
-	armorTypeBonus: integer("armor_type_bonus"),
-	hasDexterityBonus: boolean("has_dexterity_bonus").default(false).notNull(),
-	maxDexterityBonus: integer("max_dexterity_bonus"),
-	hasStealthDisadvantage: boolean("has_stealth_disadvantage").notNull(),
-	weight: integer(),
-	value: integer(),
-	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow().notNull(),
-	updatedAt: timestamp("updated_at", { mode: 'string' }).defaultNow().notNull(),
-}, (table) => [
-	foreignKey({
-			columns: [table.systemId],
-			foreignColumns: [systems.id],
-			name: "armors_system_id_systems_id_fk"
-		}),
-	unique("armors_slug_unique").on(table.slug),
 ]);
 
 export const backgroundSkills = pgTable("background_skills", {
@@ -193,6 +170,32 @@ export const classSkills = pgTable("class_skills", {
 		}),
 ]);
 
+export const armors = pgTable("armors", {
+	id: integer().primaryKey().generatedAlwaysAsIdentity({ name: "armors_id_seq", startWith: 1, increment: 1, minValue: 1, maxValue: 2147483647, cache: 1 }),
+	slug: text().notNull(),
+	defaultName: text("default_name").notNull(),
+	defaultDescription: text("default_description"),
+	systemId: integer("system_id").notNull(),
+	armorType: armorType("armor_type"),
+	armorClass: integer("armor_class"),
+	armorTypeBonus: integer("armor_type_bonus"),
+	hasDexterityBonus: boolean("has_dexterity_bonus").default(false).notNull(),
+	maxDexterityBonus: integer("max_dexterity_bonus"),
+	hasStealthDisadvantage: boolean("has_stealth_disadvantage").notNull(),
+	weight: integer(),
+	value: integer(),
+	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow().notNull(),
+	updatedAt: timestamp("updated_at", { mode: 'string' }).defaultNow().notNull(),
+	canSwim: boolean("can_swim"),
+}, (table) => [
+	foreignKey({
+			columns: [table.systemId],
+			foreignColumns: [systems.id],
+			name: "armors_system_id_systems_id_fk"
+		}),
+	unique("armors_slug_unique").on(table.slug),
+]);
+
 export const featGrantsSkills = pgTable("feat_grants_skills", {
 	id: integer().primaryKey().generatedAlwaysAsIdentity({ name: "feat_grants_skills_id_seq", startWith: 1, increment: 1, minValue: 1, maxValue: 2147483647, cache: 1 }),
 	featId: integer("feat_id").notNull(),
@@ -277,29 +280,6 @@ export const heroHasFeats = pgTable("hero_has_feats", {
 			foreignColumns: [feats.id],
 			name: "hero_has_feats_feat_id_feats_id_fk"
 		}),
-]);
-
-export const feats = pgTable("feats", {
-	id: integer().primaryKey().generatedAlwaysAsIdentity({ name: "feats_id_seq", startWith: 1, increment: 1, minValue: 1, maxValue: 2147483647, cache: 1 }),
-	slug: text().notNull(),
-	defaultName: text("default_name").notNull(),
-	defaultDescription: text("default_description"),
-	systemId: integer("system_id").notNull(),
-	minLevel: integer("min_level").default(1).notNull(),
-	isGrantingAbilityScore: boolean("is_granting_ability_score"),
-	isGrantingSkill: boolean("is_granting_skill"),
-	isGrantingTool: boolean("is_granting_tool"),
-	isGrantingSpell: boolean("is_granting_spell"),
-	isRepeatable: boolean("is_repeatable").default(false).notNull(),
-	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow().notNull(),
-	updatedAt: timestamp("updated_at", { mode: 'string' }).defaultNow().notNull(),
-}, (table) => [
-	foreignKey({
-			columns: [table.systemId],
-			foreignColumns: [systems.id],
-			name: "feats_system_id_systems_id_fk"
-		}),
-	unique("feats_slug_unique").on(table.slug),
 ]);
 
 export const heroAbilityScores = pgTable("hero_ability_scores", {
@@ -422,6 +402,32 @@ export const heroSpellPreparations = pgTable("hero_spell_preparations", {
 			foreignColumns: [spells.id],
 			name: "hero_spell_preparations_spell_id_spells_id_fk"
 		}),
+]);
+
+export const feats = pgTable("feats", {
+	id: integer().primaryKey().generatedAlwaysAsIdentity({ name: "feats_id_seq", startWith: 1, increment: 1, minValue: 1, maxValue: 2147483647, cache: 1 }),
+	slug: text().notNull(),
+	defaultName: text("default_name").notNull(),
+	defaultDescription: text("default_description"),
+	systemId: integer("system_id").notNull(),
+	minLevel: integer("min_level").default(1).notNull(),
+	isGrantingAbilityScore: boolean("is_granting_ability_score"),
+	isGrantingSkill: boolean("is_granting_skill"),
+	isGrantingTool: boolean("is_granting_tool"),
+	isGrantingSpell: boolean("is_granting_spell"),
+	isRepeatable: boolean("is_repeatable").default(false).notNull(),
+	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow().notNull(),
+	updatedAt: timestamp("updated_at", { mode: 'string' }).defaultNow().notNull(),
+	isOrigin: boolean("is_origin"),
+	isEpicBoon: boolean("is_epic_boon"),
+	isWeaponFighting: boolean("is_weapon_fighting"),
+}, (table) => [
+	foreignKey({
+			columns: [table.systemId],
+			foreignColumns: [systems.id],
+			name: "feats_system_id_systems_id_fk"
+		}),
+	unique("feats_slug_unique").on(table.slug),
 ]);
 
 export const lootables = pgTable("lootables", {
@@ -561,6 +567,11 @@ export const heroes = pgTable("heroes", {
 			foreignColumns: [species.id],
 			name: "heroes_species_id_species_id_fk"
 		}),
+	foreignKey({
+			columns: [table.subspeciesId],
+			foreignColumns: [subspecies.id],
+			name: "heroes_subspecies_id_subspecies_id_fk"
+		}),
 ]);
 
 export const skills = pgTable("skills", {
@@ -618,7 +629,6 @@ export const species = pgTable("species", {
 	speed: integer().default(9).notNull(),
 	size: speciesSize().default('medium').notNull(),
 	systemId: integer("system_id").notNull(),
-	variant: text(),
 	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow().notNull(),
 	updatedAt: timestamp("updated_at", { mode: 'string' }).defaultNow().notNull(),
 }, (table) => [
@@ -774,32 +784,6 @@ export const featGrantsAbilities = pgTable("feat_grants_abilities", {
 		}),
 ]);
 
-export const weapons = pgTable("weapons", {
-	id: integer().primaryKey().generatedAlwaysAsIdentity({ name: "weapons_id_seq", startWith: 1, increment: 1, minValue: 1, maxValue: 2147483647, cache: 1 }),
-	slug: text().notNull(),
-	defaultName: text("default_name").notNull(),
-	defaultDescription: text("default_description"),
-	defaultDamageDice: hitDice("default_damage_dice").notNull(),
-	secondaryDamageDice: hitDice("secondary_damage_dice"),
-	weaponType: weaponType("weapon_type").notNull(),
-	weaponMastery: weaponMastery("weapon_mastery"),
-	systemId: integer("system_id").notNull(),
-	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow().notNull(),
-	updatedAt: timestamp("updated_at", { mode: 'string' }).defaultNow().notNull(),
-	weight: numeric({ precision: 10, scale:  2 }),
-	value: integer(),
-	weaponProperties: jsonb("weapon_properties"),
-	damageType: weaponDamageType("damage_type").notNull(),
-	range: jsonb(),
-}, (table) => [
-	foreignKey({
-			columns: [table.systemId],
-			foreignColumns: [systems.id],
-			name: "weapons_system_id_systems_id_fk"
-		}),
-	unique("weapons_slug_unique").on(table.slug),
-]);
-
 export const tools = pgTable("tools", {
 	id: integer().primaryKey().generatedAlwaysAsIdentity({ name: "tools_id_seq", startWith: 1, increment: 1, minValue: 1, maxValue: 2147483647, cache: 1 }),
 	slug: text().notNull(),
@@ -826,4 +810,75 @@ export const tools = pgTable("tools", {
 			name: "tools_system_id_systems_id_fk"
 		}),
 	unique("tools_slug_unique").on(table.slug),
+]);
+
+export const weapons = pgTable("weapons", {
+	id: integer().primaryKey().generatedAlwaysAsIdentity({ name: "weapons_id_seq", startWith: 1, increment: 1, minValue: 1, maxValue: 2147483647, cache: 1 }),
+	slug: text().notNull(),
+	defaultName: text("default_name").notNull(),
+	defaultDescription: text("default_description"),
+	defaultDamageDice: hitDice("default_damage_dice").notNull(),
+	secondaryDamageDice: hitDice("secondary_damage_dice"),
+	weaponType: weaponType("weapon_type").notNull(),
+	weaponMastery: weaponMastery("weapon_mastery"),
+	systemId: integer("system_id").notNull(),
+	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow().notNull(),
+	updatedAt: timestamp("updated_at", { mode: 'string' }).defaultNow().notNull(),
+	weight: numeric({ precision: 10, scale:  2 }),
+	value: integer(),
+	weaponProperties: jsonb("weapon_properties"),
+	damageType: weaponDamageType("damage_type"),
+	range: jsonb(),
+	rangeType: rangeType("range_type"),
+}, (table) => [
+	foreignKey({
+			columns: [table.systemId],
+			foreignColumns: [systems.id],
+			name: "weapons_system_id_systems_id_fk"
+		}),
+	unique("weapons_slug_unique").on(table.slug),
+]);
+
+export const subspecies = pgTable("subspecies", {
+	id: integer().primaryKey().generatedAlwaysAsIdentity({ name: "subspecies_id_seq", startWith: 1, increment: 1, minValue: 1, maxValue: 2147483647, cache: 1 }),
+	slug: text().notNull(),
+	speciesId: integer("species_id").notNull(),
+	defaultName: text("default_name").notNull(),
+	defaultDescription: text("default_description"),
+	systemId: integer("system_id").notNull(),
+	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow().notNull(),
+	updatedAt: timestamp("updated_at", { mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+	foreignKey({
+			columns: [table.speciesId],
+			foreignColumns: [species.id],
+			name: "subspecies_species_id_species_id_fk"
+		}),
+	foreignKey({
+			columns: [table.systemId],
+			foreignColumns: [systems.id],
+			name: "subspecies_system_id_systems_id_fk"
+		}),
+	unique("subspecies_slug_unique").on(table.slug),
+]);
+
+export const featsRequiredAbilities = pgTable("feats_required_abilities", {
+	id: integer().primaryKey().generatedAlwaysAsIdentity({ name: "feats_required_abilities_id_seq", startWith: 1, increment: 1, minValue: 1, maxValue: 2147483647, cache: 1 }),
+	featId: integer("feat_id"),
+	abilityId: integer("ability_id"),
+	logic: featLogic(),
+	minAbilityScore: integer("min_ability_score").default(1).notNull(),
+	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow().notNull(),
+	updatedAt: timestamp("updated_at", { mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+	foreignKey({
+			columns: [table.featId],
+			foreignColumns: [feats.id],
+			name: "feats_required_abilities_feat_id_feats_id_fk"
+		}),
+	foreignKey({
+			columns: [table.abilityId],
+			foreignColumns: [abilities.id],
+			name: "feats_required_abilities_ability_id_abilities_id_fk"
+		}),
 ]);

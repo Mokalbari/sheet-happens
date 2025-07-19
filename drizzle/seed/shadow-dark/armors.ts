@@ -13,7 +13,7 @@ const armorsSeedData: ArmorInsertSchema[] = [
     hasStealthDisadvantage: false,
     canSwim: true,
     value: 1000,
-    baseArmorClass: 11,
+    armorClass: 11,
     hasDexterityBonus: true,
   },
   {
@@ -24,7 +24,7 @@ const armorsSeedData: ArmorInsertSchema[] = [
     hasStealthDisadvantage: true,
     canSwim: true,
     value: 6000,
-    baseArmorClass: 13,
+    armorClass: 13,
     hasDexterityBonus: true,
   },
   {
@@ -35,7 +35,7 @@ const armorsSeedData: ArmorInsertSchema[] = [
     hasStealthDisadvantage: true,
     canSwim: false,
     value: 13000,
-    baseArmorClass: 15,
+    armorClass: 15,
     hasDexterityBonus: false,
   },
   {
