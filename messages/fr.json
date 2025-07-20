@@ -9,10 +9,14 @@
     "experience": "Expérience",
     "background": "Historique",
     "playerName": "Nom du joueur",
-    "shield": "Shield"
+    "shield": "Bouclier",
+    "next": "Suivant"
   },
   "Form": {
     "CreateHeroForm": {
+      "generic": {
+        "title": "Création de personnage"
+      },
       "Error": {
         "abilityScores": {
           "tooLow": "Votre score de caractéristique est trop bas. Le minimum est 3.",

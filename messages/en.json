@@ -9,10 +9,14 @@
     "experience": "Experience",
     "background": "Background",
     "playerName": "Player name",
-    "shield": "Shield"
+    "shield": "Shield",
+    "next": "Next"
   },
   "Form": {
     "CreateHeroForm": {
+      "generic": {
+        "title": "Character creation"
+      },
       "Error": {
         "required": "{field} is required",
         "min": "{field} must be greater than {min}",

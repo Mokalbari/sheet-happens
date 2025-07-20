@@ -10,6 +10,7 @@ import { HTMLAttributes } from "react";
 export const headingVariants = cva("scroll-m-20 font-bold text-balance", {
   variants: {
     size: {
+      large: "text-3xl leading-8 underline underline-offset-[16px]",
       default: "text-xl leading-7",
     },
   },
