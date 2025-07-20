@@ -11,6 +11,36 @@
     "playerName": "Nom du joueur",
     "shield": "Shield"
   },
+  "Form": {
+    "CreateHeroForm": {
+      "name": "Nom",
+      "lastName": "Nom de famille",
+      "submit": "Créer"
+    },
+    "Error": {
+      "abilityScores": {
+        "tooLow": "Votre score de caractéristique est trop bas. Le minimum est 3.",
+        "tooHigh": "Votre score de caractéristique est trop haut. Le maximum est 18."
+      },
+      "equipment": {
+        "gold": {
+          "tooLow": "Vous ne pouvez pas avoir un nombre négatif d'or.",
+          "tooHigh": "Vous ne pouvez pas avoir plus de 60 or."
+        }
+      },
+      "name": {
+        "required": "Le nom est requis",
+        "exceedsLimit": "Le nom est trop long"
+      },
+      "lastName": {
+        "tooShort": "Le nom de famille est trop court",
+        "exceedsLimit": "Le nom de famille est trop long"
+      },
+      "system": {
+        "required": "Le système est requis"
+      }
+    }
+  },
   "HomePage": {
     "title": "Bonjour tout le monde !",
     "description": "Ceci est une description"
