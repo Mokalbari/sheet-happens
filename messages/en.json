@@ -13,31 +13,11 @@
   },
   "Form": {
     "CreateHeroForm": {
-      "name": "Name",
-      "lastName": "Last name",
-      "submit": "Create"
-    },
-    "Error": {
-      "abilityScores": {
-        "tooLow": "Your ability score is too low. The minimum is 3.",
-        "tooHigh": "Your ability score is too high. The maximum is 18."
-      },
-      "equipment": {
-        "gold": {
-          "tooLow": "You cannot have a negative amount of gold.",
-          "tooHigh": "You cannot have more than 60 gold."
-        }
-      },
-      "lastName": {
-        "tooShort": "Last name is too short",
-        "exceedsLimit": "Last name is too long"
-      },
-      "name": {
-        "required": "Name is required",
-        "exceedsLimit": "Name is too long"
-      },
-      "system": {
-        "required": "System is required"
+      "Error": {
+        "required": "{field} is required",
+        "min": "{field} must be greater than {min}",
+        "max": "{field} must be less than {max}",
+        "url": "{field} must be a valid URL"
       }
     }
   },

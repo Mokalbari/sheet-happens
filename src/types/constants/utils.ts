@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 export type Flatten<T> = T extends Record<string, infer V>
   ? V extends string
     ? V
@@ -7,3 +9,5 @@ export type Flatten<T> = T extends Record<string, infer V>
       : never
     : never
   : never;
+
+export type TFunction = ReturnType<typeof useTranslations>;

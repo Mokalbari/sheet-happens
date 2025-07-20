@@ -1,11 +1,19 @@
-import { useTranslations } from "next-intl";
+import { TFunction } from "@/types/constants/utils";
 import z from "zod";
 import { baseHeroSchema } from "./base-hero-schema";
 import { dd5eAbilitiesSchema } from "./dd5e-abilities-schema";
 
-export function shadowDarkSchema() {
-  const t = useTranslations("Form.CreateHeroForm.Error");
+const GOLD = {
+  MIN: 0,
+  MAX: 60,
+};
 
+const WEIGTH = {
+  MIN: 0,
+  MAX: 20,
+};
+
+export function shadowDarkSchema(t: TFunction) {
   const base = baseHeroSchema(t);
   const abilityScores = dd5eAbilitiesSchema(t);
 
@@ -28,12 +36,16 @@ export function shadowDarkSchema() {
     // Equipment
     gold: z
       .number()
-      .min(0, { message: t("equipment.gold.tooLow") })
-      .max(60, { message: t("equipment.gold.tooHigh") }),
+      .min(GOLD.MIN, { message: t("min", { field: "Gold", min: GOLD.MIN }) })
+      .max(GOLD.MAX, { message: t("max", { field: "Gold", max: GOLD.MAX }) }),
 
     weigth: z
       .number()
-      .min(0, { message: t("equipment.weigth.tooLow") })
-      .max(20, { message: t("equipment.weigth.tooHigh") }),
+      .min(WEIGTH.MIN, {
+        message: t("min", { field: "Weigth", min: WEIGTH.MIN }),
+      })
+      .max(WEIGTH.MAX, {
+        message: t("max", { field: "Weigth", max: WEIGTH.MAX }),
+      }),
   });
 }

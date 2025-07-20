@@ -1,8 +1,10 @@
 "use client";
 
+import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
-import { Form, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
   CreateHeroFormValues,
   createHeroSchema,
@@ -13,8 +15,10 @@ interface Props {
 }
 
 export function CreateHeroForm({ children }: Props) {
+  const t = useTranslations("Form.CreateHeroForm.Error");
+
   const form = useForm<CreateHeroFormValues>({
-    resolver: zodResolver(createHeroSchema),
+    resolver: zodResolver(createHeroSchema(t)),
     defaultValues: {
       system: "shadow-dark",
     },

@@ -1,11 +1,9 @@
-import { useTranslations } from "next-intl";
+import { TFunction } from "@/types/constants/utils";
 import z from "zod";
 import { baseHeroSchema } from "./base-hero-schema";
 import { dd5eAbilitiesSchema } from "./dd5e-abilities-schema";
 
-export function dd5eSchema() {
-  const t = useTranslations("Form.CreateHeroForm.Error");
-
+export function dd5eSchema(t: TFunction) {
   const base = baseHeroSchema(t);
   const abilityScores = dd5eAbilitiesSchema(t);
 

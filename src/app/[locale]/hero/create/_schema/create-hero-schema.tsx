@@ -1,12 +1,10 @@
-"use client";
-
-import z from "zod";
+import { z } from "zod";
 import { dd5eSchema } from "./dd5e-schema";
 import { shadowDarkSchema } from "./shadow-dark-schema";
+import { TFunction } from "@/types/constants/utils";
 
-export const createHeroSchema = z.discriminatedUnion("system", [
-  shadowDarkSchema(),
-  dd5eSchema(),
-]);
+export function createHeroSchema(t: TFunction) {
+  return z.discriminatedUnion("system", [shadowDarkSchema(t), dd5eSchema(t)]);
+}
 
-export type CreateHeroFormValues = z.infer<typeof createHeroSchema>;
+export type CreateHeroFormValues = z.infer<ReturnType<typeof createHeroSchema>>;
