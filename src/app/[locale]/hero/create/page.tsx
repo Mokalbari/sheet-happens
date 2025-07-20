@@ -26,8 +26,10 @@ function Stepper() {
 }
 
 export default function Page() {
+  const t = useTranslations("Form.CreateHeroForm");
+
   return (
-    <PageWrapper>
+    <PageWrapper className="space-y-16">
       <Stepper />
 
       <CreateHeroForm>

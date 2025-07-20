@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import z from "zod";
 
-const MIN_STRING_LENGTH = 1;
+const MIN_STRING_LENGTH = 3;
 const MAX_STRING_LENGTH = 30;
 
 export function baseHeroSchema(t: ReturnType<typeof useTranslations>) {
