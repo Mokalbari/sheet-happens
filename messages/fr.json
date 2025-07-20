@@ -1,6 +1,7 @@
 {
   "Atoms": {
-    "name": "Nom",
+    "firstName": "Prénom",
+    "lastName": "Nom",
     "class": "Classe",
     "subClass": "Sous-classe",
     "level": "Niveau",

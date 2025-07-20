@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { SemanticWrapper } from "@/types";
 import React from "react";
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
@@ -8,7 +9,7 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 
 export function PageWrapper({ children, className, ...props }: Props) {
   return (
-    <main
+    <div
       className={cn(
         "min-h-screen w-full max-w-6xl mx-auto px-4 relative",
         className
@@ -16,6 +17,23 @@ export function PageWrapper({ children, className, ...props }: Props) {
       {...props}
     >
       {children}
-    </main>
+    </div>
+  );
+}
+
+export function ContentWrapper({
+  as = "div",
+  children,
+  className,
+  ...props
+}: Props & {
+  as?: SemanticWrapper;
+}) {
+  const Component = as;
+
+  return (
+    <Component className={className} {...props}>
+      {children}
+    </Component>
   );
 }

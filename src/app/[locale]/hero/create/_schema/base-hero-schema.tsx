@@ -6,11 +6,13 @@ const MAX_STRING_LENGTH = 30;
 
 export function baseHeroSchema(t: ReturnType<typeof useTranslations>) {
   return z.object({
-    name: z
+    firstName: z
       .string()
-      .min(MIN_STRING_LENGTH, { message: t("required", { field: "Name" }) })
+      .min(MIN_STRING_LENGTH, {
+        message: t("required", { field: "First Name" }),
+      })
       .max(MAX_STRING_LENGTH, {
-        message: t("max", { field: "Name", max: MAX_STRING_LENGTH }),
+        message: t("max", { field: "First Name", max: MAX_STRING_LENGTH }),
       }),
 
     lastName: z

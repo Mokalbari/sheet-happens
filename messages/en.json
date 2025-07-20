@@ -1,6 +1,7 @@
 {
   "Atoms": {
-    "name": "Name",
+    "firstName": "First name",
+    "lastName": "Last name",
     "class": "Class",
     "subClass": "Subclass",
     "level": "Level",
@@ -16,6 +17,10 @@
     "CreateHeroForm": {
       "generic": {
         "title": "Character creation"
+      },
+      "step1": {
+        "title": "Roll into existence",
+        "subtitle": "Brave knight? Shady rogue? Mushroom-obsessed bard? The world is yours to break."
       },
       "Error": {
         "required": "{field} is required",

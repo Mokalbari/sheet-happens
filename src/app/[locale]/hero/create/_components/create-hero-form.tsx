@@ -14,14 +14,31 @@ interface Props {
   children: ReactNode;
 }
 
+const defaultValues: CreateHeroFormValues = {
+  system: "shadow-dark",
+  firstName: "",
+  lastName: "",
+  strength: 10,
+  dexterity: 10,
+  constitution: 10,
+  intelligence: 10,
+  wisdom: 10,
+  charisma: 10,
+  specie: "human",
+  alignment: "neutral",
+  class: "fighter",
+  background: "urchin",
+  gold: 0,
+  weigth: 0,
+};
+
 export function CreateHeroForm({ children }: Props) {
   const t = useTranslations("Form.CreateHeroForm.Error");
 
   const form = useForm<CreateHeroFormValues>({
     resolver: zodResolver(createHeroSchema(t)),
-    defaultValues: {
-      system: "shadow-dark",
-    },
+    defaultValues,
+    mode: "onChange",
   });
 
   const onSubmit = (values: CreateHeroFormValues) => {
