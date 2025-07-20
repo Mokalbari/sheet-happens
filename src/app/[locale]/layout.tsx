@@ -2,6 +2,7 @@ import { routing } from "@/i18n/routing";
 import { roboto, robotoMono } from "@/styles/fonts";
 import "@/styles/globals.css";
 
+import { Gradient } from "@/components/ui/gradient";
 import { Toaster } from "@/components/ui/toaster";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -28,7 +29,7 @@ export default async function LocaleLayout({
       >
         <div className="font-sans">
           <NextIntlClientProvider locale={locale} messages={messages}>
-            {children}
+            <Gradient>{children}</Gradient>
             <Toaster />
           </NextIntlClientProvider>
         </div>
