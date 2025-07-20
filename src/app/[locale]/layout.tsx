@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 
 import { Toaster } from "@/components/ui/toaster";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 export default async function LocaleLayout({
@@ -18,13 +19,15 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  const messages = await getMessages({ locale });
+
   return (
     <html lang={locale}>
       <body
         className={`bg-background text-foreground antialiased ${roboto.variable} ${robotoMono.variable}`}
       >
         <div className="font-sans">
-          <NextIntlClientProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
             <Toaster />
           </NextIntlClientProvider>

@@ -1,3 +1,12 @@
+"use client";
+import { CreateHeroForm } from "./_components/create-hero-form";
+
 export default function Page() {
-  return <div>Create Hero</div>;
+  return (
+    <div>
+      <CreateHeroForm>
+        <div>Create Hero</div>
+      </CreateHeroForm>
+    </div>
+  );
 }
