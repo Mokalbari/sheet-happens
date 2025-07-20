@@ -10,7 +10,7 @@ export function PageWrapper({ children, className, ...props }: Props) {
   return (
     <main
       className={cn(
-        "min-h-screen w-full max-w-4xl mx-auto px-4 relative",
+        "min-h-screen w-full max-w-6xl mx-auto px-4 relative",
         className
       )}
       {...props}
