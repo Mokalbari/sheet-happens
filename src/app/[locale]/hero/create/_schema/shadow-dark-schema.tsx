@@ -3,7 +3,9 @@ import z from "zod";
 import { baseHeroSchema } from "./base-hero-schema";
 import { dd5eAbilitiesSchema } from "./dd5e-abilities-schema";
 
-export function shadowDarkSchema(t: ReturnType<typeof useTranslations>) {
+export function shadowDarkSchema() {
+  const t = useTranslations("Form.CreateHeroForm.Error");
+
   const base = baseHeroSchema(t);
   const abilityScores = dd5eAbilitiesSchema(t);
 
